@@ -106,7 +106,7 @@ func formatGoCode(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	// Serve static index.html
-	fs := http.FileServer(http.Dir("./static"))
+	fs := http.FileServer(http.Dir("./docs"))
 	http.Handle("/", fs)
 	http.HandleFunc("/ws", runGoCodeWS)
 	http.HandleFunc("/format", formatGoCode)
