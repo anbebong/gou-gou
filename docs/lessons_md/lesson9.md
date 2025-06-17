@@ -9,7 +9,6 @@ Mảng trong Go là một tập hợp các phần tử cùng kiểu dữ liệu 
 ```go
 var numbers [5]int              // Mảng 5 phần tử kiểu int, mặc định các giá trị là 0
 colors := [3]string{"red", "green", "blue"}  // Khai báo và khởi tạo giá trị
-matrix := [2][3]int{{1, 2, 3}, {4, 5, 6}}   // Mảng đa chiều
 ```
 
 ### Đặc điểm của mảng
