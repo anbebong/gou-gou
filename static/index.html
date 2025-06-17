@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gâu Gâu</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;700&family=Roboto:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="icon" type="image/x-icon" href="/icon.ico"> -->
+    <link rel="icon" type="image/png" href="/gogo.png">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-go.min.js"></script>
+</head>
+
+<body>
+    <div class="topbar">
+        <div class="topbar-left">
+            <div class="logo">Gou Gou</div>
+        </div>
+        <div class="topbar-right">
+            <div class="language-selector">
+                <select id="languageSelect">
+                    <option value="vi" selected>Tiếng Việt</option>
+                    <option value="en">English</option>
+                </select>
+            </div>
+            <div class="topbar-links">
+                <a href="#" class="topbar-link">Trang chủ</a>
+                <a href="#" class="topbar-link">Tài liệu</a>
+                <a href="#" class="topbar-link">Giới thiệu</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-container">
+        <button class="menu-btn" id="menuBtn" onclick="openSidebar()">☰</button>
+        <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+        <div class="sidebar" id="sidebar">
+            <h3>Tutorial</h3>
+            <ul class="lesson-list" id="lessonList"></ul>
+        </div>
+
+        <div class="wrapper">
+            <div class="main-content">
+
+                <div class="lesson-container">
+                    <div class="explanation-panel">
+                        <div class="explain-box" id="lessonExplain"></div>
+                        <div class="tasks-container" id="lessonTasks">
+                            <div class="tasks-header">
+                                <h3>Bài tập thực hành</h3>
+                                <button class="tasks-toggle" onclick="toggleTasks()" title="Thu gọn/Mở rộng">
+                                    <span class="toggle-icon">▼</span>
+                                </button>
+                            </div>
+                            <div class="tasks-list"></div>
+                        </div>
+                    </div>
+                    <div class="code-panel">
+                        <div class="code-editor-container">
+                            <div class="line-numbers" id="lineNumbers"></div>
+                            <textarea id="code" spellcheck="false" onscroll="syncScroll(this)"
+                                onkeyup="updateLineNumbers()" oninput="updateLineNumbers()"></textarea>
+                        </div>
+                        <div class="btn-row">
+                            <button class="run-btn" onclick="runGo()">▶ Run</button>
+                            <button class="format-btn" onclick="formatGo()">🧹 Format</button>
+                        </div>
+                        <div id="output"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">Gou Gou</div>
+            <div class="footer-links">
+                <a href="https://go.dev/doc/" target="_blank">Go Documentation</a>
+                <a href="https://github.com/golang/go" target="_blank">GitHub</a>
+                <a href="https://play.golang.org/" target="_blank">Go Playground</a>
+            </div>
+            <div class="footer-copyright">© 2025 by an.pt</div>
+        </div>
+    </footer>
+    <script src="lessons.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>
