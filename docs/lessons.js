@@ -61,26 +61,155 @@ const lessons = [
         title: "Toán tử và biểu thức",
         desc: "Các loại toán tử và cách sử dụng biểu thức trong Go.",
         mdPath: "lessons_md/lesson3.md",
-        codePath: "lessons/3.go"
+        codePath: "lessons/3.go",
+        tasks: [
+            {
+                title: "Toán tử so sánh",
+                desc: "Viết chương trình sử dụng các toán tử so sánh (==, !=, <, >, <=, >=) với hai số. In kết quả (true/false) của mỗi phép so sánh.",
+                hint: "Kết quả của toán tử so sánh là một giá trị boolean.",
+                level: "easy"
+            },
+            {
+                title: "Toán tử logic",
+                desc: "Viết chương trình sử dụng các toán tử logic (&&, ||, !) với các biểu thức boolean. In kết quả.",
+                hint: "Tạo các biến boolean hoặc sử dụng kết quả từ các phép so sánh.",
+                level: "medium"
+            },
+            {
+                title: "Toán tử gán",
+                desc: "Thực hành sử dụng các toán tử gán kết hợp (+=, -=, *=, /=, %=).",
+                hint: "Ví dụ: x += 5 tương đương với x = x + 5.",
+                level: "medium"
+            },
+            {
+                title: "Độ ưu tiên toán tử",
+                desc: "Viết một biểu thức phức tạp kết hợp nhiều loại toán tử và dự đoán kết quả. Sau đó, chạy chương trình để kiểm tra.",
+                hint: "Sử dụng dấu ngoặc đơn () để thay đổi độ ưu tiên nếu cần.",
+                level: "hard"
+            }
+        ]
     },
     {
         title: "Câu lệnh điều kiện (if, switch)",
         desc: "Sử dụng if, else, switch để điều khiển luồng chương trình.",
         mdPath: "lessons_md/lesson4.md",
-        codePath: "lessons/4.go"
+        codePath: "lessons/4.go",
+        tasks: [
+            {
+                title: "Kiểm tra số chẵn/lẻ",
+                desc: "Viết chương trình nhận một số nguyên và kiểm tra xem đó là số chẵn hay số lẻ sử dụng câu lệnh if-else. In kết quả ra màn hình.",
+                hint: "Sử dụng toán tử modulo (%) để kiểm tra tính chẵn lẻ.",
+                level: "easy"
+            },
+            {
+                title: "Phân loại tuổi",
+                desc: "Viết chương trình nhận vào một độ tuổi và phân loại: 'Trẻ em' (dưới 13), 'Thiếu niên' (13-17), 'Người lớn' (18-64), 'Người cao tuổi' (65 trở lên) sử dụng if-else if-else.",
+                hint: "Sử dụng nhiều điều kiện else if.",
+                level: "easy"
+            },
+            {
+                title: "Switch với ngày trong tuần",
+                desc: "Viết chương trình nhận một số từ 1 đến 7 và in ra ngày tương ứng trong tuần (1 là Chủ Nhật, 2 là Thứ Hai,...). Sử dụng câu lệnh switch.",
+                hint: "Mỗi case sẽ tương ứng với một số.",
+                level: "medium"
+            },
+            {
+                title: "Switch với fallthrough",
+                desc: "Sử dụng switch với từ khóa fallthrough để xử lý trường hợp nhiều case có cùng một hành động. Ví dụ: kiểm tra một ký tự có phải là nguyên âm hay không (a, e, i, o, u).",
+                hint: "Sau một case, sử dụng fallthrough để thực thi tiếp case tiếp theo.",
+                level: "medium"
+            },
+            {
+                title: "If với khởi tạo biến",
+                desc: "Thực hành câu lệnh if có phần khởi tạo biến ngắn gọn (ví dụ: if err := someFunc(); err != nil { ... }). Viết một hàm trả về lỗi và kiểm tra lỗi đó.",
+                hint: "Biến được khởi tạo trong if chỉ có phạm vi trong khối if/else đó.",
+                level: "hard"
+            }
+        ]
     },
     {
         title: "Vòng lặp (for, break, continue)",
         desc: "Cách sử dụng vòng lặp for, break, continue trong Go.",
         mdPath: "lessons_md/lesson6.md",
-        codePath: "lessons/6.go"
+        codePath: "lessons/6.go",
+        tasks: [
+            {
+                title: "Tính tổng các số",
+                desc: "Viết chương trình tính tổng các số từ 1 đến N (N được nhập vào).",
+                hint: "Khởi tạo một biến tổng và cộng dồn trong vòng lặp.",
+                level: "easy"
+            },
+            {
+                title: "Vẽ hình chữ nhật bằng dấu *",
+                desc: "Viết chương trình nhận vào chiều rộng và chiều cao, sau đó vẽ một hình chữ nhật bằng các dấu '*' sử dụng vòng lặp lồng nhau.",
+                hint: "Sử dụng một vòng lặp for cho hàng và một vòng lặp for lồng bên trong cho cột.",
+                level: "hard"
+            }
+        ]
     },
-    { title: "Hàm (function), tham số, giá trị trả về", desc: "Định nghĩa và sử dụng hàm, truyền tham số, giá trị trả về.", mdPath: "lessons_md/lesson7.md", codePath: "lessons/7.go" },
-    { 
-        title: "Con trỏ (pointer)", 
-        desc: "Khái niệm và cách sử dụng con trỏ trong Go.", 
+    {
+        title: "Hàm (function), tham số, giá trị trả về", 
+        desc: "Định nghĩa và sử dụng hàm, truyền tham số, giá trị trả về.", 
+        mdPath: "lessons_md/lesson7.md", 
+        codePath: "lessons/7.go", 
+        tasks: [
+            {
+                title: "Hàm tính diện tích hình chữ nhật",
+                desc: "Viết một hàm nhận vào chiều dài và chiều rộng, sau đó trả về diện tích của hình chữ nhật.",
+                hint: "Hàm sẽ có hai tham số kiểu số và trả về một giá trị kiểu số.",
+                level: "easy"
+            },
+            {
+                title: "Hàm với nhiều giá trị trả về",
+                desc: "Viết một hàm nhận vào hai số nguyên a và b, sau đó trả về cả tổng và hiệu của chúng (a+b và a-b).",
+                hint: "Go cho phép hàm trả về nhiều giá trị.",
+                level: "medium"
+            },
+            {
+                title: "Hàm variadic (tham số thay đổi)",
+                desc: "Viết một hàm tính tổng của một danh sách các số nguyên. Hàm này có thể nhận vào một số lượng tham số bất kỳ (variadic parameter).",
+                hint: "Sử dụng ...int cho tham số variadic và duyệt qua nó như một slice.",
+                level: "medium"
+            },
+            {
+                title: "Hàm đệ quy: Giai thừa",
+                desc: "Viết một hàm đệ quy để tính giai thừa của một số nguyên không âm N (N!).",
+                hint: "Giai thừa của 0 là 1. Giai thừa của N là N * (N-1)!. Cẩn thận với trường hợp cơ sở.",
+                level: "hard"
+            }
+        ]
+    },
+    {
+        title: "Con trỏ (pointer)",
+        desc: "Khái niệm và cách sử dụng con trỏ trong Go.",
         mdPath: "lessons_md/lesson8.md",
-        codePath: "lessons/8.go" 
+        codePath: "lessons/8.go",
+        tasks: [
+            {
+                title: "Thay đổi giá trị qua con trỏ",
+                desc: "Khai báo một biến. Tạo một con trỏ trỏ đến biến đó. Thay đổi giá trị của biến gốc thông qua con trỏ. In giá trị của biến gốc để xác nhận.",
+                hint: "Sử dụng *pointer = newValue.",
+                level: "easy"
+            },
+            {
+                title: "Con trỏ và hàm",
+                desc: "Viết một hàm nhận vào một con trỏ đến một số nguyên và thay đổi giá trị của số nguyên đó bên trong hàm. Gọi hàm và kiểm tra xem giá trị có thay đổi bên ngoài hàm không.",
+                hint: "Hàm có tham số kiểu *int.",
+                level: "medium"
+            },
+            {
+                title: "Con trỏ nil",
+                desc: "Khai báo một con trỏ nhưng không khởi tạo cho nó trỏ đến đâu cả (con trỏ nil). Thử giải tham chiếu con trỏ nil và quan sát lỗi (panic). Sau đó, thêm kiểm tra xem con trỏ có nil không trước khi giải tham chiếu.",
+                hint: "Một con trỏ chưa được gán sẽ có giá trị nil. Kiểm tra if p != nil.",
+                level: "medium"
+            },
+            {
+                title: "Con trỏ tới con trỏ",
+                desc: "Khai báo một biến, một con trỏ trỏ tới biến đó, và một con trỏ thứ hai trỏ tới con trỏ đầu tiên. In ra giá trị của biến gốc thông qua con trỏ thứ hai.",
+                hint: "Sử dụng **p để giải tham chiếu hai lần.",
+                level: "hard"
+            }
+        ]
     },
     { title: "Mảng (array), slice", desc: "Làm việc với mảng và slice trong Go.", mdPath: "lessons_md/lesson9.md", codePath: "lessons/9.go" },
     { title: "Map (bản đồ)", desc: "Cách sử dụng map (bản đồ) trong Go.", mdPath: "lessons_md/lesson10.md", codePath: "lessons/10.go" },
@@ -88,10 +217,10 @@ const lessons = [
     { title: "Method (phương thức)", desc: "Định nghĩa và sử dụng method cho struct.", mdPath: "lessons_md/lesson12.md", codePath: "lessons/12.go" },
     { title: "Interface", desc: "Khái niệm và cách sử dụng interface trong Go.", mdPath: "lessons_md/lesson13.md", codePath: "lessons/13.go" },
     { title: "Package & import", desc: "Tổ chức code với package và import.", mdPath: "lessons_md/lesson14.md", codePath: "lessons/14.go" },
-    { 
-        title: "Xử lý lỗi (error handling)", 
-        desc: "Cách xử lý lỗi trong Go.", 
-        mdPath: "lessons_md/lesson15.md", 
+    {
+        title: "Xử lý lỗi (error handling)",
+        desc: "Cách xử lý lỗi trong Go.",
+        mdPath: "lessons_md/lesson15.md",
         codePath: "lessons/15.go",
         tasks: [
             {
@@ -110,7 +239,7 @@ const lessons = [
                 title: "Multiple Errors",
                 desc: "Xử lý nhiều lỗi cùng lúc",
                 hint: "Tạo struct chứa slice các error",
-                level: "medium" 
+                level: "medium"
             },
             {
                 title: "Error Wrapping",
@@ -126,10 +255,10 @@ const lessons = [
             }
         ]
     },
-    { 
-        title: "Goroutine (lập trình song song)", 
-        desc: "Giới thiệu về goroutine và concurrency.", 
-        mdPath: "lessons_md/lesson16.md", 
+    {
+        title: "Goroutine (lập trình song song)",
+        desc: "Giới thiệu về goroutine và concurrency.",
+        mdPath: "lessons_md/lesson16.md",
         codePath: "lessons/16.go",
         tasks: [
             {
@@ -146,10 +275,10 @@ const lessons = [
             }
         ]
     },
-    { 
-        title: "Channel", 
-        desc: "Truyền thông tin giữa các goroutine bằng channel.", 
-        mdPath: "lessons_md/lesson17.md", 
+    {
+        title: "Channel",
+        desc: "Truyền thông tin giữa các goroutine bằng channel.",
+        mdPath: "lessons_md/lesson17.md",
         codePath: "lessons/17.go",
         tasks: [
             {
@@ -184,10 +313,10 @@ const lessons = [
             }
         ]
     },
-    { 
-        title: "Select", 
-        desc: "Sử dụng select để xử lý nhiều channel.", 
-        mdPath: "lessons_md/lesson18.md", 
+    {
+        title: "Select",
+        desc: "Sử dụng select để xử lý nhiều channel.",
+        mdPath: "lessons_md/lesson18.md",
         codePath: "lessons/18.go",
         tasks: [
             {
@@ -221,10 +350,10 @@ const lessons = [
                 level: "hard"
             }
         ]
-    },    { 
-        title: "Quản lý module (go mod)", 
-        desc: "Giới thiệu về go mod và quản lý module.", 
-        mdPath: "lessons_md/lesson19.md", 
+    }, {
+        title: "Quản lý module (go mod)",
+        desc: "Giới thiệu về go mod và quản lý module.",
+        mdPath: "lessons_md/lesson19.md",
         codePath: "lessons/19.go",
         tasks: [
             {
@@ -259,7 +388,8 @@ const lessons = [
             }
         ]
     },
-    { title: "Đọc/ghi file", desc: "Cách đọc và ghi file trong Go.", mdPath: "lessons_md/lesson20.md", codePath: "lessons/20.go", 
+    {
+        title: "Đọc/ghi file", desc: "Cách đọc và ghi file trong Go.", mdPath: "lessons_md/lesson20.md", codePath: "lessons/20.go",
         tasks: [
             {
                 title: "Đọc file log",
@@ -280,13 +410,7 @@ const lessons = [
                 level: "medium"
             },
         ]
-     },
+    },
     { title: "Làm việc với HTTP (client/server)", desc: "Tạo HTTP client và server cơ bản.", mdPath: "lessons_md/lesson21.md", codePath: "lessons/21.go" },
-    { title: "JSON & encoding", desc: "Xử lý dữ liệu JSON và encoding trong Go.", mdPath: "lessons_md/lesson22.md", codePath: "lessons/22.go" },
-    { title: "Unit test trong Go", desc: "Viết và chạy unit test trong Go.", mdPath: "lessons_md/lesson23.md", codePath: "lessons/23.go" },
-    { title: "Context", desc: "Sử dụng context để kiểm soát goroutine.", mdPath: "lessons_md/lesson24.md", codePath: "lessons/24.go" },
-    { title: "Reflection", desc: "Khái niệm và ứng dụng reflection trong Go.", mdPath: "lessons_md/lesson25.md", codePath: "lessons/25.go" },
-    { title: "Xây dựng ứng dụng web đơn giản với net/http", desc: "Tạo web app đơn giản sử dụng net/http.", mdPath: "lessons_md/lesson26.md", codePath: "lessons/26.go" },
-    { title: "Sử dụng thư viện ngoài (third-party)", desc: "Cài đặt và sử dụng thư viện ngoài.", mdPath: "lessons_md/lesson27.md", codePath: "lessons/27.go" },
-    { title: "Tổng kết & tài nguyên học thêm", desc: "Tổng kết và gợi ý tài liệu học nâng cao.", mdPath: "lessons_md/lesson28.md", codePath: "lessons/28.go" }
+    { title: "JSON & encoding", desc: "Xử lý dữ liệu JSON và encoding trong Go.", mdPath: "lessons_md/lesson22.md", codePath: "lessons/22.go" }
 ];

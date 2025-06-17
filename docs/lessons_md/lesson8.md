@@ -4,9 +4,9 @@ Trong Go, con trỏ là một biến đặc biệt dùng để lưu trữ địa
 
 ## Cách sử dụng con trỏ
 
-1. Để khai báo một con trỏ, ta sử dụng dấu `*` trước kiểu dữ liệu
-2. Để lấy địa chỉ của một biến, ta sử dụng toán tử `&`
-3. Để lấy giá trị mà con trỏ đang trỏ tới (dereference), ta sử dụng dấu `*`
+1. Để khai báo một con trỏ, ta sử dụng dấu * trước kiểu dữ liệu
+2. Để lấy địa chỉ của một biến, ta sử dụng toán tử &
+3. Để lấy giá trị mà con trỏ đang trỏ tới (dereference), ta sử dụng dấu *
 
 ### Ví dụ đơn giản
 
@@ -34,7 +34,7 @@ fmt.Println(x)   // In ra 100
 
 ## Lưu ý quan trọng
 
-1. Giá trị mặc định của con trỏ là `nil`
+1. Giá trị mặc định của con trỏ là nil
 2. Không thể thực hiện phép toán số học với con trỏ
 3. Cẩn thận khi sử dụng con trỏ để tránh "nil pointer dereference"
 

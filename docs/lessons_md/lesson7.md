@@ -76,7 +76,7 @@ func split(sum int) (x, y int) {
 
 ### 5. Variadic Functions
 - Hàm nhận số lượng tham số không xác định
-- Sử dụng dấu `...` trước kiểu dữ liệu
+- Sử dụng dấu ... trước kiểu dữ liệu
 
 **Ví dụ:**
 ```go

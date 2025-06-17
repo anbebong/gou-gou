@@ -44,9 +44,9 @@ for i < 10 {
   }
   ```
 - Vòng lặp sẽ chạy mãi mãi trừ khi gặp:
-  - `break`: thoát khỏi vòng lặp
-  - `return`: thoát khỏi hàm
-  - `panic`: gây ra lỗi
+  - break : thoát khỏi vòng lặp
+  - return : thoát khỏi hàm
+  - panic : gây ra lỗi
 
 **Ví dụ:**
 ```go
@@ -89,8 +89,8 @@ for {
   ```
 
 ### 5. break và continue
-- `break`: thoát khỏi vòng lặp hiện tại
-- `continue`: bỏ qua phần còn lại của lần lặp và tiếp tục lần lặp kế tiếp
+- break : thoát khỏi vòng lặp hiện tại
+- continue : bỏ qua phần còn lại của lần lặp và tiếp tục lần lặp kế tiếp
 
 **Ví dụ:**
 ```go
@@ -105,7 +105,7 @@ for i := 0; i < 10; i++ {
 ```
 
 ### 6. Label với break và continue
-- Định nghĩa label: `TênLabel:`
+- Định nghĩa label: TênLabel:
 - Dùng với break/continue để chỉ định vòng lặp nào cần ảnh hưởng
 - Hữu ích với các vòng lặp lồng nhau
 

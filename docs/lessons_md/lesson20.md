@@ -1,6 +1,6 @@
 # Đọc và Ghi File trong Go
 
-Go cung cấp nhiều cách để làm việc với file thông qua package `os` và `bufio`. Trong bài này, chúng ta sẽ học các thao tác cơ bản nhất với file.
+Go cung cấp nhiều cách để làm việc với file thông qua package os và bufio. Trong bài này, chúng ta sẽ học các thao tác cơ bản nhất với file.
 
 ## 1. Đọc File
 
@@ -13,8 +13,8 @@ if err != nil {
 }
 fmt.Println(string(data))
 ```
-- Hàm `os.ReadFile()` đọc toàn bộ nội dung file vào bộ nhớ
-- Trả về dữ liệu dạng `[]byte` và error (nếu có)
+- Hàm os.ReadFile() đọc toàn bộ nội dung file vào bộ nhớ
+- Trả về dữ liệu dạng []byte và error (nếu có)
 - Phù hợp với file nhỏ
 
 ### Đọc file theo từng dòng
@@ -31,8 +31,8 @@ for scanner.Scan() {
     fmt.Println(scanner.Text())
 }
 ```
-- Dùng `bufio.Scanner` để đọc từng dòng
-- `defer file.Close()` đảm bảo file luôn được đóng
+- Dùng bufio.Scanner để đọc từng dòng
+- defer file.Close() đảm bảo file luôn được đóng
 - Phù hợp với file lớn hoặc cần xử lý theo dòng
 
 ## 2. Ghi File
@@ -46,8 +46,8 @@ if err != nil {
     return
 }
 ```
-- `os.WriteFile()` ghi toàn bộ dữ liệu vào file
-- `0644` là quyền truy cập file (read/write cho owner, read cho others)
+- os.WriteFile() ghi toàn bộ dữ liệu vào file
+- 0644 là quyền truy cập file (read/write cho owner, read cho others)
 - File sẽ được tạo mới nếu chưa tồn tại
 
 ### Ghi file theo từng phần
@@ -64,8 +64,8 @@ writer.WriteString("Dòng 1\n")
 writer.WriteString("Dòng 2\n")
 writer.Flush()  // Đẩy dữ liệu từ buffer xuống file
 ```
-- Dùng `bufio.Writer` để ghi từng phần
-- `Flush()` đảm bảo dữ liệu được ghi xuống file
+- Dùng bufio.Writer để ghi từng phần
+- Flush() đảm bảo dữ liệu được ghi xuống file
 - Phù hợp khi cần ghi nhiều lần
 
 ## 3. Xử lý Lỗi

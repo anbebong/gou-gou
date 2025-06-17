@@ -22,74 +22,124 @@
             <div class="logo">Gou Gou</div>
         </div>
         <div class="topbar-right">
-            <div class="language-selector">
-                <select id="languageSelect">
-                    <option value="vi" selected>Tiếng Việt</option>
-                    <option value="en">English</option>
-                </select>
-            </div>
             <div class="topbar-links">
-                <a href="#" class="topbar-link">Trang chủ</a>
-                <a href="#" class="topbar-link">Tài liệu</a>
-                <a href="#" class="topbar-link">Giới thiệu</a>
+                <a href="#" class="topbar-link lang-tab" data-lang="home">Home</a>
+                <a href="#" class="topbar-link lang-tab" data-lang="gioithieu">Giới thiệu</a>
+                <a href="#" class="topbar-link lang-tab" data-lang="golang">Golang</a>
+                <a href="#" class="topbar-link lang-tab" data-lang="python">Python</a>
+                <a href="#" class="topbar-link lang-tab" data-lang="c">C</a> <!-- Changed from javascript to c -->
             </div>
         </div>
     </div>
 
     <div class="page-container">
-        <button class="menu-btn" id="menuBtn" onclick="openSidebar()">☰</button>
-        <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
-
-        <div class="sidebar" id="sidebar">
-            <h3>Tutorial</h3>
-            <ul class="lesson-list" id="lessonList"></ul>
+        <!-- Home Section -->
+        <div id="home-section" class="language-content">
+            <div class="home-content-wrapper">
+                <div class="home-image-container">
+                    <img src="gogo.png" alt="Gogo Platform Logo" class="home-logo-img">
+                    <img src="gogo.png" alt="Gogo Platform Logo Flipped" class="home-logo-img flipped-image">
+                </div>
+                <h1>Welcome to GOU-GOU !</h1>
+                <p class="home-tagline">Your exciting journey to mastering new programming languages starts right here. Select a language from the navigation bar above to begin.</p>
+            </div>
         </div>
 
-        <div class="wrapper">
-            <div class="main-content">
+        <!-- Giới thiệu Section -->
+        <div id="gioithieu-section" class="language-content" style="display: none;">
+            <button class="menu-btn" id="projectMenuBtn" onclick="openProjectSidebar()">☰</button> <!-- New Menu Button for projects -->
+            <div class="sidebar-overlay" id="projectSidebarOverlay" onclick="closeProjectSidebar()"></div> <!-- New Overlay for projects -->
 
-                <div class="lesson-container">
-                    <div class="explanation-panel">
-                        <div class="explain-box" id="lessonExplain"></div>
-                        <div class="tasks-container" id="lessonTasks">
-                            <div class="tasks-header">
-                                <h3>Bài tập thực hành</h3>
-                                <button class="tasks-toggle" onclick="toggleTasks()" title="Thu gọn/Mở rộng">
-                                    <span class="toggle-icon">▼</span>
-                                </button>
-                            </div>
-                            <div class="tasks-list"></div>
-                        </div>
+            <div class="sidebar" id="projectSidebar"> <!-- Reusing sidebar class, new ID -->
+                <h3>My Projects</h3>
+                <ul class="lesson-list" id="projectList"></ul> <!-- Reusing lesson-list class, new ID -->
+            </div>
+
+            <div class="wrapper"> <!-- Reusing wrapper class -->
+                <div class="main-content"> <!-- Reusing main-content class -->
+                    <div class="explanation-panel" style="width: 100%; padding: 20px;"> <!-- Reusing explanation-panel, ensuring it takes full width -->
+                        <div class="explain-box" id="projectDetails"></div> <!-- Reusing explain-box, new ID -->
+                        <!-- We might not need a separate tasks container for projects, or it can be adapted -->
                     </div>
-                    <div class="code-panel">
-                        <div class="code-editor-container">
-                            <div class="line-numbers" id="lineNumbers"></div>
-                            <textarea id="code" spellcheck="false" onscroll="syncScroll(this)"
-                                onkeyup="updateLineNumbers()" oninput="updateLineNumbers()"></textarea>
+                    <!-- No code panel needed for project descriptions generally -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Golang Section -->
+        <div id="golang-section" class="language-content">
+            <button class="menu-btn" id="menuBtn" onclick="openSidebar()">☰</button>
+            <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+            <div class="sidebar" id="sidebar">
+                <h3>Tutorial</h3>
+                <ul class="lesson-list" id="lessonList"></ul>
+            </div>
+
+            <div class="wrapper">
+                <div class="main-content">
+                    <div class="lesson-container">
+                        <div class="explanation-panel">
+                            <div class="explain-box" id="lessonExplain"></div>
+                            <div class="tasks-container" id="lessonTasks">
+                                <div class="tasks-header">
+                                    <h3>Bài tập thực hành</h3>
+                                    <button class="tasks-toggle" onclick="toggleTasks()" title="Thu gọn/Mở rộng">
+                                        <span class="toggle-icon">▼</span>
+                                    </button>
+                                </div>
+                                <div class="tasks-list"></div>
+                            </div>
                         </div>
-                        <div class="btn-row">
-                            <button class="run-btn" onclick="runGo()">▶ Run</button>
-                            <button class="format-btn" onclick="formatGo()">🧹 Format</button>
+                        <div class="code-panel">
+                            <div class="code-editor-container">
+                                <div class="line-numbers" id="lineNumbers"></div>
+                                <textarea id="code" spellcheck="false" onscroll="syncScroll(this)"
+                                    onkeyup="updateLineNumbers()" oninput="updateLineNumbers()"></textarea>
+                            </div>
+                            <div class="btn-row">
+                                <button class="run-btn" onclick="runGo()">▶ Run</button>
+                                <button class="format-btn" onclick="formatGo()">🧹 Format</button>
+                            </div>
+                            <div id="output"></div>
                         </div>
-                        <div id="output"></div>
                     </div>
                 </div>
             </div>
         </div>
+
+        <!-- Python Section -->
+        <section id="python-section" class="language-content" style="display: none;">
+            <div class="coming-soon-container">
+                <h2>Nội dung Python</h2>
+                <p>Sắp có...</p>
+                <!-- Bạn có thể đặt cấu trúc sidebar, lesson list, content tương tự Golang ở đây nếu cần -->
+            </div>
+        </section>
+
+        <!-- JavaScript Section -->
+        <section id="c-section" class="language-content" style="display: none;"> <!-- Changed id from javascript-section to c-section -->
+            <div class="coming-soon-container">
+                <h2>Nội dung C</h2> <!-- Changed from JavaScript to C -->
+                <p>Sắp có...</p>
+                 <!-- Bạn có thể đặt cấu trúc sidebar, lesson list, content tương tự Golang ở đây nếu cần -->
+            </div>
+        </section>
     </div>
 
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-logo">Gou Gou</div>
             <div class="footer-links">
-                <a href="https://go.dev/doc/" target="_blank">Go Documentation</a>
+                <!-- <a href="https://go.dev/doc/" target="_blank">Go Documentation</a>
                 <a href="https://github.com/golang/go" target="_blank">GitHub</a>
-                <a href="https://play.golang.org/" target="_blank">Go Playground</a>
+                <a href="https://play.golang.org/" target="_blank">Go Playground</a> -->
             </div>
-            <div class="footer-copyright">© 2025 by an.pt</div>
+            <div class="footer-copyright">© 2025 an.pt</div>
         </div>
     </footer>
     <script src="lessons.js"></script>
+    <script src="projects.js"></script> <!-- Add projects.js -->
     <script src="main.js"></script>
 </body>
 

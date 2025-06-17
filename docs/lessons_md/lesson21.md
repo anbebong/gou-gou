@@ -23,9 +23,9 @@ func main() {
 ```
 
 **Giải thích:**
-- `http.HandleFunc("/hello", helloHandler)`: Khi có request đến `/hello`, hàm `helloHandler` sẽ được gọi.
-- `helloHandler`: Nhận hai tham số `w` (ghi dữ liệu trả về cho client), `r` (chứa thông tin request).
-- `http.ListenAndServe(":8080", nil)`: Khởi động server tại cổng 8080.
+- http.HandleFunc("/hello", helloHandler) : Khi có request đến /hello, hàm helloHandler sẽ được gọi.
+- helloHandler : Nhận hai tham số w (ghi dữ liệu trả về cho client), r (chứa thông tin request).
+- http.ListenAndServe(":8080", nil) : Khởi động server tại cổng 8080.
 
 **Cách chạy:**
 1. Lưu file, chạy: `go run main.go`
@@ -62,10 +62,10 @@ func main() {
 ```
 
 **Giải thích:**
-- `gin.Default()`: Tạo router có sẵn middleware log và tự động bắt lỗi (recovery).
-- `r.GET("/hello", ...)`: Đăng ký route GET cho đường dẫn `/hello`.
-- `c *gin.Context`: Đối tượng chứa thông tin request, response, params, v.v.
-- `c.String(200, "...")`: Trả về chuỗi text với mã trạng thái 200.
+- gin.Default(): Tạo router có sẵn middleware log và tự động bắt lỗi (recovery).
+- r.GET("/hello", ...): Đăng ký route GET cho đường dẫn /hello.
+- c *gin.Context : Đối tượng chứa thông tin request, response, params, v.v.
+- c.String(200, "...")`: Trả về chuỗi text với mã trạng thái 200.
 
 **Cách chạy:**
 1. Cài Gin: `go get github.com/gin-gonic/gin`
@@ -74,12 +74,12 @@ func main() {
 
 ---
 
-## 3. Giải thích về `gin.Default()`
+## 3. Giải thích về gin.Default()
 
-- `gin.Default()` là hàm khởi tạo Gin router với **middleware mặc định**:
+- gin.Default() là hàm khởi tạo Gin router với **middleware mặc định**:
     - **Logger**: Tự động log mọi request.
     - **Recovery**: Tự động bắt panic và trả về lỗi 500, tránh server bị crash.
-- Bạn có thể thay thế bằng `gin.New()` nếu muốn tuỳ biến middleware.
+- Bạn có thể thay thế bằng gin.New() nếu muốn tuỳ biến middleware.
 
 **Ví dụ:**
 ```go
@@ -87,7 +87,7 @@ r := gin.New()
 r.Use(gin.Logger())
 r.Use(gin.Recovery())
 ```
-Cách này tương đương với `gin.Default()` nhưng bạn tự cấu hình từng middleware.
+Cách này tương đương với gin.Default() nhưng bạn tự cấu hình từng middleware.
 
 ---
 

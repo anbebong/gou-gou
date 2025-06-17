@@ -1,10 +1,10 @@
 # Select trong Go
 
-`select` là một cấu trúc điều khiển đặc biệt trong Go, cho phép chương trình của bạn đợi và phản ứng với nhiều channel operations cùng một lúc. Tương tự như `switch` trong Go, nhưng thay vì kiểm tra giá trị, `select` kiểm tra tính sẵn sàng của channel operations.
+select là một cấu trúc điều khiển đặc biệt trong Go, cho phép chương trình của bạn đợi và phản ứng với nhiều channel operations cùng một lúc. Tương tự như switch trong Go, nhưng thay vì kiểm tra giá trị, select kiểm tra tính sẵn sàng của channel operations.
 
 ## 1. Cách hoạt động của select
 
-Khi gặp câu lệnh `select`:
+Khi gặp câu lệnh select :
 - Go runtime sẽ kiểm tra tất cả các cases
 - Nếu có một case sẵn sàng (channel có thể gửi/nhận), case đó sẽ được thực thi
 - Nếu nhiều case sẵn sàng, một case sẽ được chọn ngẫu nhiên
@@ -26,7 +26,7 @@ case msg2 := <-ch2:
 ```
 ## 2. Non-blocking Operations với Default
 
-Thêm `default` case vào `select` để biến nó thành non-blocking:
+Thêm default case vào select để biến nó thành non-blocking:
 
 ```go
 select {
@@ -59,7 +59,7 @@ Select thường được kết hợp với timeout và cancellation để kiể
 
 ### 3.1 Timeout với time.After
 
-`time.After` tạo một channel sẽ gửi giá trị sau một khoảng thời gian nhất định:
+time.After tạo một channel sẽ gửi giá trị sau một khoảng thời gian nhất định:
 
 ```go
 select {
@@ -101,7 +101,7 @@ Timeout và Cancellation giúp:
 
 ## 4. Select trong Rate Limiting
 
-Rate limiting là kỹ thuật giới hạn tốc độ xử lý. Select kết hợp với `time.Ticker` giúp implement rate limiting dễ dàng:
+Rate limiting là kỹ thuật giới hạn tốc độ xử lý. Select kết hợp với time.Ticker giúp implement rate limiting dễ dàng:
 
 ```go
 // Tạo ticker phát tín hiệu mỗi 200ms

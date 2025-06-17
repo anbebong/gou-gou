@@ -10,7 +10,7 @@ Go cung cấp câu lệnh điều kiện if và switch để kiểm soát luồn
       khối_lệnh
   }
   ```
-- Có thể kết hợp với `else` hoặc `else if`
+- Có thể kết hợp với *else* hoặc *else if*
 - Không cần dấu ngoặc đơn `()` quanh điều kiện, nhưng phải có ngoặc nhọn `{}`
 
 **Ví dụ:**
@@ -56,7 +56,7 @@ if y := 2*x; y > 10 {
 ### 4. Switch không có biểu thức
 
 - Go cho phép switch không cần biểu thức
-- Tự động so sánh với `true`
+- Tự động so sánh với "true"
 - Tương đương với chuỗi if-else if
 
 **Ví dụ:**
@@ -74,7 +74,7 @@ default:
 ### 5. Fallthrough
 
 - Thông thường, khi một case được khớp và thực thi, switch sẽ kết thúc
-- Từ khóa `fallthrough` cho phép tiếp tục thực thi case tiếp theo
+- Từ khóa "fallthrough" cho phép tiếp tục thực thi case tiếp theo
 
 **Ví dụ:**
 ```go
@@ -88,4 +88,4 @@ case x < 20:
 ```
 
 **Lưu ý:**  
-Không như các ngôn ngữ khác, Go tự động `break` sau mỗi case, không cần thêm `break`.
+Không như các ngôn ngữ khác, Go tự động "break" sau mỗi case, không cần thêm "break".

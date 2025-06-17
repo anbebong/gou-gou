@@ -77,7 +77,15 @@ body {
 
 .topbar-link:hover {
   background-color: rgba(255,255,255,0.2);
-}.page-container {
+}
+
+.topbar-link.active {
+  background-color: rgba(255,255,255,0.3);
+  font-weight: bold;
+}
+
+/* PAGE CONTAINER */
+.page-container {
     display: flex;
     flex: 1 0 auto;
     position: relative;
@@ -93,20 +101,35 @@ body {
     }
   }
 
+.language-content {
+  width: 100%;
+  height: 100%; /* Should take height from page-container */
+  display: flex; /* Changed from column to row (default) */
+  /* flex-direction: column; */ /* Removed this line */
+}
+
+.coming-soon-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  text-align: center;
+  padding: 20px;
+}
+
 /* SIDEBAR */
 .sidebar {
   width: 250px;
   background: #fff;
-  height: calc(100vh - 40px - 50px);
-  position: fixed;
-  left: 0;
-  top: 50px;
+  height: 100%;
   z-index: 100;
   border-right: 1px solid #e0e6ef;
   box-shadow: 0 0 15px rgba(0,0,0,0.05);
   display: flex;
   flex-direction: column;
   overflow-y: auto;
+  flex-shrink: 0; /* Ensure sidebar maintains its width */
 }
 
 .sidebar h3 {
@@ -146,8 +169,11 @@ body {
 .wrapper {
   display: flex;
   flex-direction: column;
-  width: calc(100% - 250px);
-  margin-left: 250px;
+  /* width: calc(100% - 250px); */ /* Let flexbox handle width */
+  /* margin-left: 250px; */ /* Let flexbox handle positioning */
+  flex: 1; /* Added to take remaining space next to sidebar */
+  height: 100%; /* Ensure it fills the height of language-content */
+  overflow: hidden; /* Prevent content from breaking layout */
 }
 
 /* MAIN CONTENT */
@@ -155,8 +181,14 @@ body {
   flex: 1;
   display: flex;
   flex-direction: column;
-  padding: 0 20px 30px 20px;
-  overflow: auto;
+  padding: 0 20px 15px 20px; /* Reduced bottom padding from 30px to 15px */
+  overflow: auto; /* Keep this for scrollable main content */
+  min-height: 0; /* Added for flexbox sizing */
+}
+
+/* Add top padding for main-content within the Giới thiệu section */
+#gioithieu-section .main-content {
+  padding-top: 15px;
 }
 
 .lesson-container {
@@ -169,13 +201,184 @@ body {
   padding-top: 15px;
 }
 
+/* Remove the first, more generic .explanation-panel definition if it exists near line 183 */
+/* The more specific one around line 218 will be modified */
+
+/* EXPLANATION PANEL - Consolidated and revised */
 .explanation-panel {
-  flex: 1;
-  min-width: 40%;
-  max-width: none;
+  flex: 0 0 45%; /* No grow, no shrink, basis 45% */
   display: flex;
   flex-direction: column;
-  min-height: 0;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #e0e6ef;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  overflow: hidden; /* Children will handle their own scroll */
+  min-height: 0; /* For flex behavior */
+}
+
+/* Make explanation panel full width in Giới thiệu section */
+#gioithieu-section .explanation-panel {
+    flex-basis: 100%; /* Override the default 45% */
+    width: 100%; /* Ensure it takes full width */
+}
+
+
+.explain-box {
+  /* background: #fff; */ /* Removed, parent has background */
+  /* border-radius: 8px; */ /* Removed, parent has border-radius */
+  padding: 20px;
+  flex-grow: 1; /* Takes available vertical space */
+  overflow-y: auto;
+  font-size: 0.95em;
+  line-height: 1.6;
+  color: #333;
+  /* border: 1px solid #e0e6ef; */ /* Removed, parent has border */
+  /* box-shadow: 0 2px 8px rgba(0,0,0,0.06); */ /* Removed, parent has shadow */
+  margin-bottom: 0; /* Ensure no extra margin at the bottom */
+}
+
+/* Styles for Markdown content within .explain-box */
+.explain-box > *:first-child {
+  margin-top: 0; /* Remove top margin from the very first element */
+}
+
+.explain-box h1,
+.explain-box h2,
+.explain-box h3,
+.explain-box h4,
+.explain-box h5,
+.explain-box h6 {
+  margin-top: 1.4em; /* Adjusted margin */
+  margin-bottom: 0.6em; /* Adjusted margin */
+  font-weight: 600;
+  line-height: 1.25; /* Adjusted line height */
+  color: #2c3e50; 
+}
+
+.explain-box h1 { font-size: 1.7em; } /* Reduced from 2em */
+.explain-box h2 { font-size: 1.5em; border-bottom: 1px solid #eaeef3; padding-bottom: 0.25em;} /* Reduced from 1.75em */
+.explain-box h3 { font-size: 1.3em; } /* Reduced from 1.5em */
+.explain-box h4 { font-size: 1.15em; } /* Reduced from 1.25em */
+.explain-box h5 { font-size: 1.05em; } /* Reduced from 1.1em */
+.explain-box h6 { font-size: 1em; color: #555; } /* Kept at 1em */
+
+.explain-box p {
+  margin-top: 0;
+  margin-bottom: 1em;
+  line-height: 1.7; /* Slightly more line height for paragraphs for readability */
+}
+
+.explain-box ul,
+.explain-box ol {
+  margin-top: 0;
+  margin-bottom: 1em;
+  padding-left: 2em; /* Indentation for lists */
+}
+
+.explain-box ul li,
+.explain-box ol li {
+  margin-bottom: 0.4em;
+}
+
+.explain-box ul ul,
+.explain-box ol ol,
+.explain-box ul ol,
+.explain-box.ol ul {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+.explain-box blockquote {
+  margin-top: 0;
+  margin-bottom: 1em;
+  padding: 0.5em 1em;
+  border-left: 0.25em solid #dfe2e5;
+  color: #6a737d;
+  background-color: #f6f8fa;
+}
+
+.explain-box blockquote > :first-child {
+  margin-top: 0;
+}
+
+.explain-box blockquote > :last-child {
+  margin-bottom: 0;
+}
+
+.explain-box pre {
+  background-color: #f6f8fa;
+  border: 1px solid #e0e6ef;
+  border-radius: 6px;
+  font-size: 0.9em; /* Slightly smaller for code blocks */
+  line-height: 1.45;
+  overflow: auto;
+  padding: 16px;
+  margin-top: 0;
+  margin-bottom: 1em;
+  word-wrap: normal; /* Allow horizontal scroll for code */
+}
+
+.explain-box code {
+  font-family: 'Fira Mono', Consolas, monospace; /* Consistent with code editor */
+  font-size: 0.9em; 
+}
+
+/* Inline code */
+.explain-box :not(pre) > code {
+  padding: .2em .4em;
+  margin: 0;
+  background-color: rgba(27,31,35,.05);
+  border-radius: 3px;
+}
+
+.explain-box hr {
+  height: .25em;
+  padding: 0;
+  margin: 24px 0;
+  background-color: #e1e4e8;
+  border: 0;
+}
+
+.explain-box a {
+  color: #0366d6;
+  text-decoration: none;
+}
+
+.explain-box a:hover {
+  text-decoration: underline;
+}
+
+.explain-box img {
+  max-width: 100%;
+  height: auto;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  border-radius: 4px;
+}
+
+.explain-box table {
+  border-collapse: collapse;
+  margin-top: 0;
+  margin-bottom: 1em;
+  width: auto; 
+  display: block; 
+  overflow-x: auto; 
+}
+
+.explain-box th,
+.explain-box td {
+  border: 1px solid #dfe2e5;
+  padding: 8px 15px;
+}
+
+.explain-box th {
+  font-weight: 600;
+  background-color: #f6f8fa;
+}
+
+.explain-box tr:nth-child(2n) {
+  background-color: #f6f8fa;
 }
 
 h2 {
@@ -193,124 +396,15 @@ h2 {
   line-height: 1.5;
 }
 
-/* EXPLANATION PANEL */
-.explanation-panel {
-  flex: 5;
-  max-width: 45%;
-  display: flex;
-  flex-direction: column;
-}
-
-.explain-box {
-  background: #fff;
-  border-radius: 8px;
-  padding: 20px;
-  flex: 1;
-  overflow-y: auto;
-  font-size: 0.95em;
-  line-height: 1.6;
-  color: #333;
-  border: 1px solid #e0e6ef;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-  margin-bottom: 0;
-}
-
-/* Kiểu dáng cho định dạng Markdown */
-.explain-box h1, .explain-box h2, .explain-box h3, .explain-box h4 {
-  margin-top: 1em;
-  margin-bottom: 0.5em;
-  color: #2196f3;
-}
-
-.explain-box h1 {
-  font-size: 1.5em;
-  border-bottom: 1px solid #eaeef3;
-  padding-bottom: 0.3em;
-}
-
-.explain-box h2 {
-  font-size: 1.3em;
-}
-
-.explain-box h3 {
-  font-size: 1.2em;
-}
-
-.explain-box h4 {
-  font-size: 1.1em;
-}
-
-.explain-box p {
-  margin: 0.7em 0;
-}
-
-.explain-box ul, .explain-box ol {
-  padding-left: 2em;
-  margin: 0.7em 0;
-}
-
-.explain-box li {
-  margin: 0.5em 0;
-}
-
-.explain-box code {
-  font-family: 'Fira Mono', monospace;
-  background-color: #f5f7fa;
-  padding: 2px 4px;
-  border-radius: 3px;
-  font-size: 0.9em;
-  color: #e83e8c;
-}
-
-.explain-box pre {
-  background-color: #f5f7fa;
-  padding: 1em;
-  border-radius: 5px;
-  overflow-x: auto;
-  margin: 1em 0;
-}
-
-.explain-box pre code {
-  background-color: transparent;
-  padding: 0;
-  font-size: 0.9em;
-  color: inherit;
-}
-
-.explain-box blockquote {
-  border-left: 4px solid #2196f3;
-  padding-left: 1em;
-  margin-left: 0;
-  color: #555;
-  font-style: italic;
-}
-
-.explain-box table {
-  border-collapse: collapse;
-  width: 100%;
-  margin: 1em 0;
-}
-
-.explain-box table th,
-.explain-box table td {
-  border: 1px solid #e0e6ef;
-  padding: 8px;
-  text-align: left;
-}
-
-.explain-box table th {
-  background-color: #f5f7fa;
-}
-
 /* CODE PANEL */
 .code-panel {
-  flex: 1.2;
-  height: 100%;
+  flex: 0 0 55%; /* No grow, no shrink, basis 55% */
+  /* height: 100%; */ /* align-items:stretch on parent handles this better with flex basis */
   display: grid;
   grid-template-rows: 1fr auto 200px;
   gap: 12px;
   min-height: 0;
-  min-width: 500px;
+  /* min-width: 500px; */ /* Removed to respect flex percentage */
 }
 
 /* Styling for code editor with line numbers */
@@ -560,141 +654,99 @@ textarea:focus {
   z-index: 99;
 }
 
-/* RESPONSIVE */
-@media (max-width: 1200px) {
-  .lesson-container {
-    flex-direction: column;
-    max-height: none;
-  }
-  
-  .explanation-panel {
-    min-height: auto;
-  }
-
-  .code-panel {
-    min-width: 0;
-    min-height: 500px;
-  }
-
-  .tasks-container {
-    margin-top: 12px;
-  }
+/* Home Section Specific Styles */
+.home-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 40px 20px;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  color: #333;
 }
 
-@media (max-width: 900px) {
-  .sidebar {
-    transform: translateX(-100%);
-    transition: transform 0.3s ease;
-    height: calc(100vh - 50px - 50px);
-  }
-  
-  .sidebar.mobile {
-    transform: translateX(0);
-  }
-  
-  .wrapper {
-    margin-left: 0;
-    width: 100%;
-  }
-  
-  .main-content {
-    padding: 50px 15px 20px 15px;
-  }
-  
-  .menu-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .sidebar-overlay.active {
-    display: block;
-  }
-  
-  .code-panel {
-    min-height: 400px;
-  }
-
-  .explain-box {
-    padding: 15px;
-  }
+.home-image-container {
+  display: flex; /* Arrange images side-by-side */
+  justify-content: center; /* Center the images if they don't fill the container */
+  align-items: center;
+  margin-bottom: 30px; /* Existing margin from single image */
 }
 
-@media (max-width: 600px) {
-  .lesson-header {
-    padding: 15px 15px 0;
-  }
-  
-  .lesson-container {
-    padding: 0 15px 15px;
-    gap: 15px;
-  }
-  
-  h2 {
-    font-size: 1.3em;
-  }
-    .explanation-panel {
-    min-height: 180px;
-    margin-bottom: 15px;
-  }
-    .code-panel {
-    grid-template-rows: 1fr auto 160px;
-  }
-    .explain-box, textarea, #output, .line-numbers {
-    padding: 15px;
-    font-size: 0.9em;
-  }
-  
-  .explain-box {
-    min-height: 180px;
-    margin-bottom: 0;
-  }
-    textarea {
-    min-height: 200px;
-  }
-  #output {
-    min-height: 140px;
-    max-height: 160px;
-  }
-  
-  .btn-row {
-    flex-direction: row;
-    justify-content: space-between;
-    height: 40px;
-  }
-  
-  .run-btn, .format-btn {
-    padding: 8px 0;
-    width: 48%;
-  }
-  
-  .line-numbers {
-    width: 40px;
-    padding: 15px 5px;
-  }
-  
-  textarea {
-    width: calc(100% - 40px);
-    padding: 15px 8px 15px 15px;
-  }
+.home-logo-img {
+  max-width: 230px; /* Increased from 200px */
+  /* margin-bottom: 30px; */ /* Moved to home-image-container */
+  border-radius: 10px; 
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12); /* Slightly adjusted shadow */
+  margin: 0 10px; /* Add some space between images */
 }
 
-/* Điều chỉnh layout tổng thể */
-.main-content {
-  padding-bottom: 30px;
+.flipped-image {
+  transform: scaleX(-1); /* Flip the image horizontally */
 }
+
+.home-content-wrapper h1 {
+  font-size: 2.0em; /* Reduced from 2.2em */
+  color: #2196f3; 
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.home-tagline {
+  font-size: 1.0em; /* Reduced from 1.05em */
+  color: #555;
+  margin-bottom: 30px;
+  max-width: 600px;
+  line-height: 1.6;
+}
+
+.home-actions p {
+  font-size: 1em;
+  color: #444;
+  margin-bottom: 20px;
+}
+
+/* Example for a button if you add one later */
+.home-actions .btn-primary {
+  background-color: #2196f3;
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.home-actions .btn-primary:hover {
+  background-color: #1976d2;
+}
+
+/* Ensure language-content for home takes full height if not already */
+#home-section.language-content {
+    display: flex; /* It should already be flex from previous changes */
+    /* align-items: stretch; */ /* Let home-content-wrapper handle alignment */
+}
+
+/* END Home Section Specific Styles */
 
 /* TASKS */
 .tasks-container {
-  margin-top: 20px;
-  padding: 12px;
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-  border: 1px solid #e0e6ef;
-  min-height: 180px;
-  max-height: 200px;
+  display: none; /* Hide tasks-container as per the new image */
+  /* Styles below are kept in case it's shown later, but display:none overrides them */
+  /* margin-top: 20px; */ /* Removed, will be flush with explain-box or have border-top */
+  padding: 12px 20px 20px 20px; /* Adjusted padding */
+  /* background: white; */ /* Removed, parent has background */
+  /* border-radius: 8px; */ /* Removed */
+  /* box-shadow: 0 2px 8px rgba(0,0,0,0.06); */ /* Removed */
+  /* border: 1px solid #e0e6ef; */ /* Removed */
+  border-top: 1px solid #eaeef3; /* Separator from explain-box */
+  min-height: 180px; /* Kept for now */
+  max-height: 200px; /* Kept for now */
   transition: all 0.3s ease;
+  flex-shrink: 0; /* Prevent shrinking in the column */
 }
 
 .tasks-container.collapsed {

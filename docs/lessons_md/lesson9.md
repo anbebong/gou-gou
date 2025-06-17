@@ -55,8 +55,8 @@ copy(slice2, slice)
 
 ### Capacity và Length
 
-- `len(slice)`: Số phần tử hiện có trong slice
-- `cap(slice)`: Dung lượng tối đa của slice trước khi cần mở rộng bộ nhớ
+- len(slice): Số phần tử hiện có trong slice
+- cap(slice): Dung lượng tối đa của slice trước khi cần mở rộng bộ nhớ
 
 ```go
 s := make([]int, 3, 5)
@@ -86,6 +86,6 @@ fmt.Println(cap(s))  // 5
 ## Best Practices
 
 1. Ưu tiên sử dụng slice thay vì array trong hầu hết các trường hợp
-2. Dùng `make()` để khởi tạo slice với capacity phù hợp nếu biết trước kích thước
-3. Sử dụng `append()` để thêm phần tử thay vì truy cập trực tiếp
+2. Dùng make() để khởi tạo slice với capacity phù hợp nếu biết trước kích thước
+3. Sử dụng append() để thêm phần tử thay vì truy cập trực tiếp
 4. Cẩn thận với slice of slice để tránh giữ tham chiếu không cần thiết
