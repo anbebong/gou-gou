@@ -1,0 +1,512 @@
+// This file is deprecated and will be removed. The main logic is in main.go.
+package main
+
+import (
+	"bufio"
+	"crypto/aes"
+	"crypto/cipher"
+	"crypto/rand"
+	"encoding/base64"
+	"encoding/binary" // Thêm import
+	"encoding/json"
+	"fmt"
+	"io"
+	"log"
+	"net"
+	"os"
+	"strings"
+	"sync" // Thêm import
+
+	"github.com/Microsoft/go-winio" // Thêm import
+	"github.com/denisbrodbeck/machineid"
+	"github.com/hpcloud/tail"
+)
+
+// Khóa mã hóa (phải giống với khóa của server)
+var aesKey = []byte("1234567897654321") // 16 byte cho AES-128
+
+// Cấu trúc cho thông tin phần cứng
+type HardwareInfo struct {
+	HostID    string `json:"hostID"`
+	IPAddress string `json:"ipAddress"`
+}
+
+// Cấu trúc cho tin nhắn
+type Message struct {
+	Type         string        `json:"type"` // "register", "message", "request_otp"
+	ClientID     string        `json:"clientID,omitempty"`
+	Data         string        `json:"data,omitempty"`
+	HardwareInfo *HardwareInfo `json:"hardwareInfo,omitempty"`
+}
+
+// Cấu trúc cho phản hồi
+type Response struct {
+	Status   string `json:"status"`
+	ClientID string `json:"clientID,omitempty"`
+	AgentID  string `json:"agentID,omitempty"`
+	Data     string `json:"data,omitempty"`
+	Message  string `json:"message,omitempty"`
+}
+
+var (
+	clientID       string // Lưu trữ ID của client (UUID)
+	agentID        string // Lưu trữ AgentID ngắn
+	configFle      = "client_config.json"
+	logFileToWatch = "events.log"
+
+	// Mutex để đảm bảo truy cập an toàn vào dữ liệu bí mật từ nhiều goroutine
+	secretMutex sync.RWMutex
+	// Biến toàn cục để lưu trữ dữ liệu đã được mã hóa
+	storedEncryptedSecret []byte
+)
+
+// Cấu trúc để lưu cấu hình client
+type ClientConfig struct {
+	ClientID string `json:"clientID"`
+	AgentID  string `json:"agentID"`
+}
+
+func main() {
+	loadConfig()
+
+	conn, err := net.Dial("tcp", "localhost:8080")
+	if err != nil {
+		log.Fatalf("Không thể kết nối đến server: %v", err)
+	}
+	defer conn.Close()
+
+	log.Println("Đã kết nối đến server.")
+
+	// Nếu chưa có ClientID, thực hiện đăng ký
+	if clientID == "" {
+		log.Println("Chưa có ClientID, đang thực hiện đăng ký...")
+		if err := register(conn); err != nil {
+			log.Fatalf("Đăng ký thất bại: %v", err)
+		}
+	} else {
+		log.Printf("Sử dụng AgentID đã có: %s (ClientID: %s)", agentID, clientID)
+	}
+
+	// Chạy một goroutine để đọc các phản hồi từ server
+	go readResponses(conn)
+
+	// Chạy một goroutine để giám sát file log
+	go watchLogFile(conn)
+
+	// Chạy goroutine cho IPC listener
+	go startIPCListener()
+
+	// Khởi động CLI của client ở luồng chính
+	startClientCLI(conn)
+}
+
+// startClientCLI khởi động giao diện dòng lệnh cho client
+func startClientCLI(conn net.Conn) {
+	reader := bufio.NewReader(os.Stdin)
+	fmt.Println("\nClient CLI đã sẵn sàng. Gõ 'help' để xem các lệnh.")
+
+	for {
+		fmt.Print("> ")
+		cmdString, err := reader.ReadString('\n')
+		if err != nil {
+			if err == io.EOF {
+				fmt.Println("\nThoát client...")
+				return
+			}
+			log.Printf("Lỗi khi đọc lệnh: %v", err)
+			continue
+		}
+
+		command := strings.TrimSpace(cmdString)
+
+		switch command {
+		case "help":
+			fmt.Println("Các lệnh có sẵn:")
+			fmt.Println("  otp  - Yêu cầu một mã OTP mới từ server.")
+			fmt.Println("  exit - Đóng client.")
+		case "otp":
+			log.Println("Đang gửi yêu cầu OTP đến server...")
+			if err := requestOTP(conn); err != nil {
+				log.Printf("Lỗi khi yêu cầu OTP: %v", err)
+			} else {
+				log.Println("Đã gửi yêu cầu OTP thành công.")
+			}
+		case "exit":
+			fmt.Println("Đang thoát...")
+			return
+		case "":
+			// Bỏ qua dòng trống
+		default:
+			fmt.Println("Lệnh không xác định. Gõ 'help' để xem các lệnh.")
+		}
+	}
+}
+
+// watchLogFile theo dõi file log và gửi các dòng mới đến server
+func watchLogFile(conn net.Conn) {
+	// Đảm bảo file tồn tại
+	if _, err := os.Stat(logFileToWatch); os.IsNotExist(err) {
+		log.Printf("File log '%s' không tồn tại, đang tạo file...", logFileToWatch)
+		file, err := os.Create(logFileToWatch)
+		if err != nil {
+			log.Fatalf("Không thể tạo file log: %v", err)
+		}
+		file.Close()
+	}
+
+	log.Printf("Đang giám sát file log: %s", logFileToWatch)
+	t, err := tail.TailFile(logFileToWatch, tail.Config{
+		ReOpen:    true,                                          // Mở lại file nếu nó bị xoay vòng hoặc xóa
+		Follow:    true,                                          // Tiếp tục theo dõi file
+		Location:  &tail.SeekInfo{Offset: 0, Whence: io.SeekEnd}, // Bắt đầu đọc từ cuối file
+		MustExist: true,                                          // Báo lỗi nếu file không tồn tại
+		Poll:      true,                                          // Sử dụng polling để phát hiện thay đổi, tốt hơn cho một số hệ thống file
+	})
+	if err != nil {
+		log.Fatalf("Không thể bắt đầu giám sát file: %v", err)
+	}
+
+	for line := range t.Lines {
+		if line.Text != "" {
+			log.Printf("Phát hiện dòng mới: %s", line.Text)
+			msg := Message{Type: "message", ClientID: clientID, Data: line.Text}
+			if err := sendMessage(conn, msg); err != nil {
+				log.Printf("Lỗi khi gửi tin nhắn: %v", err)
+				// Cân nhắc việc thử lại hoặc xử lý lỗi ở đây
+			}
+		}
+	}
+}
+
+// requestOTP gửi yêu cầu nhận mã OTP đến server
+func requestOTP(conn net.Conn) error {
+	msg := Message{Type: "request_otp", ClientID: clientID}
+	return sendMessage(conn, msg)
+}
+
+// register gửi yêu cầu đăng ký đến server
+func register(conn net.Conn) error {
+	hwInfo, err := getHardwareInfo()
+	if err != nil {
+		return fmt.Errorf("không thể lấy thông tin phần cứng: %w", err)
+	}
+
+	msg := Message{Type: "register", HardwareInfo: hwInfo}
+	jsonMsg, _ := json.Marshal(msg)
+
+	encryptedMsg, err := encrypt(string(jsonMsg))
+	if err != nil {
+		return err
+	}
+
+	// Gửi độ dài của tin nhắn trước
+	lenBytes := make([]byte, 4)
+	binary.BigEndian.PutUint32(lenBytes, uint32(len(encryptedMsg)))
+	if _, err := conn.Write(lenBytes); err != nil {
+		return fmt.Errorf("lỗi gửi độ dài tin nhắn: %w", err)
+	}
+
+	// Gửi tin nhắn
+	_, err = conn.Write([]byte(encryptedMsg))
+	if err != nil {
+		return fmt.Errorf("lỗi gửi tin nhắn đăng ký: %w", err)
+	}
+
+	// Đợi phản hồi đăng ký
+	// Đọc 4 byte đầu tiên để lấy độ dài của tin nhắn
+	lenBuf := make([]byte, 4)
+	if _, err := io.ReadFull(conn, lenBuf); err != nil {
+		if err == io.EOF {
+			return fmt.Errorf("server đã đóng kết nối khi đang chờ phản hồi đăng ký")
+		}
+		return fmt.Errorf("lỗi đọc độ dài phản hồi: %w", err)
+	}
+	length := binary.BigEndian.Uint32(lenBuf)
+
+	// Đọc toàn bộ tin nhắn dựa trên độ dài đã nhận
+	buf := make([]byte, length)
+	if _, err := io.ReadFull(conn, buf); err != nil {
+		return fmt.Errorf("lỗi đọc nội dung phản hồi: %w", err)
+	}
+
+	decryptedResp, err := decrypt(string(buf))
+	if err != nil {
+		return fmt.Errorf("lỗi giải mã phản hồi đăng ký: %w", err)
+	}
+
+	var resp Response
+	if err := json.Unmarshal([]byte(decryptedResp), &resp); err != nil {
+		return fmt.Errorf("lỗi unmarshal JSON phản hồi đăng ký: %w", err)
+	}
+
+	if resp.Status == "success" && resp.ClientID != "" {
+		clientID = resp.ClientID
+		agentID = resp.AgentID // Lưu lại AgentID
+		saveConfig()
+		log.Printf("Đăng ký thành công với AgentID: %s (ClientID: %s)", agentID, clientID)
+		return nil
+	} else {
+		return fmt.Errorf("đăng ký thất bại: %s", resp.Message)
+	}
+}
+
+// sendMessage mã hóa và gửi một tin nhắn đến server
+func sendMessage(conn net.Conn, msg Message) error {
+	jsonMsg, err := json.Marshal(msg)
+	if err != nil {
+		return err
+	}
+
+	encryptedMsg, err := encrypt(string(jsonMsg))
+	if err != nil {
+		return err
+	}
+
+	// Gửi độ dài của tin nhắn trước
+	lenBytes := make([]byte, 4)
+	binary.BigEndian.PutUint32(lenBytes, uint32(len(encryptedMsg)))
+	if _, err := conn.Write(lenBytes); err != nil {
+		return fmt.Errorf("lỗi gửi độ dài tin nhắn: %w", err)
+	}
+
+	// Gửi tin nhắn
+	_, err = conn.Write([]byte(encryptedMsg))
+	return err
+}
+
+// readResponses đọc và xử lý các phản hồi từ server
+func readResponses(conn net.Conn) {
+	for {
+		// Đọc 4 byte đầu tiên để lấy độ dài của tin nhắn
+		lenBuf := make([]byte, 4)
+		_, err := io.ReadFull(conn, lenBuf)
+		if err != nil {
+			if err == io.EOF {
+				log.Println("Server đã đóng kết nối.")
+				return
+			}
+			log.Printf("Lỗi khi đọc độ dài phản hồi: %v", err)
+			return
+		}
+		length := binary.BigEndian.Uint32(lenBuf)
+
+		// Đọc toàn bộ tin nhắn dựa trên độ dài đã nhận
+		buf := make([]byte, length)
+		_, err = io.ReadFull(conn, buf)
+		if err != nil {
+			log.Printf("Lỗi khi đọc nội dung phản hồi: %v", err)
+			return
+		}
+
+		decryptedResp, err := decrypt(string(buf))
+		if err != nil {
+			log.Printf("Lỗi giải mã phản hồi: %v", err)
+			continue
+		}
+
+		var resp Response
+		if err := json.Unmarshal([]byte(decryptedResp), &resp); err != nil {
+			log.Printf("Lỗi unmarshal JSON phản hồi: %v", err)
+			continue
+		}
+
+		// Xử lý các loại phản hồi khác nhau
+		switch resp.Status {
+		case "otp_generated":
+			otp := resp.Data
+			log.Printf("[OTP] Server đã gửi mã OTP. Đang lưu trữ an toàn...")
+
+			// Mã hóa OTP trước khi lưu trữ
+			encryptedOTP, err := encrypt(otp)
+			if err != nil {
+				log.Printf("[IPC] Lỗi khi mã hóa OTP: %v", err)
+				continue
+			}
+
+			secretMutex.Lock()
+			// storedEncryptedSecret được lưu dưới dạng string đã mã hóa base64
+			storedEncryptedSecret = []byte(encryptedOTP)
+			secretMutex.Unlock()
+
+			log.Printf("[IPC] Đã nhận và lưu trữ OTP an toàn.")
+			log.Printf("[OTP] Ghi chú: %s", resp.Message) // Vẫn log ghi chú từ server
+		case "message":
+			log.Printf("Tin nhắn từ server: %s", resp.Data)
+		default:
+			// Các trạng thái khác như success từ đăng ký đã được xử lý ở nơi khác
+			// hoặc không cần hành động ở đây.
+		}
+	}
+}
+
+// getHardwareInfo lấy thông tin phần cứng của máy
+func getHardwareInfo() (*HardwareInfo, error) {
+	id, err := machineid.ID()
+	if err != nil {
+		return nil, fmt.Errorf("không thể lấy machine id: %w", err)
+	}
+	return &HardwareInfo{HostID: id}, nil
+}
+
+// loadConfig tải ClientID từ file cấu hình
+func loadConfig() {
+	data, err := os.ReadFile(configFle)
+	if err != nil {
+		if os.IsNotExist(err) {
+			return // Không có file, không sao cả
+		}
+		log.Printf("Lỗi khi đọc file cấu hình: %v", err)
+		return
+	}
+
+	var config ClientConfig
+	if err := json.Unmarshal(data, &config); err != nil {
+		log.Printf("Lỗi unmarshal JSON cấu hình: %v", err)
+		return
+	}
+	clientID = config.ClientID
+	agentID = config.AgentID
+}
+
+// saveConfig lưu ClientID và AgentID vào file cấu hình
+func saveConfig() {
+	config := ClientConfig{ClientID: clientID, AgentID: agentID}
+	data, err := json.MarshalIndent(config, "", "  ")
+	if err != nil {
+		log.Printf("Lỗi marshal JSON cấu hình: %v", err)
+		return
+	}
+
+	if err := os.WriteFile(configFle, data, 0644); err != nil {
+		log.Printf("Lỗi khi ghi file cấu hình: %v", err)
+	}
+}
+
+// encrypt mã hóa văn bản bằng AES
+func encrypt(text string) (string, error) {
+	block, err := aes.NewCipher(aesKey)
+	if err != nil {
+		return "", err
+	}
+
+	plaintext := []byte(text)
+	ciphertext := make([]byte, aes.BlockSize+len(plaintext))
+	iv := ciphertext[:aes.BlockSize]
+	if _, err := io.ReadFull(rand.Reader, iv); err != nil {
+		return "", err
+	}
+
+	stream := cipher.NewCFBEncrypter(block, iv)
+	stream.XORKeyStream(ciphertext[aes.BlockSize:], plaintext)
+
+	return base64.URLEncoding.EncodeToString(ciphertext), nil
+}
+
+// decrypt giải mã văn bản bằng AES
+func decrypt(cryptoText string) (string, error) {
+	ciphertext, err := base64.URLEncoding.DecodeString(cryptoText)
+	if err != nil {
+		return "", err
+	}
+
+	block, err := aes.NewCipher(aesKey)
+	if err != nil {
+		return "", err
+	}
+
+	if len(ciphertext) < aes.BlockSize {
+		return "", fmt.Errorf("ciphertext quá ngắn")
+	}
+
+	iv := ciphertext[:aes.BlockSize]
+	ciphertext = ciphertext[aes.BlockSize:]
+
+	stream := cipher.NewCFBDecrypter(block, iv)
+	stream.XORKeyStream(ciphertext, ciphertext)
+
+	return string(ciphertext), nil
+}
+
+// startIPCListener bắt đầu lắng nghe các kết nối từ Credential Provider.
+func startIPCListener() {
+	pipePath := "\\.\pipe\MySecretServicePipe"
+	// Xóa pipe cũ nếu tồn tại để tránh lỗi "address already in use"
+	os.Remove(pipePath)
+
+	listener, err := winio.ListenPipe(pipePath, nil)
+	if err != nil {
+		log.Printf("[IPC] Không thể lắng nghe trên named pipe: %v", err)
+		return // Không dùng Fatalf để không dừng toàn bộ client
+	}
+	defer listener.Close()
+
+	log.Printf("[IPC] Trình nghe IPC đã bắt đầu tại %s", pipePath)
+
+	for {
+		conn, err := listener.Accept()
+		if err != nil {
+			// Nếu listener đã bị đóng, thoát khỏi vòng lặp
+			if strings.Contains(err.Error(), "use of closed network connection") {
+				log.Println("[IPC] Trình nghe IPC đã dừng.")
+				return
+			}
+			log.Printf("[IPC] Không thể chấp nhận kết nối: %v", err)
+			continue
+		}
+		go handleIPCConnection(conn)
+	}
+}
+
+// handleIPCConnection xử lý một kết nối IPC đến.
+func handleIPCConnection(conn net.Conn) {
+	defer conn.Close()
+	log.Printf("[IPC] Đã chấp nhận kết nối IPC.")
+
+	buf := make([]byte, 1024)
+	n, err := conn.Read(buf)
+	if err != nil {
+		if err != io.EOF {
+			log.Printf("[IPC] Không thể đọc từ kết nối IPC: %v", err)
+		}
+		return
+	}
+
+	// Chuẩn hóa chuỗi yêu cầu
+	rawRequest := string(buf[:n])
+	processedRequest := strings.TrimSpace(strings.ReplaceAll(rawRequest, " ", ""))
+
+	log.Printf("[IPC] Đã nhận được yêu cầu: '%s'", processedRequest)
+
+	if processedRequest == "GET_SECRET" {
+		log.Println("[IPC] Yêu cầu 'GET_SECRET' hợp lệ. Đang xử lý...")
+
+		secretMutex.RLock()
+		encryptedSecret := storedEncryptedSecret
+		secretMutex.RUnlock()
+
+		if encryptedSecret == nil {
+			log.Println("[IPC] Lỗi: Bí mật chưa được khởi tạo.")
+			conn.Write([]byte("ERROR: Secret not ready"))
+			return
+		}
+
+		// Giải mã dữ liệu được lưu trữ
+		decryptedData, err := decrypt(string(encryptedSecret))
+		if err != nil {
+			log.Printf("[IPC] Không thể giải mã dữ liệu: %v", err)
+			conn.Write([]byte("ERROR: Decryption failed"))
+			return
+		}
+
+		// Gửi dữ liệu đã giải mã lại cho client IPC
+		_, err = conn.Write([]byte(decryptedData))
+		if err != nil {
+			log.Printf("[IPC] Không thể ghi vào kết nối IPC: %v", err)
+		} else {
+			log.Println("[IPC] Đã gửi bí mật thành công.")
+		}
+	} else {
+		log.Printf("[IPC] Yêu cầu không xác định: '%s'", processedRequest)
+		conn.Write([]byte("ERROR: Unknown request"))
+	}
+}

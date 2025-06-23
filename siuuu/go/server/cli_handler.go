@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"os"
 	"strings"
+	"time"
 )
 
 // startCLI khởi động giao diện dòng lệnh của server.
@@ -27,6 +28,7 @@ func startCLI() {
 		case "help":
 			fmt.Println("Các lệnh có sẵn:")
 			fmt.Println("  list              - Liệt kê tất cả các client đã đăng ký.")
+			fmt.Println("  listotp           - Liệt kê tất cả các OTP đang hoạt động.")
 			fmt.Println("  delete <agentID>  - Xóa một client đã đăng ký bằng AgentID.")
 			fmt.Println("  send <agentID> <message> - Gửi tin nhắn đến một client đang kết nối.")
 			fmt.Println("  exit              - Tắt server.")
@@ -41,6 +43,27 @@ func startCLI() {
 			data, _ := json.MarshalIndent(displayClients, "", "  ")
 			fmt.Println(string(data))
 			registeredClientsMutex.Unlock()
+		case "listotp":
+			otpsMutex.Lock()
+			if len(otps) == 0 {
+				fmt.Println("Không có OTP nào đang hoạt động.")
+			} else {
+				fmt.Println("Danh sách OTP đang hoạt động:")
+				for clientID, otpInfo := range otps {
+					// Tìm AgentID tương ứng để hiển thị cho thân thiện
+					_, regInfo, found := findClientByAnyID(clientID)
+					agentDisplay := clientID // Mặc định hiển thị ClientID
+					if found {
+						agentDisplay = regInfo.AgentID
+					}
+					fmt.Printf("  - Agent: %s (OTP: %s, Hết hạn: %s)\n",
+						agentDisplay,
+						otpInfo.Code,
+						otpInfo.ExpiresAt.Format(time.RFC1123),
+					)
+				}
+			}
+			otpsMutex.Unlock()
 		case "delete":
 			if len(parts) < 2 {
 				fmt.Println("Sử dụng: delete <agentID>")

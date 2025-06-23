@@ -1,7 +1,7 @@
 package main
 
 import (
-	"encoding/binary" // Thêm import
+	"encoding/binary"
 	"encoding/json"
 	"fmt"
 	"io"
@@ -9,6 +9,8 @@ import (
 
 	"github.com/google/uuid"
 )
+
+// var otps = make(map[string]*OTPInfo) // Bản đồ lưu trữ OTP cho từng client
 
 // sendMessageToClient tìm một client đang hoạt động và gửi tin nhắn.
 func sendMessageToClient(clientID, messageData string) error {
@@ -96,6 +98,26 @@ func handleConnection(conn net.Conn) {
 
 		// Xử lý tin nhắn dựa trên loại
 		switch msg.Type {
+		case "request_otp":
+			if msg.ClientID == "" {
+				WarningLogger.Println("Yêu cầu OTP không có ClientID")
+				continue
+			}
+
+			// Gọi hàm đã sửa để tạo và lưu OTP
+			otp, err := generateAndSaveOTP(msg.ClientID)
+			if err != nil {
+				ErrorLogger.Printf("Lỗi khi tạo và lưu OTP cho %s: %v", msg.ClientID, err)
+				response := Response{Status: "error", Message: "Lỗi hệ thống khi tạo OTP."}
+				sendResponse(conn, response)
+				continue
+			}
+
+			// Gửi OTP về cho client
+			InfoLogger.Printf("Đã tạo và gửi OTP %s cho ClientID: %s", otp, msg.ClientID)
+			response := Response{Status: "otp_generated", Data: otp, Message: "Mã OTP của bạn có hiệu lực trong 5 phút."}
+			sendResponse(conn, response)
+
 		case "register":
 			if msg.HardwareInfo == nil || msg.HardwareInfo.HostID == "" {
 				WarningLogger.Println("Yêu cầu đăng ký không có thông tin HostID.")
@@ -107,7 +129,8 @@ func handleConnection(conn net.Conn) {
 			// Kiểm tra xem phần cứng đã tồn tại chưa
 			registeredClientsMutex.Lock()
 			for _, existingInfo := range registeredClients {
-				if existingInfo.HardwareInfo.HostID == msg.HardwareInfo.HostID {
+				// Sửa lỗi: Truy cập HostID thông qua struct lồng nhau ClientForJSON
+				if existingInfo.ClientForJSON.HardwareInfo.HostID == msg.HardwareInfo.HostID {
 					WarningLogger.Printf("Phần cứng đã được đăng ký với AgentID: %s (HostID: %s)", existingInfo.AgentID, msg.HardwareInfo.HostID)
 					response := Response{Status: "error", Message: "Phần cứng này đã được đăng ký."}
 					sendResponse(conn, response)
@@ -121,15 +144,20 @@ func handleConnection(conn net.Conn) {
 			clientIP := conn.RemoteAddr().(*net.TCPAddr).IP.String()
 			agentID := generateNextAgentIDLocked()
 
+			// Sửa lỗi: Khởi tạo struct RegisteredClientInfo với cấu trúc ClientForJSON lồng nhau
 			newClientInfo := &RegisteredClientInfo{
-				AgentID: agentID,
-				HardwareInfo: HardwareInfo{
-					HostID:    msg.HardwareInfo.HostID,
-					IPAddress: clientIP,
+				ClientForJSON: ClientForJSON{
+					ClientID: newID,
+					AgentID:  agentID,
+					Username: "", // Mặc định username là rỗng khi đăng ký mới
+					HardwareInfo: HardwareInfo{
+						HostID:    msg.HardwareInfo.HostID,
+						IPAddress: clientIP,
+					},
 				},
 			}
 			registeredClients[newID] = newClientInfo
-			saveRegisteredClients()
+			saveRegisteredClientsLocked() // Sửa lỗi: Gọi hàm không khóa để tránh deadlock
 			registeredClientsMutex.Unlock()
 
 			// Thêm vào danh sách active

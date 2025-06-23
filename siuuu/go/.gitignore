@@ -1,0 +1,5 @@
+**/*.log
+client/*.json
+server/*.json
+*.log
+*.exe

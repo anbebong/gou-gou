@@ -1,0 +1,12 @@
+[
+  {
+    "username": "admin",
+    "apiKey": "cd77defebf2d3d732e55b3746c2aee71",
+    "role": "admin"
+  },
+  {
+    "username": "user1",
+    "apiKey": "71ac8eb1c10bf3bcbbdce34b614728d2",
+    "role": "user"
+  }
+]

@@ -72,7 +72,7 @@ func runGoCodeWS(w http.ResponseWriter, r *http.Request) {
 	select {
 	case <-done:
 		// Một trong hai stream đã xong
-	case <-time.After(3 * time.Second):
+	case <-time.After(3 * time.Minute):
 		cmd.Process.Kill()
 		conn.WriteMessage(websocket.TextMessage, []byte("[TIMEOUT: quá 3 giây]"))
 	}

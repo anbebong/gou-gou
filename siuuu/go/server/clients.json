@@ -1,9 +1,10 @@
-{
-  "8366c4bc-3c55-42b2-a6dc-d91ec929244b": {
+[
+  {
     "agentID": "001",
+    "clientID": "887c2c9f-a10f-473d-99d6-0177211b6651",
     "hardwareInfo": {
       "hostID": "57a0bc54-7cba-4eb1-bba5-9b71338f0af9",
       "ipAddress": "::1"
     }
   }
-}
+]

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Agent Info Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f6f6f6;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 40px auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 8px;
+        }
+
+        th {
+            background: #eee;
+        }
+
+        .otp {
+            font-weight: bold;
+            color: #b00;
+            font-size: 1.15em;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2 id="title">Đăng nhập hệ thống</h2>
+        <div id="loginForm">
+            <label>Tên đăng nhập: <input type="text" id="username"></label><br><br>
+            <label>Mật khẩu: <input type="password" id="password"></label><br><br>
+            <button onclick="login()">Đăng nhập</button>
+            <div id="loginMsg" style="color:#b00;margin-top:10px;"></div>
+        </div>
+        <div id="adminPanel" class="hidden">
+            <h3>Danh sách Agent</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Agent ID</th>
+                        <th>IP</th>
+                        <th>HardwareID</th>
+                        <th>Người dùng</th>
+                    </tr>
+                </thead>
+                <tbody id="adminAgentList"></tbody>
+            </table>
+            <button onclick="logout()">Đăng xuất</button>
+        </div>
+        <div id="userPanel" class="hidden">
+            <h3>Thông tin Agent của bạn</h3>
+            <table>
+                <tr>
+                    <th>Agent ID</th>
+                    <td id="userAgentId"></td>
+                </tr>
+                <tr>
+                    <th>IP</th>
+                    <td id="userAgentIP"></td>
+                </tr>
+                <tr>
+                    <th>HardwareID</th>
+                    <td id="userAgentHW"></td>
+                </tr>
+            </table>
+            <p>Mã OTP đăng nhập: <span class="otp" id="otp"></span></p>
+            <button onclick="logout()">Đăng xuất</button>
+        </div>
+    </div>
+    <script>
+        // User/Agent demo data
+        const users = [
+            { username: "admin", password: "admin123", role: "admin" },
+            { username: "alice", password: "alice123", role: "user" },
+            { username: "bob", password: "bob123", role: "user" }
+        ];
+        const agents = [
+            { agentId: "AG001", ip: "192.168.1.10", hwid: "HW12345", user: "alice" },
+            { agentId: "AG002", ip: "192.168.1.11", hwid: "HW12346", user: "bob" }
+        ];
+
+        function login() {
+            const u = document.getElementById("username").value.trim();
+            const p = document.getElementById("password").value;
+            const user = users.find(x => x.username === u && x.password === p);
+            document.getElementById("loginMsg").innerText = "";
+            if (!user) {
+                document.getElementById("loginMsg").innerText = "Tài khoản hoặc mật khẩu sai!";
+                return;
+            }
+            document.getElementById("loginForm").classList.add("hidden");
+            document.getElementById("title").innerText = `Xin chào, ${user.username}!`;
+            if (user.role === "admin") {
+                showAdminPanel();
+            } else {
+                showUserPanel(user.username);
+            }
+        }
+
+        function showAdminPanel() {
+            document.getElementById("adminPanel").classList.remove("hidden");
+            let rows = "";
+            for (let ag of agents) {
+                rows += `<tr><td>${ag.agentId}</td><td>${ag.ip}</td><td>${ag.hwid}</td><td>${ag.user}</td></tr>`;
+            }
+            document.getElementById("adminAgentList").innerHTML = rows;
+        }
+        function showUserPanel(username) {
+            document.getElementById("userPanel").classList.remove("hidden");
+            const myAgent = agents.find(a => a.user === username);
+            document.getElementById("userAgentId").innerText = myAgent ? myAgent.agentId : "-";
+            document.getElementById("userAgentIP").innerText = myAgent ? myAgent.ip : "-";
+            document.getElementById("userAgentHW").innerText = myAgent ? myAgent.hwid : "-";
+            document.getElementById("otp").innerText = generateOTP();
+        }
+        function generateOTP() {
+            return Math.floor(100000 + Math.random() * 900000);
+        }
+        function logout() {
+            document.getElementById("loginForm").classList.remove("hidden");
+            document.getElementById("adminPanel").classList.add("hidden");
+            document.getElementById("userPanel").classList.add("hidden");
+            document.getElementById("title").innerText = "Đăng nhập hệ thống";
+            document.getElementById("username").value = "";
+            document.getElementById("password").value = "";
+        }
+    </script>
+</body>
+
+</html>
