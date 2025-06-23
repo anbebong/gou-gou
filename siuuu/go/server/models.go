@@ -64,3 +64,10 @@ type GetOTPResponse struct {
 	OTP              string `json:"otp"`
 	ExpiresInSeconds int64  `json:"expiresTime"` // Số giây còn lại cho OTP
 }
+
+// User định nghĩa thông tin người dùng hệ thống
+type User struct {
+	Username string `json:"username"`
+	Password string `json:"password"`
+	Role     string `json:"role"` // "admin" hoặc "user"
+}

@@ -2,134 +2,198 @@
 
 ## 1. Tổng quan
 
-Dự án này là một hệ thống client-server được xây dựng bằng ngôn ngữ Go, sử dụng giao thức TCP cho việc giao tiếp. Chức năng chính của hệ thống là cho phép các "agent" (client) giám sát sự thay đổi trong file log và tự động gửi các dòng log mới đến server một cách an toàn.
+- **Client** là một Windows service, giao tiếp với server qua TCP (mã hóa AES), đồng thời cung cấp IPC (named pipe) để các ứng dụng hệ thống (như Credential Provider) lấy OTP hoặc thông tin bảo mật.
+- **Server** quản lý agent, nhận log, cung cấp API HTTP (JWT) và CLI để quản trị, phân quyền động qua file user.
+- **Log Generator** là công cụ tạo log test cho agent.
 
-- **Server**: Đóng vai trò trung tâm, quản lý việc đăng ký của các agent, nhận và lưu trữ log, đồng thời cung cấp các giao diện quản trị qua API và dòng lệnh (CLI).
-- **Client (Agent)**: Là một ứng dụng nhẹ chạy trên máy cần giám sát. Nó tự động đăng ký với server, theo dõi một file log cụ thể (`events.log`), và gửi bất kỳ dòng log mới nào được thêm vào cho server.
-- **Log Generator**: Một công cụ phụ trợ để tạo ra các dòng log ngẫu nhiên, phục vụ cho việc kiểm thử.
-
-Toàn bộ dữ liệu truyền giữa client và server đều được mã hóa bằng AES để đảm bảo an toàn.
-
-## 2. Tính năng chính
-
-- **Đăng ký Agent tự động**: Agent tự động đăng ký với server dựa trên thông tin phần cứng (HostID) duy nhất và được cấp một `AgentID` ngắn gọn để dễ dàng quản lý.
-- **Giao tiếp mã hóa**: Mọi tin nhắn giữa client và server đều được mã hóa (AES) và đóng gói (message framing) để đảm bảo an toàn và toàn vẹn dữ liệu.
-- **Giám sát Log thời gian thực**: Agent sử dụng thư viện `tail` để theo dõi file `events.log` và gửi đi các dòng mới ngay lập tức.
-- **Lưu trữ Log tập trung**: Server nhận log từ tất cả các agent và lưu vào file `archiver.log`, kèm theo thông tin `AgentID` và thời gian.
-- **Hệ thống Log phân cấp**: Server ghi log hoạt động của chính nó ra file `service.log` và có thể cấu hình mức độ log (INFO, WARNING, ERROR) khi khởi động.
-- **Quản trị đa kênh**: Có thể quản lý server (xem danh sách agent, gửi tin nhắn) thông qua:
-  - **API HTTP** (Cổng `8081`)
-  - **Giao diện dòng lệnh (CLI)** trực tiếp trên terminal của server.
-
-## 3. Cấu trúc thư mục
-
+## 2. Cấu trúc thư mục
 ```
 /
 ├── client/
-│   ├── client.go         # Mã nguồn của agent giám sát log
-│   ├── client_config.json  # File lưu AgentID và ClientID sau khi đăng ký
-│   └── events.log        # File log mà agent sẽ theo dõi
+│   ├── main.go                # Service client, giao tiếp TCP & IPC
+│   ├── client_config.json     # Lưu ClientID, AgentID, serverAddress, logFile
+│   ├── client.log             # Log hoạt động của client
+│   ├── events.log             # File log agent theo dõi
+│   ├── ipc_test_client.go     # Test giao tiếp IPC (named pipe)
+│   └── ... (các file phụ trợ)
 │
 ├── server/
-│   ├── main.go             # Điểm khởi đầu của server
-│   ├── tcp_handler.go      # Xử lý kết nối và giao tiếp TCP
-│   ├── api_handler.go      # Xử lý các request API HTTP
-│   ├── cli_handler.go      # Xử lý các lệnh từ CLI
-│   ├── client_manager.go   # Quản lý danh sách client
-│   ├── logging.go          # Cấu hình hệ thống log
-│   ├── crypto.go           # Hàm mã hóa và giải mã
-│   ├── models.go           # Các cấu trúc dữ liệu (structs)
-│   ├── registered_clients.json # CSDL lưu thông tin các agent đã đăng ký
-│   ├── service.log         # Log hoạt động của server
-│   └── archiver.log        # Log do các agent gửi về
+│   ├── main.go                # Khởi động server, lắng nghe TCP & API
+│   ├── tcp_handler.go         # Xử lý giao tiếp TCP với client
+│   ├── api_handler.go         # Xử lý API HTTP (JWT, phân quyền)
+│   ├── cli_handler.go         # CLI quản trị server
+│   ├── client_manager.go      # Quản lý client đã đăng ký
+│   ├── models.go              # Định nghĩa struct dữ liệu
+│   ├── clients.json           # Lưu thông tin client đã đăng ký
+│   ├── users.json             # Lưu thông tin user, phân quyền
+│   ├── service.log            # Log hoạt động server
+│   ├── archiver.log           # Log tập trung từ agent
+│   └── ... (các file phụ trợ)
 │
-└── log_generator/
-    └── main.go             # Công cụ tạo log ngẫu nhiên để test
+├── log_generator/
+│   └── main.go                # Công cụ tạo log test cho agent
+│
+└── web/
+    └── index.html             # Giao diện web (nếu có)
 ```
 
-## 4. Hướng dẫn sử dụng
+## 3. Hướng dẫn sử dụng
 
-**Yêu cầu:** Cài đặt Go (phiên bản 1.18 trở lên).
-
-### Bước 1: Chạy Server
-
-Mở một terminal, di chuyển vào thư mục `server` và chạy lệnh:
-
+### Server
 ```bash
-# Di chuyển vào thư mục server
 cd server
-
-# Chạy server với log level mặc định (INFO)
 go run .
 ```
+- Server lắng nghe TCP (mặc định 8080), API HTTP (8081).
+- Có thể cấu hình cổng và loglevel qua tham số dòng lệnh.
 
-Server sẽ bắt đầu lắng nghe kết nối TCP ở cổng `8080` và API ở cổng `8081`.
+### Client (Agent Service)
+Client là một Windows service, giao tiếp với server qua TCP và với hệ thống qua IPC (named pipe).
 
-**Tùy chọn cấu hình Log Level:**
+- **Cài đặt service:**
+  ```bash
+  cd client
+  go run . install
+  ```
+- **Khởi động service:**
+  ```bash
+  go run . start
+  ```
+- **Dừng service:**
+  ```bash
+  go run . stop
+  ```
+- **Gỡ cài đặt service:**
+  ```bash
+  go run . remove
+  ```
+- **Chạy debug (foreground, log ra console):**
+  ```bash
+  go run . debug
+  ```
 
-Bạn có thể dùng cờ `-loglevel` để thay đổi mức độ chi tiết của log hệ thống:
+Sau khi cài đặt và khởi động, agent sẽ tự động đăng ký với server, tạo file `client_config.json` lưu định danh và cấu hình.
 
+- **Giao tiếp IPC:**
+  - Service lắng nghe named pipe `\\.\pipe\MySecretServicePipe`.
+  - Ứng dụng khác (ví dụ Credential Provider) có thể gửi chuỗi `GET_SECRET` vào pipe này để nhận OTP mới từ server.
+  - Có thể test IPC bằng file `ipc_test_client.go` trong thư mục client.
+
+### Log Generator
 ```bash
-# Chỉ ghi log WARNING và ERROR
-go run . -loglevel=WARNING
-
-# Chỉ ghi log ERROR
-go run . -loglevel=ERROR
-```
-
-### Bước 2: Chạy Client (Agent)
-
-Mở một terminal **khác**, di chuyển vào thư mục `client` và chạy lệnh:
-
-```bash
-# Di chuyển vào thư mục client
-cd client
-
-# Chạy agent
-go run .
-```
-
-Lần đầu tiên chạy, agent sẽ đăng ký với server và tạo file `client_config.json` để lưu lại định danh của nó. Từ các lần sau, nó sẽ dùng lại định danh này.
-
-### Bước 3: Kiểm thử - Tạo log tự động
-
-Để kiểm tra xem agent có hoạt động hay không, hãy tạo ra một vài dòng log.
-
-Mở một terminal **thứ ba**, di chuyển vào thư mục `log_generator` và chạy lệnh:
-
-```bash
-# Di chuyển vào thư mục log_generator
 cd log_generator
-
-# Chạy công cụ tạo log
 go run .
 ```
+- Tự động ghi log vào `client/events.log`, agent sẽ gửi log mới về server.
 
-Công cụ này sẽ bắt đầu ghi các dòng log ngẫu nhiên vào file `client/events.log`. Bạn sẽ thấy terminal của **Client (Agent)** thông báo "Phát hiện dòng mới..." và gửi đi, đồng thời terminal của **Server** cũng sẽ báo "Đã nhận tin nhắn từ Agent...".
+## 4. Hệ thống user, phân quyền và xác thực JWT (API)
+- User lưu trong `server/users.json` với trường: `username`, `password`, `role`.
+- 2 quyền: `admin` (toàn quyền), `user` (chỉ xem và đổi mật khẩu của mình).
+- Đăng nhập qua `/api/login` nhận JWT, gửi JWT qua header `Authorization: Bearer <token>` cho các API cần xác thực.
+- Dữ liệu user luôn được load lại từ file trước mỗi thao tác quan trọng.
 
-### Bước 4: Kiểm thử - Quản trị Server
+### Phân quyền:
+- **Admin**: Toàn quyền (tạo user, đổi mật khẩu bất kỳ, đổi role, xóa client, gửi tin nhắn...)
+- **User thường**: Chỉ xem thông tin, đổi mật khẩu của chính mình.
 
-Bạn có thể tương tác với server qua CLI hoặc API.
+## 5. Tài liệu API và hướng dẫn test
 
-**Sử dụng CLI:**
+### Đăng nhập lấy JWT
+```
+POST http://localhost:8081/api/login
+Content-Type: application/json
+{
+  "username": "admin",
+  "password": "adminpass"
+}
+```
+**Response:**
+```
+{
+  "token": "<JWT_TOKEN>"
+}
+```
 
-Tại terminal đang chạy **Server**, nhập các lệnh sau và nhấn Enter:
+### Lấy danh sách client (cần JWT)
+```
+curl -H "Authorization: Bearer <JWT_TOKEN>" http://localhost:8081/clients
+```
 
-- `list`: Xem danh sách tất cả các agent đã đăng ký và trạng thái kết nối.
-- `send <AgentID> <Nội dung tin nhắn>`: Gửi một tin nhắn đến một agent cụ thể (ví dụ: `send A001 Hello agent`).
-- `help`: Xem các lệnh có sẵn.
-- `exit`: Dừng server.
+### Đổi mật khẩu (user chỉ đổi được của mình, admin đổi được của bất kỳ ai)
+```
+POST http://localhost:8081/api/users/change-password
+Content-Type: application/json
+Authorization: Bearer <JWT_TOKEN>
+{
+  "username": "user1",
+  "oldPassword": "user1pass",
+  "newPassword": "newpass123"
+}
+```
 
-**Sử dụng API (với cURL):**
+### Tạo user mới (chỉ admin)
+```
+POST http://localhost:8081/api/users/create
+Content-Type: application/json
+Authorization: Bearer <JWT_TOKEN>
+{
+  "username": "newuser",
+  "password": "newpass",
+  "role": "user"
+}
+```
 
-Mở một terminal **thứ tư** và thực hiện các request:
+### Đổi role user (chỉ admin)
+```
+POST http://localhost:8081/api/users/update
+Content-Type: application/json
+Authorization: Bearer <JWT_TOKEN>
+{
+  "username": "user1",
+  "role": "admin"
+}
+```
 
-- **Lấy danh sách agent:**
-  ```bash
-  curl http://localhost:8081/clients
-  ```
+### Gán user cho client (chỉ admin)
+```
+POST http://localhost:8081/api/clients/assign-user
+Content-Type: application/json
+Authorization: Bearer <JWT_TOKEN>
+{
+  "id": "<clientID hoặc agentID>",
+  "username": "user1"
+}
+```
 
-- **Gửi tin nhắn cho agent có ID là A001:**
-  ```bash
-  curl -X POST -H "Content-Type: application/json" -d '{"message": "Hello from API"}' http://localhost:8081/send/A001
-  ```
+### Xóa client (chỉ admin)
+```
+curl -X DELETE -H "Authorization: Bearer <JWT_TOKEN>" "http://localhost:8081/clients/delete?id=<agentID>"
+```
+
+### Gửi tin nhắn tới client (chỉ admin)
+```
+POST http://localhost:8081/message/send
+Content-Type: application/json
+Authorization: Bearer <JWT_TOKEN>
+{
+  "targetID": "<agentID>",
+  "data": "Nội dung tin nhắn"
+}
+```
+
+### Lấy OTP cho client (cần JWT)
+```
+curl -H "Authorization: Bearer <JWT_TOKEN>" "http://localhost:8081/api/otp?id=<agentID>"
+```
+
+## 6. Hướng dẫn test IPC
+- Có thể dùng file `ipc_test_client.go` để test gửi yêu cầu `GET_SECRET` tới pipe `\\.\pipe\MySecretServicePipe` và nhận về OTP từ server.
+- Đảm bảo service client đang chạy trước khi test IPC.
+
+## 7. Lưu ý
+- Luôn gửi JWT token trong header cho các API cần xác thực.
+- Nếu đổi mật khẩu hoặc role, cần đăng nhập lại để lấy token mới.
+- Dữ liệu user được cập nhật động, không cần restart server.
+- Client chỉ nên thao tác qua lệnh service, không chạy trực tiếp bằng `go run .` nếu không phải debug.
+
+---

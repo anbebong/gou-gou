@@ -76,7 +76,8 @@ func startCLI() {
 			if found {
 				registeredClientsMutex.Lock()
 				delete(registeredClients, fullClientID)
-				saveRegisteredClients()
+				// saveRegisteredClients()
+				saveRegisteredClientsLocked()
 				registeredClientsMutex.Unlock()
 				fmt.Printf("Đã xóa Agent %s (ClientID: %s)\n", clientInfo.AgentID, fullClientID)
 			} else {

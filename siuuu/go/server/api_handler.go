@@ -5,21 +5,141 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"os"
+	"strings"
 	"time" // Thêm time để sử dụng trong ClientDisplayInfo
+
+	"github.com/golang-jwt/jwt/v5"
 )
+
+var usersFile = "server/users.json"
+
+// Danh sách user mẫu
+var users = []User{
+	{Username: "admin", Password: "adminpass", Role: "admin"},
+	{Username: "user1", Password: "user1pass", Role: "user"},
+}
+
+// Hàm xác thực user
+func authenticateAPIUser(username, password string) *User {
+	for _, u := range users {
+		if u.Username == username && u.Password == password {
+			return &u
+		}
+	}
+	return nil
+}
+
+var jwtSecret = []byte("your_secret_key") // Đổi secret khi deploy
+
+func generateJWT(username, role string) (string, error) {
+	claims := jwt.MapClaims{
+		"username": username,
+		"role":     role,
+		"exp":      time.Now().Add(24 * time.Hour).Unix(),
+	}
+	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
+	return token.SignedString(jwtSecret)
+}
+
+func jwtAuthMiddleware(next http.HandlerFunc, requireAdmin bool) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		authHeader := r.Header.Get("Authorization")
+		if !strings.HasPrefix(authHeader, "Bearer ") {
+			http.Error(w, "Unauthorized", http.StatusUnauthorized)
+			return
+		}
+		tokenStr := strings.TrimPrefix(authHeader, "Bearer ")
+		token, err := jwt.Parse(tokenStr, func(token *jwt.Token) (interface{}, error) {
+			return jwtSecret, nil
+		})
+		if err != nil || !token.Valid {
+			http.Error(w, "Unauthorized", http.StatusUnauthorized)
+			return
+		}
+		claims, ok := token.Claims.(jwt.MapClaims)
+		if !ok {
+			http.Error(w, "Unauthorized", http.StatusUnauthorized)
+			return
+		}
+		if requireAdmin && claims["role"] != "admin" {
+			http.Error(w, "Forbidden", http.StatusForbidden)
+			return
+		}
+		next(w, r)
+	}
+}
+
+// Endpoint đăng nhập trả về JWT
+func loginHandler(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodPost {
+		http.Error(w, "Chỉ hỗ trợ POST", http.StatusMethodNotAllowed)
+		return
+	}
+	var req struct {
+		Username string `json:"username"`
+		Password string `json:"password"`
+	}
+	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
+		http.Error(w, "Bad request", http.StatusBadRequest)
+		return
+	}
+	user := authenticateAPIUser(req.Username, req.Password)
+	if user == nil {
+		http.Error(w, "Unauthorized", http.StatusUnauthorized)
+		return
+	}
+	token, err := generateJWT(user.Username, user.Role)
+	if err != nil {
+		http.Error(w, "Internal error", http.StatusInternalServerError)
+		return
+	}
+	json.NewEncoder(w).Encode(map[string]string{"token": token})
+}
 
 // startAPIServer khởi động một server HTTP cho việc quản trị.
 func startAPIServer(apiPort string) {
 	mux := http.NewServeMux()
-	mux.HandleFunc("/clients", listClientsHandler)
-	mux.HandleFunc("/clients/delete", deleteClientHandler)
-	mux.HandleFunc("/message/send", sendMessageToClientHandler)
-	mux.HandleFunc("/api/otp", handleGetOTP)
-	mux.HandleFunc("/api/clients/assign-user", handleAssignUser) // Giữ lại handler gán user
+	mux.HandleFunc("/api/login", loginHandler)
+	mux.HandleFunc("/clients", jwtAuthMiddleware(listClientsHandler, false))
+	mux.HandleFunc("/clients/delete", jwtAuthMiddleware(deleteClientHandler, true))
+	mux.HandleFunc("/message/send", jwtAuthMiddleware(sendMessageToClientHandler, true))
+	mux.HandleFunc("/api/otp", jwtAuthMiddleware(handleGetOTP, false))
+	mux.HandleFunc("/api/clients/assign-user", jwtAuthMiddleware(handleAssignUser, true))
+	mux.HandleFunc("/api/users/create", jwtAuthMiddleware(createUserHandler, true))
+	mux.HandleFunc("/api/users/change-password", jwtAuthMiddleware(changePasswordHandler, false))
+	mux.HandleFunc("/api/users/update", jwtAuthMiddleware(updateUserHandler, true))
 
 	InfoLogger.Printf("API server đang khởi động trên cổng %s...", apiPort)
 	if err := http.ListenAndServe(fmt.Sprintf(":%s", apiPort), mux); err != nil {
 		log.Fatalf("API server thất bại: %v", err)
+	}
+}
+
+// Load users từ file JSON
+func loadUsers() error {
+	f, err := os.Open(usersFile)
+	if err != nil {
+		return err
+	}
+	defer f.Close()
+	return json.NewDecoder(f).Decode(&users)
+}
+
+// Save users ra file JSON
+func saveUsers() error {
+	f, err := os.Create(usersFile)
+	if err != nil {
+		return err
+	}
+	defer f.Close()
+	return json.NewEncoder(f).Encode(users)
+}
+
+// Hàm khởi tạo, gọi loadUsers khi start API server
+func init() {
+	if err := loadUsers(); err != nil {
+		log.Printf("Không thể load users: %v", err)
 	}
 }
 
@@ -250,4 +370,147 @@ func handleAssignUser(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusInternalServerError)
 		json.NewEncoder(w).Encode(Response{Status: "error", Message: "Lỗi khi gán người dùng"})
 	}
+}
+
+// Thêm API tạo user mới
+func createUserHandler(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodPost {
+		http.Error(w, "Chỉ hỗ trợ POST", http.StatusMethodNotAllowed)
+		return
+	}
+	var req User
+	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
+		http.Error(w, "Bad request", http.StatusBadRequest)
+		return
+	}
+	for _, u := range users {
+		if u.Username == req.Username {
+			http.Error(w, "User đã tồn tại", http.StatusBadRequest)
+			return
+		}
+	}
+	users = append(users, req)
+	saveUsers()
+	w.WriteHeader(http.StatusCreated)
+	json.NewEncoder(w).Encode(map[string]string{"status": "created"})
+}
+
+// Đổi mật khẩu: user chỉ đổi được mật khẩu của chính mình, admin đổi được của bất kỳ ai
+func changePasswordHandler(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodPost {
+		http.Error(w, "Chỉ hỗ trợ POST", http.StatusMethodNotAllowed)
+		return
+	}
+	var req struct {
+		Username    string `json:"username"`
+		OldPassword string `json:"oldPassword"`
+		NewPassword string `json:"newPassword"`
+	}
+	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
+		http.Error(w, "Bad request", http.StatusBadRequest)
+		return
+	}
+	// Lấy user từ JWT
+	authHeader := r.Header.Get("Authorization")
+	if !strings.HasPrefix(authHeader, "Bearer ") {
+		http.Error(w, "Unauthorized", http.StatusUnauthorized)
+		return
+	}
+	tokenStr := strings.TrimPrefix(authHeader, "Bearer ")
+	token, err := jwt.Parse(tokenStr, func(token *jwt.Token) (interface{}, error) {
+		return jwtSecret, nil
+	})
+	if err != nil || !token.Valid {
+		http.Error(w, "Unauthorized", http.StatusUnauthorized)
+		return
+	}
+	claims, ok := token.Claims.(jwt.MapClaims)
+	if !ok {
+		http.Error(w, "Unauthorized", http.StatusUnauthorized)
+		return
+	}
+	jwtUsername := claims["username"].(string)
+	jwtRole := claims["role"].(string)
+
+	// Luôn load lại users từ file để đảm bảo dữ liệu mới nhất
+	if err := loadUsers(); err != nil {
+		http.Error(w, "Không thể load users", http.StatusInternalServerError)
+		return
+	}
+
+	for i, u := range users {
+		if u.Username == req.Username {
+			if jwtRole == "admin" || jwtUsername == req.Username {
+				if jwtRole == "admin" || u.Password == req.OldPassword {
+					users[i].Password = req.NewPassword
+					saveUsers()
+					w.WriteHeader(http.StatusOK)
+					json.NewEncoder(w).Encode(map[string]string{"status": "changed"})
+					return
+				} else {
+					http.Error(w, "Sai mật khẩu cũ", http.StatusUnauthorized)
+					return
+				}
+			} else {
+				http.Error(w, "Không đủ quyền", http.StatusForbidden)
+				return
+			}
+		}
+	}
+	http.Error(w, "Không tìm thấy user", http.StatusNotFound)
+}
+
+// Sửa thông tin user (chỉ đổi role, chỉ admin được phép)
+func updateUserHandler(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodPost {
+		http.Error(w, "Chỉ hỗ trợ POST", http.StatusMethodNotAllowed)
+		return
+	}
+	var req struct {
+		Username string `json:"username"`
+		Role     string `json:"role"`
+	}
+	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
+		http.Error(w, "Bad request", http.StatusBadRequest)
+		return
+	}
+	// Lấy user từ JWT
+	authHeader := r.Header.Get("Authorization")
+	if !strings.HasPrefix(authHeader, "Bearer ") {
+		http.Error(w, "Unauthorized", http.StatusUnauthorized)
+		return
+	}
+	tokenStr := strings.TrimPrefix(authHeader, "Bearer ")
+	token, err := jwt.Parse(tokenStr, func(token *jwt.Token) (interface{}, error) {
+		return jwtSecret, nil
+	})
+	if err != nil || !token.Valid {
+		http.Error(w, "Unauthorized", http.StatusUnauthorized)
+		return
+	}
+	claims, ok := token.Claims.(jwt.MapClaims)
+	if !ok {
+		http.Error(w, "Unauthorized", http.StatusUnauthorized)
+		return
+	}
+	jwtRole := claims["role"].(string)
+	if jwtRole != "admin" {
+		http.Error(w, "Chỉ admin được phép sửa quyền user", http.StatusForbidden)
+		return
+	}
+	// Luôn load lại users từ file để đảm bảo dữ liệu mới nhất
+	if err := loadUsers(); err != nil {
+		http.Error(w, "Không thể load users", http.StatusInternalServerError)
+		return
+	}
+	for i, u := range users {
+		if u.Username == req.Username {
+			users[i].Role = req.Role
+			saveUsers()
+			w.WriteHeader(http.StatusOK)
+			json.NewEncoder(w).Encode(map[string]string{"status": "updated"})
+			return
+		}
+	}
+	http.Error(w, "Không tìm thấy user", http.StatusNotFound)
 }

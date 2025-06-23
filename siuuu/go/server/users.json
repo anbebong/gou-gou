@@ -1,12 +1,22 @@
 [
   {
     "username": "admin",
+    "email": "admin@example.com",
+    "name": "Nguyễn Văn Admin",
     "apiKey": "cd77defebf2d3d732e55b3746c2aee71",
-    "role": "admin"
+    "role": "admin",
+    "department": "CNTT",
+    "devices": ["PC001", "PC002"],
+    "password": "admin123"
   },
   {
     "username": "user1",
+    "email": "user@example.com",
+    "name": "Trần Thị User",
     "apiKey": "71ac8eb1c10bf3bcbbdce34b614728d2",
-    "role": "user"
+    "role": "user",
+    "department": "Nhân sự",
+    "devices": ["PC003"],
+    "password": "user123"
   }
 ]
