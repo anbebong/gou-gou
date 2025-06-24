@@ -14,17 +14,10 @@ const logFilePath = "../client/events.log"
 var logLevels = []string{"INFO", "WARNING", "ERROR", "DEBUG"}
 var logMessages = []string{
 	"User logged in successfully",
-	"Failed to connect to database",
-	"CPU usage is above 90%",
-	"Memory allocation failed",
-	"Service started",
-	"Request processed in 25ms",
-	"Invalid input received from user",
-	"File not found: /path/to/important/file.txt",
-	"Cache cleared",
-	"New user registered",
-	"Payment processed successfully",
-	"Disk space is running low",
+	"User logged out",
+	"User logged in with invalid credentials",
+	"User registration successful",
+	"User login failed password expired",
 }
 
 func main() {

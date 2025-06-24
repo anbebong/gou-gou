@@ -197,3 +197,4 @@ curl -H "Authorization: Bearer <JWT_TOKEN>" "http://localhost:8081/api/otp?id=<a
 - Client chỉ nên thao tác qua lệnh service, không chạy trực tiếp bằng `go run .` nếu không phải debug.
 
 ---
+curl.exe -X POST http://localhost:8081/api/login `-H "Content-Type: application/json" `-d "{\"username\":\"user1\",\"password\":\"user1pass\"}"

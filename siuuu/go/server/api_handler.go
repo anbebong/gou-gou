@@ -1,18 +1,30 @@
 package main
 
 import (
+	"bufio"
+	"context"
 	"encoding/json"
 	"fmt"
 	"log"
 	"net/http"
 	"os"
+	"path/filepath"
 	"strings"
 	"time" // Thêm time để sử dụng trong ClientDisplayInfo
 
 	"github.com/golang-jwt/jwt/v5"
 )
 
-var usersFile = "server/users.json"
+var usersFile = filepath.Join(getExecDir(), "users.json")
+
+// getExecDir trả về thư mục chứa file thực thi
+func getExecDir() string {
+	exePath, err := os.Executable()
+	if err != nil {
+		return "." // fallback
+	}
+	return filepath.Dir(exePath)
+}
 
 // Danh sách user mẫu
 var users = []User{
@@ -36,7 +48,7 @@ func generateJWT(username, role string) (string, error) {
 	claims := jwt.MapClaims{
 		"username": username,
 		"role":     role,
-		"exp":      time.Now().Add(24 * time.Hour).Unix(),
+		"exp":      time.Now().Add(10 * time.Minute).Unix(),
 	}
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
 	return token.SignedString(jwtSecret)
@@ -66,7 +78,9 @@ func jwtAuthMiddleware(next http.HandlerFunc, requireAdmin bool) http.HandlerFun
 			http.Error(w, "Forbidden", http.StatusForbidden)
 			return
 		}
-		next(w, r)
+		// Truyền claims vào context để handler lấy ra được
+		ctx := context.WithValue(r.Context(), "claims", claims)
+		next(w, r.WithContext(ctx))
 	}
 }
 
@@ -94,24 +108,217 @@ func loginHandler(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Internal error", http.StatusInternalServerError)
 		return
 	}
-	json.NewEncoder(w).Encode(map[string]string{"token": token})
+	json.NewEncoder(w).Encode(map[string]interface{}{
+		"success": true,
+		"token":   token,
+		"user": map[string]interface{}{
+			"username": user.Username,
+			"role":     user.Role,
+			"email":    user.Email,
+			"name":     user.Name,
+		},
+	})
+}
+
+// Middleware CORS cho tất cả các route
+func corsMiddleware(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Access-Control-Allow-Origin", "*")
+		w.Header().Set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
+		w.Header().Set("Access-Control-Allow-Headers", "Content-Type, Authorization")
+		if r.Method == http.MethodOptions {
+			w.WriteHeader(http.StatusOK)
+			return
+		}
+		next.ServeHTTP(w, r)
+	})
+}
+
+// LoggingResponseWriter để lấy status code trả về
+// (nên đặt ở đầu file hoặc gần các middleware)
+type LoggingResponseWriter struct {
+	http.ResponseWriter
+	StatusCode int
+}
+
+func (lrw *LoggingResponseWriter) WriteHeader(code int) {
+	lrw.StatusCode = code
+	lrw.ResponseWriter.WriteHeader(code)
+}
+
+// Middleware log mọi request API vào InfoLogger
+func apiLoggingMiddleware(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		lrw := &LoggingResponseWriter{ResponseWriter: w, StatusCode: 200}
+		start := time.Now()
+		next.ServeHTTP(lrw, r)
+		duration := time.Since(start)
+		InfoLogger.Printf("[API] %s %s - %d (%s)", r.Method, r.URL.Path, lrw.StatusCode, duration)
+	})
+}
+
+// API lấy log archive dạng JSON, có thể lọc theo trường (level, agentID, ...)
+func getArchiveLogHandler(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodGet {
+		http.Error(w, "Chỉ hỗ trợ GET", http.StatusMethodNotAllowed)
+		return
+	}
+	logPath := filepath.Join(getExecDir(), "archiver.log")
+	InfoLogger.Printf("[API] Đọc log archive từ %s", logPath)
+	file, err := os.Open(logPath)
+	if err != nil {
+		ErrorLogger.Printf("[API] Không thể đọc file log: %v", err)
+		http.Error(w, "Không thể đọc file log", http.StatusInternalServerError)
+		return
+	}
+	defer file.Close()
+
+	var logs []map[string]string
+	scanner := bufio.NewScanner(file)
+	levelFilter := r.URL.Query().Get("level")
+	agentFilter := r.URL.Query().Get("agent")
+	for scanner.Scan() {
+		line := scanner.Text()
+		// Ví dụ: 2025/06/24 10:41:05 001: 2025-06-24 10:41:05 [WARNING] - Message
+		parts := strings.SplitN(line, " ", 4)
+		if len(parts) < 4 {
+			continue
+		}
+		ts := parts[0] + " " + parts[1]
+		agent := strings.TrimSuffix(parts[2], ":")
+		rest := parts[3]
+		// Tìm level và message
+		level := ""
+		msg := ""
+		levelStart := strings.Index(rest, "[")
+		levelEnd := strings.Index(rest, "]")
+		if levelStart != -1 && levelEnd > levelStart {
+			level = rest[levelStart+1 : levelEnd]
+			msg = strings.TrimSpace(rest[levelEnd+1:])
+		} else {
+			msg = rest
+		}
+		logEntry := map[string]string{
+			"timestamp": ts,
+			"agentID":   agent,
+			"level":     level,
+			"message":   msg,
+		}
+		if (levelFilter == "" || strings.EqualFold(level, levelFilter)) &&
+			(agentFilter == "" || agent == agentFilter) {
+			logs = append(logs, logEntry)
+		}
+	}
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(logs)
+}
+
+// API lấy log của thiết bị đã đăng nhập
+func getMyDeviceLogHandler(w http.ResponseWriter, r *http.Request) {
+	claims, ok := r.Context().Value("claims").(jwt.MapClaims)
+	if !ok {
+		http.Error(w, "Unauthorized", http.StatusUnauthorized)
+		return
+	}
+	username, ok := claims["username"].(string)
+	if !ok {
+		http.Error(w, "Unauthorized", http.StatusUnauthorized)
+		return
+	}
+
+	registeredClientsMutex.Lock()
+	defer registeredClientsMutex.Unlock()
+	var agentID string
+	for _, client := range registeredClients {
+		if client.Username == username {
+			agentID = client.AgentID
+			break
+		}
+	}
+	if agentID == "" {
+		http.Error(w, "User chưa được gán thiết bị", http.StatusForbidden)
+		return
+	}
+
+	logPath := filepath.Join(getExecDir(), "archiver.log")
+	file, err := os.Open(logPath)
+	if err != nil {
+		http.Error(w, "Không thể đọc file log", http.StatusInternalServerError)
+		return
+	}
+	defer file.Close()
+
+	var logs []map[string]string
+	scanner := bufio.NewScanner(file)
+	for scanner.Scan() {
+		line := scanner.Text()
+		parts := strings.SplitN(line, " ", 4)
+		if len(parts) < 4 {
+			continue
+		}
+		ts := parts[0] + " " + parts[1]
+		agent := strings.TrimSuffix(parts[2], ":")
+		if agent != agentID {
+			continue
+		}
+		rest := parts[3]
+		level := ""
+		msg := ""
+		levelStart := strings.Index(rest, "[")
+		levelEnd := strings.Index(rest, "]")
+		if levelStart != -1 && levelEnd > levelStart {
+			level = rest[levelStart+1 : levelEnd]
+			msg = strings.TrimSpace(rest[levelEnd+1:])
+		} else {
+			msg = rest
+		}
+		logEntry := map[string]string{
+			"timestamp": ts,
+			"agentID":   agent,
+			"level":     level,
+			"message":   msg,
+		}
+		logs = append(logs, logEntry)
+	}
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(logs)
+}
+
+// API lấy danh sách user
+func listUsersHandler(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodGet {
+		http.Error(w, "Chỉ hỗ trợ GET", http.StatusMethodNotAllowed)
+		return
+	}
+	if err := loadUsers(); err != nil {
+		ErrorLogger.Printf("[API] Không thể load users: %v", err)
+		http.Error(w, "Không thể load users", http.StatusInternalServerError)
+		return
+	}
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(users)
 }
 
 // startAPIServer khởi động một server HTTP cho việc quản trị.
 func startAPIServer(apiPort string) {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/api/login", loginHandler)
-	mux.HandleFunc("/clients", jwtAuthMiddleware(listClientsHandler, false))
-	mux.HandleFunc("/clients/delete", jwtAuthMiddleware(deleteClientHandler, true))
+	mux.HandleFunc("/api/clients", jwtAuthMiddleware(listClientsHandler, false))
+	mux.HandleFunc("/api/clients/delete", jwtAuthMiddleware(deleteClientHandler, true))
 	mux.HandleFunc("/message/send", jwtAuthMiddleware(sendMessageToClientHandler, true))
 	mux.HandleFunc("/api/otp", jwtAuthMiddleware(handleGetOTP, false))
 	mux.HandleFunc("/api/clients/assign-user", jwtAuthMiddleware(handleAssignUser, true))
 	mux.HandleFunc("/api/users/create", jwtAuthMiddleware(createUserHandler, true))
 	mux.HandleFunc("/api/users/change-password", jwtAuthMiddleware(changePasswordHandler, false))
 	mux.HandleFunc("/api/users/update", jwtAuthMiddleware(updateUserHandler, true))
+	mux.HandleFunc("/api/logs/archive", jwtAuthMiddleware(getArchiveLogHandler, true))
+	mux.HandleFunc("/api/users", jwtAuthMiddleware(listUsersHandler, true))
+	mux.HandleFunc("/api/users/update-info", jwtAuthMiddleware(updateUserInfoHandler, false))
+	mux.HandleFunc("/api/logs/my-device", jwtAuthMiddleware(getMyDeviceLogHandler, false))
 
 	InfoLogger.Printf("API server đang khởi động trên cổng %s...", apiPort)
-	if err := http.ListenAndServe(fmt.Sprintf(":%s", apiPort), mux); err != nil {
+	// Bọc toàn bộ mux bằng logging + CORS middleware
+	if err := http.ListenAndServe(fmt.Sprintf(":%s", apiPort), apiLoggingMiddleware(corsMiddleware(mux))); err != nil {
 		log.Fatalf("API server thất bại: %v", err)
 	}
 }
@@ -510,6 +717,67 @@ func updateUserHandler(w http.ResponseWriter, r *http.Request) {
 			w.WriteHeader(http.StatusOK)
 			json.NewEncoder(w).Encode(map[string]string{"status": "updated"})
 			return
+		}
+	}
+	http.Error(w, "Không tìm thấy user", http.StatusNotFound)
+}
+
+// Sửa thông tin user (user tự đổi tên/email, admin đổi được cho bất kỳ ai, KHÔNG cho đổi username)
+func updateUserInfoHandler(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodPost {
+		http.Error(w, "Chỉ hỗ trợ POST", http.StatusMethodNotAllowed)
+		return
+	}
+	var req struct {
+		Username string `json:"username"`
+		Name     string `json:"name"`
+		Email    string `json:"email"`
+	}
+	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
+		http.Error(w, "Bad request", http.StatusBadRequest)
+		return
+	}
+	// Lấy user từ JWT
+	authHeader := r.Header.Get("Authorization")
+	if !strings.HasPrefix(authHeader, "Bearer ") {
+		http.Error(w, "Unauthorized", http.StatusUnauthorized)
+		return
+	}
+	tokenStr := strings.TrimPrefix(authHeader, "Bearer ")
+	token, err := jwt.Parse(tokenStr, func(token *jwt.Token) (interface{}, error) {
+		return jwtSecret, nil
+	})
+	if err != nil || !token.Valid {
+		http.Error(w, "Unauthorized", http.StatusUnauthorized)
+		return
+	}
+	claims, ok := token.Claims.(jwt.MapClaims)
+	if !ok {
+		http.Error(w, "Unauthorized", http.StatusUnauthorized)
+		return
+	}
+	jwtUsername := claims["username"].(string)
+	jwtRole := claims["role"].(string)
+
+	if err := loadUsers(); err != nil {
+		http.Error(w, "Không thể load users", http.StatusInternalServerError)
+		return
+	}
+
+	for i, u := range users {
+		if u.Username == req.Username {
+			if jwtRole == "admin" || jwtUsername == req.Username {
+				// KHÔNG cho phép đổi username, chỉ đổi name và email
+				users[i].Name = req.Name
+				users[i].Email = req.Email
+				saveUsers()
+				w.WriteHeader(http.StatusOK)
+				json.NewEncoder(w).Encode(map[string]string{"status": "updated"})
+				return
+			} else {
+				http.Error(w, "Không đủ quyền", http.StatusForbidden)
+				return
+			}
 		}
 	}
 	http.Error(w, "Không tìm thấy user", http.StatusNotFound)

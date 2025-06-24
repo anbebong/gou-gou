@@ -152,6 +152,7 @@ func handleConnection(conn net.Conn) {
 					Username: "", // Mặc định username là rỗng khi đăng ký mới
 					HardwareInfo: HardwareInfo{
 						HostID:    msg.HardwareInfo.HostID,
+						HostName:  msg.HardwareInfo.HostName,
 						IPAddress: clientIP,
 					},
 				},
@@ -186,7 +187,7 @@ func handleConnection(conn net.Conn) {
 			}
 
 			InfoLogger.Printf("Đã nhận tin nhắn từ Agent %s", clientInfo.AgentID)
-			archiveLog.Printf("Agent %s: %s", clientInfo.AgentID, msg.Data)
+			archiveLog.Printf("%s: %s", clientInfo.AgentID, msg.Data)
 
 			// Gửi phản hồi
 			responseText := fmt.Sprintf("Server đã nhận được tin nhắn của bạn, Agent %s", clientInfo.AgentID)

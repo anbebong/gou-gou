@@ -35,6 +35,7 @@ type myService struct{}
 // Cấu trúc cho thông tin phần cứng
 type HardwareInfo struct {
 	HostID    string `json:"hostID"`
+	HostName  string `json:"hostName"`
 	IPAddress string `json:"ipAddress"`
 }
 
@@ -426,7 +427,11 @@ func getHardwareInfo() (*HardwareInfo, error) {
 	if err != nil {
 		return nil, fmt.Errorf("không thể lấy machine id: %w", err)
 	}
-	return &HardwareInfo{HostID: id}, nil
+	hostName, err := os.Hostname()
+	if err != nil {
+		hostName = "unknown"
+	}
+	return &HardwareInfo{HostID: id, HostName: hostName}, nil
 }
 
 // loadConfig tải cấu hình từ file, sử dụng giá trị mặc định nếu cần.

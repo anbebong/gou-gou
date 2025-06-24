@@ -1,11 +1,22 @@
 [
   {
     "agentID": "001",
-    "clientID": "8c3098a6-dbbb-4d33-afa0-cc302b7cb738",
+    "clientID": "72300b6b-3e6e-421b-84d3-24b7d4df4a08",
     "hardwareInfo": {
-      "hostID": "41958818-4def-4b5f-adb2-2b8e3409868c",
+      "hostID": "17a0bc54-7cba-4eb1-bba5-9b71338f0af9",
+      "hostName": "PC-ANN",
       "ipAddress": "::1"
     },
-    "username": ""
+    "username": "admin"
+  },
+  {
+    "agentID": "002",
+    "clientID": "6d33207e-ed16-4670-8274-77c2d099cc6c",
+    "hardwareInfo": {
+      "hostID": "57a0bc54-7cba-4eb1-bba5-9b71338f0af9",
+      "hostName": "PC-AN",
+      "ipAddress": "::1"
+    },
+    "username": "user1"
   }
 ]

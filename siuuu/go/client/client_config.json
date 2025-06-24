@@ -1,7 +1,7 @@
 {
-  "clientID": "8c3098a6-dbbb-4d33-afa0-cc302b7cb738",
-  "agentID": "001",
+  "clientID": "6d33207e-ed16-4670-8274-77c2d099cc6c",
+  "agentID": "002",
   "serverAddress": "localhost:8080",
-  "logFile": "E:\\an-ham-hoc\\gou-gou\\siuuu\\go\\client\\events.log",
-  "clientLogFile": "E:\\an-ham-hoc\\gou-gou\\siuuu\\go\\client\\client.log"
+  "logFile": "D:\\an-siuuu\\gou-gou\\siuuu\\go\\client\\events.log",
+  "clientLogFile": "D:\\an-siuuu\\gou-gou\\siuuu\\go\\client\\client.log"
 }

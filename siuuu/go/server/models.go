@@ -8,6 +8,7 @@ import (
 // Cấu trúc cho thông tin phần cứng
 type HardwareInfo struct {
 	HostID    string `json:"hostID"`
+	HostName  string `json:"hostName"`
 	IPAddress string `json:"ipAddress"`
 }
 
@@ -69,5 +70,7 @@ type GetOTPResponse struct {
 type User struct {
 	Username string `json:"username"`
 	Password string `json:"password"`
-	Role     string `json:"role"` // "admin" hoặc "user"
+	Role     string `json:"role"`
+	Email    string `json:"email"`
+	Name     string `json:"name"`
 }
