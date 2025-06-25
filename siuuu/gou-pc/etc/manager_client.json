@@ -1,0 +1,13 @@
+[
+  {
+    "client_id": "0b707843-948f-46e0-a646-8214077e3e56",
+    "agent_id": "001",
+    "device_info": {
+      "hostName": "PC-AN",
+      "ipAddress": "192.168.15.12",
+      "macAddress": "f8:b1:56:da:be:db",
+      "hardwareID": "57a0bc54-7cba-4eb1-bba5-9b71338f0af9"
+    },
+    "user_id": ""
+  }
+]

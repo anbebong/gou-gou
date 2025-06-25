@@ -1,0 +1,61 @@
+2025/06/25 16:21:56 tcpserver.go:31: [INFO] TCP server (AES) listening on :9000
+2025/06/25 16:22:03 tcpserver.go:75: [INFO] Received type : hello, data : map[agent_id:001 payload:map[msg:Hello server!]]
+2025/06/25 16:22:03 tcpserver.go:122: [INFO] [HELLO] from agent_id=001, data=map[agent_id:001 payload:map[msg:Hello server!]]
+2025/06/25 16:22:03 tcpserver.go:75: [INFO] Received type : request_otp, data : map[agent_id:001 payload:map[reason:test]]
+2025/06/25 16:22:03 tcpserver.go:110: [INFO] [REQUEST OTP] from agent_id=001, data=map[agent_id:001 payload:map[reason:test]]
+2025/06/25 16:22:25 tcpserver.go:49: [ERROR] read length error: read tcp 127.0.0.1:9000->127.0.0.1:54036: wsarecv: An existing connection was forcibly closed by the remote host.
+2025/06/25 16:22:47 tcpserver.go:31: [INFO] TCP server (AES) listening on :9000
+2025/06/25 16:22:50 tcpserver.go:75: [INFO] Received type : register, data : map[hardwareID:57a0bc54-7cba-4eb1-bba5-9b71338f0af9 hostName:PC-AN ipAddress:192.168.15.12 macAddress:f8:b1:56:da:be:db]
+2025/06/25 16:22:50 tcpserver.go:75: [INFO] Received type : hello, data : map[agent_id:001 payload:map[msg:Hello server!]]
+2025/06/25 16:22:50 tcpserver.go:122: [INFO] [HELLO] from agent_id=001, data=map[agent_id:001 payload:map[msg:Hello server!]]
+2025/06/25 16:22:50 tcpserver.go:75: [INFO] Received type : request_otp, data : map[agent_id:001 payload:map[reason:test]]
+2025/06/25 16:22:50 tcpserver.go:110: [INFO] [REQUEST OTP] from agent_id=001, data=map[agent_id:001 payload:map[reason:test]]
+2025/06/25 16:23:01 tcpserver.go:49: [ERROR] read length error: read tcp 127.0.0.1:9000->127.0.0.1:54058: wsarecv: An existing connection was forcibly closed by the remote host.
+2025/06/25 16:46:40 tcpserver.go:31: [INFO] TCP server (AES) listening on :9000
+2025/06/25 16:47:52 tcpserver.go:49: [ERROR] read length error: read tcp 127.0.0.1:9000->127.0.0.1:55155: wsarecv: An existing connection was forcibly closed by the remote host.
+2025/06/25 16:49:06 tcpserver.go:75: [INFO] Received type : request_otp, data : map[agent_id:001 payload:map[reason:ipc]]
+2025/06/25 16:49:06 tcpserver.go:110: [INFO] [REQUEST OTP] from agent_id=001, data=map[agent_id:001 payload:map[reason:ipc]]
+2025/06/25 16:49:58 tcpserver.go:75: [INFO] Received type : request_otp, data : map[agent_id:001 payload:map[reason:ipc]]
+2025/06/25 16:49:58 tcpserver.go:110: [INFO] [REQUEST OTP] from agent_id=001, data=map[agent_id:001 payload:map[reason:ipc]]
+2025/06/25 16:55:59 tcpserver.go:49: [ERROR] read length error: read tcp 127.0.0.1:9000->127.0.0.1:55203: wsarecv: An existing connection was forcibly closed by the remote host.
+2025/06/25 16:56:10 tcpserver.go:75: [INFO] Received type : request_otp, data : map[agent_id:001 payload:map[reason:ipc]]
+2025/06/25 16:56:10 tcpserver.go:110: [INFO] [REQUEST OTP] from agent_id=001, data=map[agent_id:001 payload:map[reason:ipc]]
+2025/06/25 16:56:31 tcpserver.go:49: [ERROR] read length error: read tcp 127.0.0.1:9000->127.0.0.1:55491: wsarecv: An existing connection was forcibly closed by the remote host.
+2025/06/25 16:56:41 tcpserver.go:75: [INFO] Received type : request_otp, data : map[agent_id:001]
+2025/06/25 16:56:41 tcpserver.go:110: [INFO] [REQUEST OTP] from agent_id=001, data=map[agent_id:001]
+2025/06/25 16:58:45 tcpserver.go:31: [INFO] TCP server (AES) listening on :9000
+2025/06/25 16:58:56 tcpserver.go:75: [INFO] Received type : request_otp, data : map[agent_id:001]
+2025/06/25 16:58:56 tcpserver.go:110: [INFO] [REQUEST OTP] from agent_id=001, data=map[agent_id:001]
+2025/06/25 16:58:56 tcpserver.go:182: [INFO] Sent response type: request_otp to agent_id=001
+2025/06/25 16:59:39 tcpserver.go:75: [INFO] Received type : log, data : map[agent_id:001 payload:map[message:]]
+2025/06/25 16:59:39 tcpserver.go:152: [INFO] [CLIENT LOG] {2025-06-25T16:59:39+07:00 001 }
+2025/06/25 16:59:39 tcpserver.go:182: [INFO] Sent response type: log to agent_id=001
+2025/06/25 16:59:39 tcpserver.go:75: [INFO] Received type : log, data : map[agent_id:001 payload:map[message:1]]
+2025/06/25 16:59:39 tcpserver.go:152: [INFO] [CLIENT LOG] {2025-06-25T16:59:39+07:00 001 1}
+2025/06/25 16:59:39 tcpserver.go:182: [INFO] Sent response type: log to agent_id=001
+2025/06/25 17:00:48 tcpserver.go:49: [ERROR] read length error: read tcp 127.0.0.1:9000->127.0.0.1:55605: wsarecv: An existing connection was forcibly closed by the remote host.
+2025/06/25 17:01:06 tcpserver.go:75: [INFO] Received type : request_otp, data : map[agent_id:001]
+2025/06/25 17:01:06 tcpserver.go:110: [INFO] [REQUEST OTP] from agent_id=001, data=map[agent_id:001]
+2025/06/25 17:01:06 tcpserver.go:182: [INFO] Sent response type: request_otp to agent_id=001
+2025/06/25 17:02:54 tcpserver.go:49: [ERROR] read length error: read tcp 127.0.0.1:9000->127.0.0.1:55751: wsarecv: An existing connection was forcibly closed by the remote host.
+2025/06/25 17:03:02 tcpserver.go:75: [INFO] Received type : request_otp, data : map[agent_id:001]
+2025/06/25 17:03:02 tcpserver.go:110: [INFO] [REQUEST OTP] from agent_id=001, data=map[agent_id:001]
+2025/06/25 17:03:02 tcpserver.go:182: [INFO] Sent response type: request_otp to agent_id=001
+2025/06/25 17:07:10 tcpserver.go:49: [ERROR] read length error: read tcp 127.0.0.1:9000->127.0.0.1:55851: wsarecv: An existing connection was forcibly closed by the remote host.
+2025/06/25 17:07:20 tcpserver.go:31: [INFO] TCP server (AES) listening on :9000
+2025/06/25 17:07:30 tcpserver.go:75: [INFO] Received: {type:request_otp, agent_id:001, data:map[agent_id:001]}
+2025/06/25 17:07:30 tcpserver.go:110: [INFO] [REQUEST OTP] from agent_id=001, data=map[agent_id:001]
+2025/06/25 17:07:30 tcpserver.go:182: [INFO] Sent: {type:request_otp, agent_id:001, data:map[agent_id:001 otp:123456]}
+2025/06/25 17:11:08 tcpserver.go:49: [ERROR] read length error: read tcp 127.0.0.1:9000->127.0.0.1:56048: wsarecv: An existing connection was forcibly closed by the remote host.
+2025/06/25 17:59:23 tcpserver.go:28: [INFO] TCP server (AES) listening on :9000
+2025/06/25 17:59:31 tcpserver.go:46: [ERROR] read length error: read tcp 127.0.0.1:9000->127.0.0.1:58560: wsarecv: An existing connection was forcibly closed by the remote host.
+2025/06/25 17:59:53 tcpserver.go:28: [INFO] TCP server (AES) listening on :9000
+2025/06/25 17:59:58 tcpserver.go:72: [INFO] Received: {type:register, agent_id:%!s(<nil>), data:map[hardwareID:57a0bc54-7cba-4eb1-bba5-9b71338f0af9 hostName:PC-AN ipAddress:192.168.15.12 macAddress:f8:b1:56:da:be:db]}
+2025/06/25 17:59:58 tcpserver.go:179: [INFO] Sent: {type:register, agent_id:<nil>, data:map[agent_id:001 client_id:0b707843-948f-46e0-a646-8214077e3e56]}
+2025/06/25 18:26:12 api.go:47: [INFO] API server (Gin) starting on port 8080...
+2025/06/25 18:26:12 tcpserver.go:27: [INFO] TCP server (AES) listening on :9000
+2025/06/25 18:28:01 tcpserver.go:27: [INFO] TCP server (AES) listening on :9000
+2025/06/25 18:28:01 api.go:47: [INFO] API server (Gin) starting on port 8081...
+2025/06/25 18:28:55 tcpserver.go:27: [INFO] TCP server (AES) listening on :9000
+2025/06/25 18:28:55 api.go:47: [INFO] API server (Gin) starting on port 8082...
+2025/06/25 18:29:07 logging.go:11: [INFO] [API] POST /api/users/create

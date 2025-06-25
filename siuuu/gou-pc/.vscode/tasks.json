@@ -1,0 +1,19 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Run Gou-PC Service",
+      "type": "shell",
+      "command": "go run ./cmd/main.go",
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "Tidy Go Modules",
+      "type": "shell",
+      "command": "go mod tidy",
+      "group": "build",
+      "problemMatcher": []
+    }
+  ]
+}

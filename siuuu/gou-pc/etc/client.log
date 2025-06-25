@@ -1,0 +1,81 @@
+2025/06/25 16:19:29 agent.go:158: [INFO] RegisterAgent: Registering device info: &{HostName:PC-AN IPAddress:192.168.15.12 MacAddress:f8:b1:56:da:be:db HardwareID:57a0bc54-7cba-4eb1-bba5-9b71338f0af9}
+2025/06/25 16:19:29 agent.go:70: [INFO] Send: Sending message type=register data=&{PC-AN 192.168.15.12 f8:b1:56:da:be:db 57a0bc54-7cba-4eb1-bba5-9b71338f0af9}
+2025/06/25 16:19:29 agent.go:169: [INFO] RegisterAgent: Received response type=register data=map[agent_id:001 client_id:53ff079b-71fd-4f42-8af3-a4631e9a6961]
+2025/06/25 16:19:29 agent.go:177: [INFO] RegisterAgent: Registration success client_id=53ff079b-71fd-4f42-8af3-a4631e9a6961 agent_id=001
+2025/06/25 16:19:29 agent.go:70: [INFO] Send: Sending message type=hello data={001 map[msg:Hello server!]}
+2025/06/25 16:19:29 main.go:72: [INFO] Received hello response: {hello map[agent_id:001 payload:map[agent_id:001 payload:map[msg:Hello server!]]]}
+2025/06/25 16:19:29 agent.go:70: [INFO] Send: Sending message type=request_otp data={001 map[reason:test]}
+2025/06/25 16:19:29 main.go:90: [INFO] Received OTP response: {request_otp map[agent_id:001 otp:123456]}
+2025/06/25 16:19:29 agent.go:201: [ERROR] WatchLogAndSend: open log file error: open etc/event.log: The system cannot find the file specified.
+2025/06/25 16:19:31 agent.go:201: [ERROR] WatchLogAndSend: open log file error: open etc/event.log: The system cannot find the file specified.
+2025/06/25 16:19:33 agent.go:201: [ERROR] WatchLogAndSend: open log file error: open etc/event.log: The system cannot find the file specified.
+2025/06/25 16:19:35 agent.go:201: [ERROR] WatchLogAndSend: open log file error: open etc/event.log: The system cannot find the file specified.
+2025/06/25 16:19:37 agent.go:201: [ERROR] WatchLogAndSend: open log file error: open etc/event.log: The system cannot find the file specified.
+2025/06/25 16:19:39 agent.go:201: [ERROR] WatchLogAndSend: open log file error: open etc/event.log: The system cannot find the file specified.
+2025/06/25 16:19:41 agent.go:201: [ERROR] WatchLogAndSend: open log file error: open etc/event.log: The system cannot find the file specified.
+2025/06/25 16:19:43 agent.go:201: [ERROR] WatchLogAndSend: open log file error: open etc/event.log: The system cannot find the file specified.
+2025/06/25 16:19:45 agent.go:201: [ERROR] WatchLogAndSend: open log file error: open etc/event.log: The system cannot find the file specified.
+2025/06/25 16:19:47 agent.go:201: [ERROR] WatchLogAndSend: open log file error: open etc/event.log: The system cannot find the file specified.
+2025/06/25 16:19:49 agent.go:201: [ERROR] WatchLogAndSend: open log file error: open etc/event.log: The system cannot find the file specified.
+2025/06/25 16:19:51 agent.go:201: [ERROR] WatchLogAndSend: open log file error: open etc/event.log: The system cannot find the file specified.
+2025/06/25 16:19:53 agent.go:201: [ERROR] WatchLogAndSend: open log file error: open etc/event.log: The system cannot find the file specified.
+2025/06/25 16:19:55 agent.go:201: [ERROR] WatchLogAndSend: open log file error: open etc/event.log: The system cannot find the file specified.
+2025/06/25 16:19:57 agent.go:201: [ERROR] WatchLogAndSend: open log file error: open etc/event.log: The system cannot find the file specified.
+2025/06/25 16:19:59 agent.go:201: [ERROR] WatchLogAndSend: open log file error: open etc/event.log: The system cannot find the file specified.
+2025/06/25 16:20:01 agent.go:201: [ERROR] WatchLogAndSend: open log file error: open etc/event.log: The system cannot find the file specified.
+2025/06/25 16:20:03 agent.go:201: [ERROR] WatchLogAndSend: open log file error: open etc/event.log: The system cannot find the file specified.
+2025/06/25 16:20:05 agent.go:201: [ERROR] WatchLogAndSend: open log file error: open etc/event.log: The system cannot find the file specified.
+2025/06/25 16:20:07 agent.go:201: [ERROR] WatchLogAndSend: open log file error: open etc/event.log: The system cannot find the file specified.
+2025/06/25 16:20:09 agent.go:201: [ERROR] WatchLogAndSend: open log file error: open etc/event.log: The system cannot find the file specified.
+2025/06/25 16:20:11 agent.go:201: [ERROR] WatchLogAndSend: open log file error: open etc/event.log: The system cannot find the file specified.
+2025/06/25 16:20:13 agent.go:201: [ERROR] WatchLogAndSend: open log file error: open etc/event.log: The system cannot find the file specified.
+2025/06/25 16:20:15 agent.go:201: [ERROR] WatchLogAndSend: open log file error: open etc/event.log: The system cannot find the file specified.
+2025/06/25 16:20:17 agent.go:201: [ERROR] WatchLogAndSend: open log file error: open etc/event.log: The system cannot find the file specified.
+2025/06/25 16:20:19 agent.go:201: [ERROR] WatchLogAndSend: open log file error: open etc/event.log: The system cannot find the file specified.
+2025/06/25 16:20:21 agent.go:201: [ERROR] WatchLogAndSend: open log file error: open etc/event.log: The system cannot find the file specified.
+2025/06/25 16:20:23 agent.go:201: [ERROR] WatchLogAndSend: open log file error: open etc/event.log: The system cannot find the file specified.
+2025/06/25 16:20:25 agent.go:201: [ERROR] WatchLogAndSend: open log file error: open etc/event.log: The system cannot find the file specified.
+2025/06/25 16:20:27 agent.go:201: [ERROR] WatchLogAndSend: open log file error: open etc/event.log: The system cannot find the file specified.
+2025/06/25 16:20:29 agent.go:201: [ERROR] WatchLogAndSend: open log file error: open etc/event.log: The system cannot find the file specified.
+2025/06/25 16:20:31 agent.go:201: [ERROR] WatchLogAndSend: open log file error: open etc/event.log: The system cannot find the file specified.
+2025/06/25 16:20:33 agent.go:201: [ERROR] WatchLogAndSend: open log file error: open etc/event.log: The system cannot find the file specified.
+2025/06/25 16:20:35 agent.go:201: [ERROR] WatchLogAndSend: open log file error: open etc/event.log: The system cannot find the file specified.
+2025/06/25 16:20:37 agent.go:201: [ERROR] WatchLogAndSend: open log file error: open etc/event.log: The system cannot find the file specified.
+2025/06/25 16:20:39 agent.go:201: [ERROR] WatchLogAndSend: open log file error: open etc/event.log: The system cannot find the file specified.
+2025/06/25 16:20:43 agent.go:70: [INFO] Send: Sending message type=log data={001 {aloooo}}
+2025/06/25 16:22:03 agent.go:70: [INFO] Send: Sending message type=hello data={001 map[msg:Hello server!]}
+2025/06/25 16:22:03 main.go:72: [INFO] Received hello response: {hello map[agent_id:001 payload:map[agent_id:001 payload:map[msg:Hello server!]]]}
+2025/06/25 16:22:03 agent.go:70: [INFO] Send: Sending message type=request_otp data={001 map[reason:test]}
+2025/06/25 16:22:03 main.go:90: [INFO] Received OTP response: {request_otp map[agent_id:001 otp:123456]}
+2025/06/25 16:22:50 agent.go:158: [INFO] RegisterAgent: Registering device info: &{HostName:PC-AN IPAddress:192.168.15.12 MacAddress:f8:b1:56:da:be:db HardwareID:57a0bc54-7cba-4eb1-bba5-9b71338f0af9}
+2025/06/25 16:22:50 agent.go:70: [INFO] Send: Sending message type=register data=&{PC-AN 192.168.15.12 f8:b1:56:da:be:db 57a0bc54-7cba-4eb1-bba5-9b71338f0af9}
+2025/06/25 16:22:50 agent.go:169: [INFO] RegisterAgent: Received response type=register data=map[agent_id:001 client_id:c2ab2ae9-cd81-4dcc-b1f3-ffe84831209c]
+2025/06/25 16:22:50 agent.go:177: [INFO] RegisterAgent: Registration success client_id=c2ab2ae9-cd81-4dcc-b1f3-ffe84831209c agent_id=001
+2025/06/25 16:22:50 agent.go:70: [INFO] Send: Sending message type=hello data={001 map[msg:Hello server!]}
+2025/06/25 16:22:50 main.go:72: [INFO] Received hello response: {hello map[agent_id:001 payload:map[agent_id:001 payload:map[msg:Hello server!]]]}
+2025/06/25 16:22:50 agent.go:70: [INFO] Send: Sending message type=request_otp data={001 map[reason:test]}
+2025/06/25 16:22:50 main.go:90: [INFO] Received OTP response: {request_otp map[agent_id:001 otp:123456]}
+2025/06/25 16:46:32 main.go:40: [ERROR] failed to connect: dial tcp :9000: connectex: No connection could be made because the target machine actively refused it.
+2025/06/25 16:49:06 agent.go:70: [INFO] Send: Sending message type=request_otp data={001 map[reason:ipc]}
+2025/06/25 16:49:58 agent.go:70: [INFO] Send: Sending message type=request_otp data={001 map[reason:ipc]}
+2025/06/25 16:56:10 agent.go:70: [INFO] Send: Sending message type=request_otp data={001 map[reason:ipc]}
+2025/06/25 16:56:41 agent.go:70: [INFO] Send: Sending message type=request_otp data={001 <nil>}
+2025/06/25 16:58:56 agent.go:70: [INFO] Send: Sending message type=request_otp data={001 <nil>}
+2025/06/25 16:59:39 agent.go:70: [INFO] Send: Sending message type=log data={001 {}}
+2025/06/25 16:59:39 agent.go:70: [INFO] Send: Sending message type=log data={001 {1}}
+2025/06/25 17:01:06 agent.go:70: [INFO] Send: Sending message type=request_otp data={001 <nil>}
+2025/06/25 17:01:06 main.go:79: [INFO] Received OTP response: {Type:request_otp Data:map[agent_id:001 otp:123456]}
+2025/06/25 17:01:06 main.go:82: [INFO] Parsed OTP: 123456
+2025/06/25 17:03:02 agent.go:70: [INFO] Send: Sending message type=request_otp data={001 <nil>}
+2025/06/25 17:03:02 main.go:77: [INFO] Received OTP response: {Type:request_otp Data:map[agent_id:001 otp:123456]}
+2025/06/25 17:03:02 main.go:80: [INFO] Parsed OTP: 123456
+2025/06/25 17:07:30 agent.go:70: [INFO] Send: {type:request_otp, agent_id:001, payload:<nil>}
+2025/06/25 17:07:30 agent.go:107: [INFO] Received: {type:request_otp, agent_id:001, data:map[agent_id:001 otp:123456]}
+2025/06/25 17:07:30 main.go:77: [INFO] Received OTP response: {Type:request_otp Data:map[agent_id:001 otp:123456]}
+2025/06/25 17:07:30 main.go:80: [INFO] Parsed OTP: 123456
+2025/06/25 17:07:30 main.go:81: [INFO] Received OTP: {agent_id:001, otp:123456}
+2025/06/25 17:59:58 agent.go:159: [INFO] RegisterAgent: Registering device info: &{HostName:PC-AN IPAddress:192.168.15.12 MacAddress:f8:b1:56:da:be:db HardwareID:57a0bc54-7cba-4eb1-bba5-9b71338f0af9}
+2025/06/25 17:59:58 agent.go:70: [INFO] Send: {type:register, agent_id:, payload:<nil>}
+2025/06/25 17:59:58 agent.go:107: [INFO] Received: {type:register, agent_id:001, data:map[agent_id:001 client_id:0b707843-948f-46e0-a646-8214077e3e56]}
+2025/06/25 17:59:58 agent.go:170: [INFO] RegisterAgent: Received response type=register data=map[agent_id:001 client_id:0b707843-948f-46e0-a646-8214077e3e56]
+2025/06/25 17:59:58 agent.go:178: [INFO] RegisterAgent: Registration success client_id=0b707843-948f-46e0-a646-8214077e3e56 agent_id=001
