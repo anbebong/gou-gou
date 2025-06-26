@@ -104,9 +104,24 @@ func handleConn(conn net.Conn, cfg *config.ServerConfig) {
 				}
 			}
 			logutil.Info("[REQUEST OTP] from agent_id=%s, data=%v", agentID, req.Data)
+			// Tìm clientID theo agentID
+			clients, _ := agent.LoadClients(cfg.ClientDBFile)
+			var clientID string
+			for _, c := range clients {
+				if c.AgentID == agentID {
+					clientID = c.ClientID
+					break
+				}
+			}
+			var otp string
+			if clientID != "" {
+				otp, _ = crypto.GetTOTPByClientID(clientID)
+			} else {
+				otp = ""
+			}
 			resp = agent.Message{
 				Type: agent.TypeRequestOTP,
-				Data: map[string]interface{}{"agent_id": agentID, "otp": "123456"},
+				Data: map[string]interface{}{"agent_id": agentID, "otp": otp},
 			}
 		case agent.TypeHello:
 			var agentID string

@@ -1,61 +1,1095 @@
-2025/06/25 16:21:56 tcpserver.go:31: [INFO] TCP server (AES) listening on :9000
-2025/06/25 16:22:03 tcpserver.go:75: [INFO] Received type : hello, data : map[agent_id:001 payload:map[msg:Hello server!]]
-2025/06/25 16:22:03 tcpserver.go:122: [INFO] [HELLO] from agent_id=001, data=map[agent_id:001 payload:map[msg:Hello server!]]
-2025/06/25 16:22:03 tcpserver.go:75: [INFO] Received type : request_otp, data : map[agent_id:001 payload:map[reason:test]]
-2025/06/25 16:22:03 tcpserver.go:110: [INFO] [REQUEST OTP] from agent_id=001, data=map[agent_id:001 payload:map[reason:test]]
-2025/06/25 16:22:25 tcpserver.go:49: [ERROR] read length error: read tcp 127.0.0.1:9000->127.0.0.1:54036: wsarecv: An existing connection was forcibly closed by the remote host.
-2025/06/25 16:22:47 tcpserver.go:31: [INFO] TCP server (AES) listening on :9000
-2025/06/25 16:22:50 tcpserver.go:75: [INFO] Received type : register, data : map[hardwareID:57a0bc54-7cba-4eb1-bba5-9b71338f0af9 hostName:PC-AN ipAddress:192.168.15.12 macAddress:f8:b1:56:da:be:db]
-2025/06/25 16:22:50 tcpserver.go:75: [INFO] Received type : hello, data : map[agent_id:001 payload:map[msg:Hello server!]]
-2025/06/25 16:22:50 tcpserver.go:122: [INFO] [HELLO] from agent_id=001, data=map[agent_id:001 payload:map[msg:Hello server!]]
-2025/06/25 16:22:50 tcpserver.go:75: [INFO] Received type : request_otp, data : map[agent_id:001 payload:map[reason:test]]
-2025/06/25 16:22:50 tcpserver.go:110: [INFO] [REQUEST OTP] from agent_id=001, data=map[agent_id:001 payload:map[reason:test]]
-2025/06/25 16:23:01 tcpserver.go:49: [ERROR] read length error: read tcp 127.0.0.1:9000->127.0.0.1:54058: wsarecv: An existing connection was forcibly closed by the remote host.
-2025/06/25 16:46:40 tcpserver.go:31: [INFO] TCP server (AES) listening on :9000
-2025/06/25 16:47:52 tcpserver.go:49: [ERROR] read length error: read tcp 127.0.0.1:9000->127.0.0.1:55155: wsarecv: An existing connection was forcibly closed by the remote host.
-2025/06/25 16:49:06 tcpserver.go:75: [INFO] Received type : request_otp, data : map[agent_id:001 payload:map[reason:ipc]]
-2025/06/25 16:49:06 tcpserver.go:110: [INFO] [REQUEST OTP] from agent_id=001, data=map[agent_id:001 payload:map[reason:ipc]]
-2025/06/25 16:49:58 tcpserver.go:75: [INFO] Received type : request_otp, data : map[agent_id:001 payload:map[reason:ipc]]
-2025/06/25 16:49:58 tcpserver.go:110: [INFO] [REQUEST OTP] from agent_id=001, data=map[agent_id:001 payload:map[reason:ipc]]
-2025/06/25 16:55:59 tcpserver.go:49: [ERROR] read length error: read tcp 127.0.0.1:9000->127.0.0.1:55203: wsarecv: An existing connection was forcibly closed by the remote host.
-2025/06/25 16:56:10 tcpserver.go:75: [INFO] Received type : request_otp, data : map[agent_id:001 payload:map[reason:ipc]]
-2025/06/25 16:56:10 tcpserver.go:110: [INFO] [REQUEST OTP] from agent_id=001, data=map[agent_id:001 payload:map[reason:ipc]]
-2025/06/25 16:56:31 tcpserver.go:49: [ERROR] read length error: read tcp 127.0.0.1:9000->127.0.0.1:55491: wsarecv: An existing connection was forcibly closed by the remote host.
-2025/06/25 16:56:41 tcpserver.go:75: [INFO] Received type : request_otp, data : map[agent_id:001]
-2025/06/25 16:56:41 tcpserver.go:110: [INFO] [REQUEST OTP] from agent_id=001, data=map[agent_id:001]
-2025/06/25 16:58:45 tcpserver.go:31: [INFO] TCP server (AES) listening on :9000
-2025/06/25 16:58:56 tcpserver.go:75: [INFO] Received type : request_otp, data : map[agent_id:001]
-2025/06/25 16:58:56 tcpserver.go:110: [INFO] [REQUEST OTP] from agent_id=001, data=map[agent_id:001]
-2025/06/25 16:58:56 tcpserver.go:182: [INFO] Sent response type: request_otp to agent_id=001
-2025/06/25 16:59:39 tcpserver.go:75: [INFO] Received type : log, data : map[agent_id:001 payload:map[message:]]
-2025/06/25 16:59:39 tcpserver.go:152: [INFO] [CLIENT LOG] {2025-06-25T16:59:39+07:00 001 }
-2025/06/25 16:59:39 tcpserver.go:182: [INFO] Sent response type: log to agent_id=001
-2025/06/25 16:59:39 tcpserver.go:75: [INFO] Received type : log, data : map[agent_id:001 payload:map[message:1]]
-2025/06/25 16:59:39 tcpserver.go:152: [INFO] [CLIENT LOG] {2025-06-25T16:59:39+07:00 001 1}
-2025/06/25 16:59:39 tcpserver.go:182: [INFO] Sent response type: log to agent_id=001
-2025/06/25 17:00:48 tcpserver.go:49: [ERROR] read length error: read tcp 127.0.0.1:9000->127.0.0.1:55605: wsarecv: An existing connection was forcibly closed by the remote host.
-2025/06/25 17:01:06 tcpserver.go:75: [INFO] Received type : request_otp, data : map[agent_id:001]
-2025/06/25 17:01:06 tcpserver.go:110: [INFO] [REQUEST OTP] from agent_id=001, data=map[agent_id:001]
-2025/06/25 17:01:06 tcpserver.go:182: [INFO] Sent response type: request_otp to agent_id=001
-2025/06/25 17:02:54 tcpserver.go:49: [ERROR] read length error: read tcp 127.0.0.1:9000->127.0.0.1:55751: wsarecv: An existing connection was forcibly closed by the remote host.
-2025/06/25 17:03:02 tcpserver.go:75: [INFO] Received type : request_otp, data : map[agent_id:001]
-2025/06/25 17:03:02 tcpserver.go:110: [INFO] [REQUEST OTP] from agent_id=001, data=map[agent_id:001]
-2025/06/25 17:03:02 tcpserver.go:182: [INFO] Sent response type: request_otp to agent_id=001
-2025/06/25 17:07:10 tcpserver.go:49: [ERROR] read length error: read tcp 127.0.0.1:9000->127.0.0.1:55851: wsarecv: An existing connection was forcibly closed by the remote host.
-2025/06/25 17:07:20 tcpserver.go:31: [INFO] TCP server (AES) listening on :9000
-2025/06/25 17:07:30 tcpserver.go:75: [INFO] Received: {type:request_otp, agent_id:001, data:map[agent_id:001]}
-2025/06/25 17:07:30 tcpserver.go:110: [INFO] [REQUEST OTP] from agent_id=001, data=map[agent_id:001]
-2025/06/25 17:07:30 tcpserver.go:182: [INFO] Sent: {type:request_otp, agent_id:001, data:map[agent_id:001 otp:123456]}
-2025/06/25 17:11:08 tcpserver.go:49: [ERROR] read length error: read tcp 127.0.0.1:9000->127.0.0.1:56048: wsarecv: An existing connection was forcibly closed by the remote host.
-2025/06/25 17:59:23 tcpserver.go:28: [INFO] TCP server (AES) listening on :9000
-2025/06/25 17:59:31 tcpserver.go:46: [ERROR] read length error: read tcp 127.0.0.1:9000->127.0.0.1:58560: wsarecv: An existing connection was forcibly closed by the remote host.
-2025/06/25 17:59:53 tcpserver.go:28: [INFO] TCP server (AES) listening on :9000
-2025/06/25 17:59:58 tcpserver.go:72: [INFO] Received: {type:register, agent_id:%!s(<nil>), data:map[hardwareID:57a0bc54-7cba-4eb1-bba5-9b71338f0af9 hostName:PC-AN ipAddress:192.168.15.12 macAddress:f8:b1:56:da:be:db]}
-2025/06/25 17:59:58 tcpserver.go:179: [INFO] Sent: {type:register, agent_id:<nil>, data:map[agent_id:001 client_id:0b707843-948f-46e0-a646-8214077e3e56]}
-2025/06/25 18:26:12 api.go:47: [INFO] API server (Gin) starting on port 8080...
-2025/06/25 18:26:12 tcpserver.go:27: [INFO] TCP server (AES) listening on :9000
-2025/06/25 18:28:01 tcpserver.go:27: [INFO] TCP server (AES) listening on :9000
-2025/06/25 18:28:01 api.go:47: [INFO] API server (Gin) starting on port 8081...
-2025/06/25 18:28:55 tcpserver.go:27: [INFO] TCP server (AES) listening on :9000
-2025/06/25 18:28:55 api.go:47: [INFO] API server (Gin) starting on port 8082...
-2025/06/25 18:29:07 logging.go:11: [INFO] [API] POST /api/users/create
+2025/06/26 16:02:51 logging.go:11: [INFO] [API] POST /api/login
+2025/06/26 16:02:51 user_handler.go:30: [DEBUG] LoginHandler called
+2025/06/26 16:02:51 user_repository.go:75: [DEBUG] UserRepository.FindByUsername called with username=admin
+2025/06/26 16:02:51 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:02:51 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 2 users
+2025/06/26 16:02:51 user_repository.go:82: [DEBUG] UserRepository.FindByUsername checking user: username=admin
+2025/06/26 16:02:51 user_repository.go:84: [DEBUG] UserRepository.FindByUsername found user: username=admin
+2025/06/26 16:02:51 logging.go:11: [INFO] [API] GET /api/users
+2025/06/26 16:02:51 jwt.go:75: [DEBUG] JWTAuthMiddlewareFunc: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:02:51 jwt.go:48: [DEBUG] JWTAuthMiddleware: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:02:51 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:02:51 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 2 users
+2025/06/26 16:02:51 logging.go:11: [INFO] [API] GET /api/clients
+2025/06/26 16:02:51 jwt.go:75: [DEBUG] JWTAuthMiddlewareFunc: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:02:51 client_handler.go:22: [DEBUG] ListClientsHandler called
+2025/06/26 16:02:51 client_service.go:87: [DEBUG] ClientService.GetAllClients called
+2025/06/26 16:02:51 user_repository.go:57: [DEBUG] UserRepository.FindByID called with id=c2f3e4d5-6789-2345-0bcd-2345678901bc
+2025/06/26 16:02:51 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:02:51 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 2 users
+2025/06/26 16:02:51 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=b1e2c3d4-5678-1234-9abc-1234567890ab
+2025/06/26 16:02:51 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=c2f3e4d5-6789-2345-0bcd-2345678901bc
+2025/06/26 16:02:51 user_repository.go:66: [DEBUG] UserRepository.FindByID found user: id=c2f3e4d5-6789-2345-0bcd-2345678901bc
+2025/06/26 16:02:51 client_handler.go:29: [DEBUG] ListClientsHandler success, 1 clients
+2025/06/26 16:02:51 logging.go:11: [INFO] [API] POST /api/clients/assign-user
+2025/06/26 16:02:51 jwt.go:75: [DEBUG] JWTAuthMiddlewareFunc: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:02:51 jwt.go:48: [DEBUG] JWTAuthMiddleware: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:02:51 client_service.go:40: [DEBUG] ClientService.AssignUserToClient called with agentID=001, username=an
+2025/06/26 16:02:51 user_repository.go:75: [DEBUG] UserRepository.FindByUsername called with username=an
+2025/06/26 16:02:51 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:02:51 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 2 users
+2025/06/26 16:02:51 user_repository.go:82: [DEBUG] UserRepository.FindByUsername checking user: username=admin
+2025/06/26 16:02:51 user_repository.go:82: [DEBUG] UserRepository.FindByUsername checking user: username=an
+2025/06/26 16:02:51 user_repository.go:84: [DEBUG] UserRepository.FindByUsername found user: username=an
+2025/06/26 16:02:51 logging.go:11: [INFO] [API] GET /api/logs/archive
+2025/06/26 16:02:51 jwt.go:75: [DEBUG] JWTAuthMiddlewareFunc: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:02:51 jwt.go:48: [DEBUG] JWTAuthMiddleware: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:02:51 log_handler.go:17: [DEBUG] GetArchiveLogHandler called
+2025/06/26 16:02:51 log_handler.go:24: [DEBUG] GetArchiveLogHandler success, 3 logs
+2025/06/26 16:02:51 logging.go:11: [INFO] [API] POST /api/users
+2025/06/26 16:02:51 logging.go:11: [INFO] [API] POST /api/login
+2025/06/26 16:02:51 user_handler.go:30: [DEBUG] LoginHandler called
+2025/06/26 16:02:51 user_repository.go:75: [DEBUG] UserRepository.FindByUsername called with username=testuser1
+2025/06/26 16:02:51 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:02:51 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 2 users
+2025/06/26 16:02:51 user_repository.go:82: [DEBUG] UserRepository.FindByUsername checking user: username=admin
+2025/06/26 16:02:51 user_repository.go:82: [DEBUG] UserRepository.FindByUsername checking user: username=an
+2025/06/26 16:02:51 user_repository.go:88: [DEBUG] UserRepository.FindByUsername not found: username=testuser1
+2025/06/26 16:02:51 user_handler.go:47: [DEBUG] LoginHandler: invalid username or password
+2025/06/26 16:05:57 logging.go:11: [INFO] [API] POST /api/login
+2025/06/26 16:05:57 user_handler.go:30: [DEBUG] LoginHandler called
+2025/06/26 16:05:57 user_repository.go:75: [DEBUG] UserRepository.FindByUsername called with username=admin
+2025/06/26 16:05:57 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:05:57 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 2 users
+2025/06/26 16:05:57 user_repository.go:82: [DEBUG] UserRepository.FindByUsername checking user: username=admin
+2025/06/26 16:05:57 user_repository.go:84: [DEBUG] UserRepository.FindByUsername found user: username=admin
+2025/06/26 16:05:57 logging.go:11: [INFO] [API] GET /api/users
+2025/06/26 16:05:57 jwt.go:75: [DEBUG] JWTAuthMiddlewareFunc: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:05:57 jwt.go:48: [DEBUG] JWTAuthMiddleware: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:05:57 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:05:57 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 2 users
+2025/06/26 16:05:57 logging.go:11: [INFO] [API] GET /api/clients
+2025/06/26 16:05:57 jwt.go:75: [DEBUG] JWTAuthMiddlewareFunc: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:05:57 client_handler.go:22: [DEBUG] ListClientsHandler called
+2025/06/26 16:05:57 client_service.go:87: [DEBUG] ClientService.GetAllClients called
+2025/06/26 16:05:57 user_repository.go:57: [DEBUG] UserRepository.FindByID called with id=c2f3e4d5-6789-2345-0bcd-2345678901bc
+2025/06/26 16:05:57 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:05:57 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 2 users
+2025/06/26 16:05:57 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=b1e2c3d4-5678-1234-9abc-1234567890ab
+2025/06/26 16:05:57 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=c2f3e4d5-6789-2345-0bcd-2345678901bc
+2025/06/26 16:05:57 user_repository.go:66: [DEBUG] UserRepository.FindByID found user: id=c2f3e4d5-6789-2345-0bcd-2345678901bc
+2025/06/26 16:05:57 client_handler.go:29: [DEBUG] ListClientsHandler success, 1 clients
+2025/06/26 16:05:57 logging.go:11: [INFO] [API] POST /api/clients/assign-user
+2025/06/26 16:05:57 jwt.go:75: [DEBUG] JWTAuthMiddlewareFunc: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:05:57 jwt.go:48: [DEBUG] JWTAuthMiddleware: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:05:57 client_service.go:40: [DEBUG] ClientService.AssignUserToClient called with agentID=001, username=an
+2025/06/26 16:05:57 user_repository.go:75: [DEBUG] UserRepository.FindByUsername called with username=an
+2025/06/26 16:05:57 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:05:57 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 2 users
+2025/06/26 16:05:57 user_repository.go:82: [DEBUG] UserRepository.FindByUsername checking user: username=admin
+2025/06/26 16:05:57 user_repository.go:82: [DEBUG] UserRepository.FindByUsername checking user: username=an
+2025/06/26 16:05:57 user_repository.go:84: [DEBUG] UserRepository.FindByUsername found user: username=an
+2025/06/26 16:05:57 logging.go:11: [INFO] [API] GET /api/logs/archive
+2025/06/26 16:05:57 jwt.go:75: [DEBUG] JWTAuthMiddlewareFunc: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:05:57 jwt.go:48: [DEBUG] JWTAuthMiddleware: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:05:57 log_handler.go:17: [DEBUG] GetArchiveLogHandler called
+2025/06/26 16:05:57 log_handler.go:24: [DEBUG] GetArchiveLogHandler success, 3 logs
+2025/06/26 16:05:57 logging.go:11: [INFO] [API] POST /api/users/create
+2025/06/26 16:05:57 jwt.go:75: [DEBUG] JWTAuthMiddlewareFunc: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:05:57 jwt.go:48: [DEBUG] JWTAuthMiddleware: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:05:57 user_handler.go:83: [DEBUG] CreateUserHandler called
+2025/06/26 16:05:57 user_handler.go:111: [DEBUG] CreateUserHandler: creating user &{ID:1eb99e9b-4f90-4701-b55c-4d52157898ab Username:testuser1 PasswordHash:testpass1 Email:testuser1@example.com FullName:Test User 1 Role:user CreatedAt:0001-01-01 00:00:00 +0000 UTC UpdatedAt:0001-01-01 00:00:00 +0000 UTC}
+2025/06/26 16:05:57 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:05:57 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 2 users
+2025/06/26 16:05:57 user_repository.go:47: [DEBUG] UserRepository.SaveAll called with 3 users
+2025/06/26 16:05:57 user_repository.go:75: [DEBUG] UserRepository.FindByUsername called with username=testuser1
+2025/06/26 16:05:57 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:05:57 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 16:05:57 user_repository.go:82: [DEBUG] UserRepository.FindByUsername checking user: username=admin
+2025/06/26 16:05:57 user_repository.go:82: [DEBUG] UserRepository.FindByUsername checking user: username=an
+2025/06/26 16:05:57 user_repository.go:82: [DEBUG] UserRepository.FindByUsername checking user: username=testuser1
+2025/06/26 16:05:57 user_repository.go:84: [DEBUG] UserRepository.FindByUsername found user: username=testuser1
+2025/06/26 16:05:57 user_handler.go:124: [DEBUG] CreateUserHandler: user created successfully: &{ID:1eb99e9b-4f90-4701-b55c-4d52157898ab Username:testuser1 PasswordHash:testpass1 Email:testuser1@example.com FullName:Test User 1 Role:user CreatedAt:2025-06-26 16:05:57.6087485 +0700 +07 UpdatedAt:2025-06-26 16:05:57.6087485 +0700 +07}
+2025/06/26 16:05:57 logging.go:11: [INFO] [API] POST /api/login
+2025/06/26 16:05:57 user_handler.go:30: [DEBUG] LoginHandler called
+2025/06/26 16:05:57 user_repository.go:75: [DEBUG] UserRepository.FindByUsername called with username=testuser1
+2025/06/26 16:05:57 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:05:57 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 16:05:57 user_repository.go:82: [DEBUG] UserRepository.FindByUsername checking user: username=admin
+2025/06/26 16:05:57 user_repository.go:82: [DEBUG] UserRepository.FindByUsername checking user: username=an
+2025/06/26 16:05:57 user_repository.go:82: [DEBUG] UserRepository.FindByUsername checking user: username=testuser1
+2025/06/26 16:05:57 user_repository.go:84: [DEBUG] UserRepository.FindByUsername found user: username=testuser1
+2025/06/26 16:05:57 logging.go:11: [INFO] [API] POST /api/clients/assign-user
+2025/06/26 16:05:57 jwt.go:75: [DEBUG] JWTAuthMiddlewareFunc: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:05:57 jwt.go:48: [DEBUG] JWTAuthMiddleware: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:05:57 client_service.go:40: [DEBUG] ClientService.AssignUserToClient called with agentID=001, username=testuser1
+2025/06/26 16:05:57 user_repository.go:75: [DEBUG] UserRepository.FindByUsername called with username=testuser1
+2025/06/26 16:05:57 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:05:57 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 16:05:57 user_repository.go:82: [DEBUG] UserRepository.FindByUsername checking user: username=admin
+2025/06/26 16:05:57 user_repository.go:82: [DEBUG] UserRepository.FindByUsername checking user: username=an
+2025/06/26 16:05:57 user_repository.go:82: [DEBUG] UserRepository.FindByUsername checking user: username=testuser1
+2025/06/26 16:05:57 user_repository.go:84: [DEBUG] UserRepository.FindByUsername found user: username=testuser1
+2025/06/26 16:05:57 logging.go:11: [INFO] [API] GET /api/logs/my-device
+2025/06/26 16:05:57 jwt.go:75: [DEBUG] JWTAuthMiddlewareFunc: user_id = 1eb99e9b-4f90-4701-b55c-4d52157898ab, username = testuser1, role = user
+2025/06/26 16:05:57 log_handler.go:29: [DEBUG] GetMyDeviceLogHandler called
+2025/06/26 16:05:57 client_service.go:123: [DEBUG] ClientService.GetAgentIDsByUserID called with userID=testuser1
+2025/06/26 16:05:57 client_repository.go:68: [DEBUG] FindByUserID: loaded 1 clients, looking for userID=testuser1
+2025/06/26 16:05:57 client_repository.go:71: [DEBUG] Checking client: agentID=001, userID=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:05:57 client_repository.go:77: [DEBUG] FindByUserID: found 0 clients for userID=testuser1
+2025/06/26 16:05:57 log_handler.go:38: [DEBUG] GetMyDeviceLogHandler: user testuser1 has no agentIDs
+2025/06/26 16:08:22 logging.go:11: [INFO] [API] POST /api/login
+2025/06/26 16:08:22 user_handler.go:30: [DEBUG] LoginHandler called
+2025/06/26 16:08:22 user_repository.go:75: [DEBUG] UserRepository.FindByUsername called with username=admin
+2025/06/26 16:08:22 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:08:22 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 16:08:22 user_repository.go:82: [DEBUG] UserRepository.FindByUsername checking user: username=admin
+2025/06/26 16:08:22 user_repository.go:84: [DEBUG] UserRepository.FindByUsername found user: username=admin
+2025/06/26 16:08:22 logging.go:11: [INFO] [API] GET /api/users
+2025/06/26 16:08:22 jwt.go:75: [DEBUG] JWTAuthMiddlewareFunc: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:08:22 jwt.go:48: [DEBUG] JWTAuthMiddleware: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:08:22 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:08:22 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 16:08:22 logging.go:11: [INFO] [API] GET /api/clients
+2025/06/26 16:08:22 jwt.go:75: [DEBUG] JWTAuthMiddlewareFunc: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:08:22 client_handler.go:22: [DEBUG] ListClientsHandler called
+2025/06/26 16:08:22 client_service.go:87: [DEBUG] ClientService.GetAllClients called
+2025/06/26 16:08:22 user_repository.go:57: [DEBUG] UserRepository.FindByID called with id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:08:22 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:08:22 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 16:08:22 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=b1e2c3d4-5678-1234-9abc-1234567890ab
+2025/06/26 16:08:22 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=c2f3e4d5-6789-2345-0bcd-2345678901bc
+2025/06/26 16:08:22 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:08:22 user_repository.go:66: [DEBUG] UserRepository.FindByID found user: id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:08:22 client_handler.go:29: [DEBUG] ListClientsHandler success, 1 clients
+2025/06/26 16:08:22 logging.go:11: [INFO] [API] POST /api/clients/assign-user
+2025/06/26 16:08:22 jwt.go:75: [DEBUG] JWTAuthMiddlewareFunc: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:08:22 jwt.go:48: [DEBUG] JWTAuthMiddleware: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:08:22 client_service.go:40: [DEBUG] ClientService.AssignUserToClient called with agentID=001, username=an
+2025/06/26 16:08:22 user_repository.go:75: [DEBUG] UserRepository.FindByUsername called with username=an
+2025/06/26 16:08:22 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:08:22 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 16:08:22 user_repository.go:82: [DEBUG] UserRepository.FindByUsername checking user: username=admin
+2025/06/26 16:08:22 user_repository.go:82: [DEBUG] UserRepository.FindByUsername checking user: username=an
+2025/06/26 16:08:22 user_repository.go:84: [DEBUG] UserRepository.FindByUsername found user: username=an
+2025/06/26 16:08:22 logging.go:11: [INFO] [API] GET /api/logs/archive
+2025/06/26 16:08:22 jwt.go:75: [DEBUG] JWTAuthMiddlewareFunc: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:08:22 jwt.go:48: [DEBUG] JWTAuthMiddleware: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:08:22 log_handler.go:17: [DEBUG] GetArchiveLogHandler called
+2025/06/26 16:08:22 log_handler.go:24: [DEBUG] GetArchiveLogHandler success, 3 logs
+2025/06/26 16:08:22 logging.go:11: [INFO] [API] POST /api/login
+2025/06/26 16:08:22 user_handler.go:30: [DEBUG] LoginHandler called
+2025/06/26 16:08:22 user_repository.go:75: [DEBUG] UserRepository.FindByUsername called with username=testuser1
+2025/06/26 16:08:22 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:08:22 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 16:08:22 user_repository.go:82: [DEBUG] UserRepository.FindByUsername checking user: username=admin
+2025/06/26 16:08:22 user_repository.go:82: [DEBUG] UserRepository.FindByUsername checking user: username=an
+2025/06/26 16:08:22 user_repository.go:82: [DEBUG] UserRepository.FindByUsername checking user: username=testuser1
+2025/06/26 16:08:22 user_repository.go:84: [DEBUG] UserRepository.FindByUsername found user: username=testuser1
+2025/06/26 16:08:22 logging.go:11: [INFO] [API] POST /api/clients/assign-user
+2025/06/26 16:08:22 jwt.go:75: [DEBUG] JWTAuthMiddlewareFunc: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:08:22 jwt.go:48: [DEBUG] JWTAuthMiddleware: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:08:22 client_service.go:40: [DEBUG] ClientService.AssignUserToClient called with agentID=001, username=testuser1
+2025/06/26 16:08:22 user_repository.go:75: [DEBUG] UserRepository.FindByUsername called with username=testuser1
+2025/06/26 16:08:22 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:08:22 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 16:08:22 user_repository.go:82: [DEBUG] UserRepository.FindByUsername checking user: username=admin
+2025/06/26 16:08:22 user_repository.go:82: [DEBUG] UserRepository.FindByUsername checking user: username=an
+2025/06/26 16:08:22 user_repository.go:82: [DEBUG] UserRepository.FindByUsername checking user: username=testuser1
+2025/06/26 16:08:22 user_repository.go:84: [DEBUG] UserRepository.FindByUsername found user: username=testuser1
+2025/06/26 16:08:22 logging.go:11: [INFO] [API] GET /api/logs/my-device
+2025/06/26 16:08:22 jwt.go:75: [DEBUG] JWTAuthMiddlewareFunc: user_id = 1eb99e9b-4f90-4701-b55c-4d52157898ab, username = testuser1, role = user
+2025/06/26 16:08:22 log_handler.go:29: [DEBUG] GetMyDeviceLogHandler called
+2025/06/26 16:08:22 client_service.go:123: [DEBUG] ClientService.GetAgentIDsByUserID called with userID=testuser1
+2025/06/26 16:08:22 client_repository.go:68: [DEBUG] FindByUserID: loaded 1 clients, looking for userID=testuser1
+2025/06/26 16:08:22 client_repository.go:71: [DEBUG] Checking client: agentID=001, userID=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:08:22 client_repository.go:77: [DEBUG] FindByUserID: found 0 clients for userID=testuser1
+2025/06/26 16:08:22 log_handler.go:38: [DEBUG] GetMyDeviceLogHandler: user testuser1 has no agentIDs
+2025/06/26 16:08:22 logging.go:11: [INFO] [API] GET /api/clients/001/otp
+2025/06/26 16:08:22 jwt.go:75: [DEBUG] JWTAuthMiddlewareFunc: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:12:20 logging.go:11: [INFO] [API] OPTIONS /api/login
+2025/06/26 16:12:20 logging.go:11: [INFO] [API] POST /api/login
+2025/06/26 16:12:20 user_handler.go:30: [DEBUG] LoginHandler called
+2025/06/26 16:12:20 user_repository.go:75: [DEBUG] UserRepository.FindByUsername called with username=admin
+2025/06/26 16:12:20 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:12:20 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 16:12:20 user_repository.go:82: [DEBUG] UserRepository.FindByUsername checking user: username=admin
+2025/06/26 16:12:20 user_repository.go:84: [DEBUG] UserRepository.FindByUsername found user: username=admin
+2025/06/26 16:12:20 user_handler.go:52: [DEBUG] LoginHandler: password mismatch for user admin
+2025/06/26 16:12:24 logging.go:11: [INFO] [API] POST /api/login
+2025/06/26 16:12:24 user_handler.go:30: [DEBUG] LoginHandler called
+2025/06/26 16:12:24 user_repository.go:75: [DEBUG] UserRepository.FindByUsername called with username=an
+2025/06/26 16:12:24 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:12:24 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 16:12:24 user_repository.go:82: [DEBUG] UserRepository.FindByUsername checking user: username=admin
+2025/06/26 16:12:24 user_repository.go:82: [DEBUG] UserRepository.FindByUsername checking user: username=an
+2025/06/26 16:12:24 user_repository.go:84: [DEBUG] UserRepository.FindByUsername found user: username=an
+2025/06/26 16:12:24 logging.go:11: [INFO] [API] OPTIONS /api/clients
+2025/06/26 16:12:24 logging.go:11: [INFO] [API] OPTIONS /api/users
+2025/06/26 16:12:24 logging.go:11: [INFO] [API] GET /api/clients
+2025/06/26 16:12:24 logging.go:11: [INFO] [API] GET /api/users
+2025/06/26 16:12:24 jwt.go:75: [DEBUG] JWTAuthMiddlewareFunc: user_id = c2f3e4d5-6789-2345-0bcd-2345678901bc, username = an, role = user
+2025/06/26 16:12:24 jwt.go:75: [DEBUG] JWTAuthMiddlewareFunc: user_id = c2f3e4d5-6789-2345-0bcd-2345678901bc, username = an, role = user
+2025/06/26 16:12:24 client_handler.go:22: [DEBUG] ListClientsHandler called
+2025/06/26 16:12:24 client_service.go:87: [DEBUG] ClientService.GetAllClients called
+2025/06/26 16:12:24 user_repository.go:57: [DEBUG] UserRepository.FindByID called with id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:12:24 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:12:24 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 16:12:24 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=b1e2c3d4-5678-1234-9abc-1234567890ab
+2025/06/26 16:12:24 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=c2f3e4d5-6789-2345-0bcd-2345678901bc
+2025/06/26 16:12:24 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:12:24 user_repository.go:66: [DEBUG] UserRepository.FindByID found user: id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:12:24 client_handler.go:29: [DEBUG] ListClientsHandler success, 1 clients
+2025/06/26 16:12:42 logging.go:11: [INFO] [API] OPTIONS /api/login
+2025/06/26 16:12:42 logging.go:11: [INFO] [API] POST /api/login
+2025/06/26 16:12:42 user_handler.go:30: [DEBUG] LoginHandler called
+2025/06/26 16:12:42 user_repository.go:75: [DEBUG] UserRepository.FindByUsername called with username=admin
+2025/06/26 16:12:42 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:12:42 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 16:12:42 user_repository.go:82: [DEBUG] UserRepository.FindByUsername checking user: username=admin
+2025/06/26 16:12:42 user_repository.go:84: [DEBUG] UserRepository.FindByUsername found user: username=admin
+2025/06/26 16:12:42 logging.go:11: [INFO] [API] OPTIONS /api/clients
+2025/06/26 16:12:42 logging.go:11: [INFO] [API] OPTIONS /api/users
+2025/06/26 16:12:42 logging.go:11: [INFO] [API] OPTIONS /api/clients
+2025/06/26 16:12:42 logging.go:11: [INFO] [API] GET /api/clients
+2025/06/26 16:12:42 jwt.go:75: [DEBUG] JWTAuthMiddlewareFunc: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:12:42 logging.go:11: [INFO] [API] GET /api/users
+2025/06/26 16:12:42 client_handler.go:22: [DEBUG] ListClientsHandler called
+2025/06/26 16:12:42 client_service.go:87: [DEBUG] ClientService.GetAllClients called
+2025/06/26 16:12:42 jwt.go:75: [DEBUG] JWTAuthMiddlewareFunc: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:12:42 jwt.go:48: [DEBUG] JWTAuthMiddleware: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:12:42 user_repository.go:57: [DEBUG] UserRepository.FindByID called with id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:12:42 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:12:42 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:12:42 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 16:12:42 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=b1e2c3d4-5678-1234-9abc-1234567890ab
+2025/06/26 16:12:42 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=c2f3e4d5-6789-2345-0bcd-2345678901bc
+2025/06/26 16:12:42 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:12:42 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 16:12:42 user_repository.go:66: [DEBUG] UserRepository.FindByID found user: id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:12:42 client_handler.go:29: [DEBUG] ListClientsHandler success, 1 clients
+2025/06/26 16:12:42 logging.go:11: [INFO] [API] GET /api/clients
+2025/06/26 16:12:42 jwt.go:75: [DEBUG] JWTAuthMiddlewareFunc: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:12:42 client_handler.go:22: [DEBUG] ListClientsHandler called
+2025/06/26 16:12:42 client_service.go:87: [DEBUG] ClientService.GetAllClients called
+2025/06/26 16:12:42 user_repository.go:57: [DEBUG] UserRepository.FindByID called with id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:12:42 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:12:42 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 16:12:42 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=b1e2c3d4-5678-1234-9abc-1234567890ab
+2025/06/26 16:12:42 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=c2f3e4d5-6789-2345-0bcd-2345678901bc
+2025/06/26 16:12:42 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:12:42 user_repository.go:66: [DEBUG] UserRepository.FindByID found user: id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:12:42 client_handler.go:29: [DEBUG] ListClientsHandler success, 1 clients
+2025/06/26 16:12:42 logging.go:11: [INFO] [API] OPTIONS /api/logs/archive
+2025/06/26 16:12:42 logging.go:11: [INFO] [API] GET /api/logs/archive
+2025/06/26 16:12:42 jwt.go:75: [DEBUG] JWTAuthMiddlewareFunc: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:12:42 jwt.go:48: [DEBUG] JWTAuthMiddleware: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:12:42 log_handler.go:17: [DEBUG] GetArchiveLogHandler called
+2025/06/26 16:12:42 log_handler.go:24: [DEBUG] GetArchiveLogHandler success, 0 logs
+2025/06/26 16:12:44 logging.go:11: [INFO] [API] GET /api/clients
+2025/06/26 16:12:44 jwt.go:75: [DEBUG] JWTAuthMiddlewareFunc: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:12:44 logging.go:11: [INFO] [API] GET /api/logs/archive
+2025/06/26 16:12:44 client_handler.go:22: [DEBUG] ListClientsHandler called
+2025/06/26 16:12:44 client_service.go:87: [DEBUG] ClientService.GetAllClients called
+2025/06/26 16:12:44 jwt.go:75: [DEBUG] JWTAuthMiddlewareFunc: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:12:44 jwt.go:48: [DEBUG] JWTAuthMiddleware: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:12:44 user_repository.go:57: [DEBUG] UserRepository.FindByID called with id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:12:44 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:12:44 log_handler.go:17: [DEBUG] GetArchiveLogHandler called
+2025/06/26 16:12:44 log_handler.go:24: [DEBUG] GetArchiveLogHandler success, 0 logs
+2025/06/26 16:12:44 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 16:12:44 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=b1e2c3d4-5678-1234-9abc-1234567890ab
+2025/06/26 16:12:44 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=c2f3e4d5-6789-2345-0bcd-2345678901bc
+2025/06/26 16:12:44 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:12:44 user_repository.go:66: [DEBUG] UserRepository.FindByID found user: id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:12:44 client_handler.go:29: [DEBUG] ListClientsHandler success, 1 clients
+2025/06/26 16:12:45 logging.go:11: [INFO] [API] GET /api/clients
+2025/06/26 16:12:45 logging.go:11: [INFO] [API] GET /api/logs/archive
+2025/06/26 16:12:45 jwt.go:75: [DEBUG] JWTAuthMiddlewareFunc: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:12:45 client_handler.go:22: [DEBUG] ListClientsHandler called
+2025/06/26 16:12:45 client_service.go:87: [DEBUG] ClientService.GetAllClients called
+2025/06/26 16:12:45 jwt.go:75: [DEBUG] JWTAuthMiddlewareFunc: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:12:45 user_repository.go:57: [DEBUG] UserRepository.FindByID called with id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:12:45 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:12:45 jwt.go:48: [DEBUG] JWTAuthMiddleware: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:12:45 log_handler.go:17: [DEBUG] GetArchiveLogHandler called
+2025/06/26 16:12:45 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 16:12:45 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=b1e2c3d4-5678-1234-9abc-1234567890ab
+2025/06/26 16:12:45 log_handler.go:24: [DEBUG] GetArchiveLogHandler success, 0 logs
+2025/06/26 16:12:45 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=c2f3e4d5-6789-2345-0bcd-2345678901bc
+2025/06/26 16:12:45 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:12:45 user_repository.go:66: [DEBUG] UserRepository.FindByID found user: id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:12:45 client_handler.go:29: [DEBUG] ListClientsHandler success, 1 clients
+2025/06/26 16:12:46 logging.go:11: [INFO] [API] GET /api/clients
+2025/06/26 16:12:46 logging.go:11: [INFO] [API] GET /api/logs/archive
+2025/06/26 16:12:46 jwt.go:75: [DEBUG] JWTAuthMiddlewareFunc: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:12:46 client_handler.go:22: [DEBUG] ListClientsHandler called
+2025/06/26 16:12:46 client_service.go:87: [DEBUG] ClientService.GetAllClients called
+2025/06/26 16:12:46 jwt.go:75: [DEBUG] JWTAuthMiddlewareFunc: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:12:46 user_repository.go:57: [DEBUG] UserRepository.FindByID called with id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:12:46 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:12:46 jwt.go:48: [DEBUG] JWTAuthMiddleware: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:12:46 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 16:12:46 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=b1e2c3d4-5678-1234-9abc-1234567890ab
+2025/06/26 16:12:46 log_handler.go:17: [DEBUG] GetArchiveLogHandler called
+2025/06/26 16:12:46 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=c2f3e4d5-6789-2345-0bcd-2345678901bc
+2025/06/26 16:12:46 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:12:46 user_repository.go:66: [DEBUG] UserRepository.FindByID found user: id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:12:46 client_handler.go:29: [DEBUG] ListClientsHandler success, 1 clients
+2025/06/26 16:12:46 log_handler.go:24: [DEBUG] GetArchiveLogHandler success, 0 logs
+2025/06/26 16:12:54 logging.go:11: [INFO] [API] OPTIONS /api/users
+2025/06/26 16:12:54 logging.go:11: [INFO] [API] GET /api/users
+2025/06/26 16:12:54 jwt.go:75: [DEBUG] JWTAuthMiddlewareFunc: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:12:54 jwt.go:48: [DEBUG] JWTAuthMiddleware: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:12:54 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:12:54 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 16:13:24 logging.go:11: [INFO] [API] OPTIONS /api/users/update-info
+2025/06/26 16:13:24 logging.go:11: [INFO] [API] POST /api/users/update-info
+2025/06/26 16:13:24 jwt.go:75: [DEBUG] JWTAuthMiddlewareFunc: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:13:24 logging.go:11: [INFO] [API] OPTIONS /api/users
+2025/06/26 16:13:24 logging.go:11: [INFO] [API] GET /api/users
+2025/06/26 16:13:24 jwt.go:75: [DEBUG] JWTAuthMiddlewareFunc: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:13:24 jwt.go:48: [DEBUG] JWTAuthMiddleware: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:13:24 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:13:24 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 16:21:27 tcpserver.go:27: [INFO] TCP server (AES) listening on :9000
+2025/06/26 16:21:27 api.go:59: [INFO] API server (Gin) starting on port 8082...
+2025/06/26 16:21:30 logging.go:11: [INFO] [API] OPTIONS /api/clients
+2025/06/26 16:21:30 logging.go:11: [INFO] [API] OPTIONS /api/users
+2025/06/26 16:21:30 logging.go:11: [INFO] [API] OPTIONS /api/clients
+2025/06/26 16:21:30 logging.go:11: [INFO] [API] GET /api/clients
+2025/06/26 16:21:30 logging.go:11: [INFO] [API] GET /api/users
+2025/06/26 16:21:30 jwt.go:75: [DEBUG] JWTAuthMiddlewareFunc: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:21:30 jwt.go:48: [DEBUG] JWTAuthMiddleware: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:21:30 jwt.go:75: [DEBUG] JWTAuthMiddlewareFunc: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:21:30 client_handler.go:22: [DEBUG] ListClientsHandler called
+2025/06/26 16:21:30 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:21:30 client_service.go:87: [DEBUG] ClientService.GetAllClients called
+2025/06/26 16:21:30 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 16:21:30 user_repository.go:57: [DEBUG] UserRepository.FindByID called with id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:21:30 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:21:30 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 16:21:30 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=b1e2c3d4-5678-1234-9abc-1234567890ab
+2025/06/26 16:21:30 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=c2f3e4d5-6789-2345-0bcd-2345678901bc
+2025/06/26 16:21:30 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:21:30 user_repository.go:66: [DEBUG] UserRepository.FindByID found user: id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:21:30 client_handler.go:29: [DEBUG] ListClientsHandler success, 1 clients
+2025/06/26 16:21:30 logging.go:11: [INFO] [API] GET /api/clients
+2025/06/26 16:21:30 jwt.go:75: [DEBUG] JWTAuthMiddlewareFunc: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:21:30 client_handler.go:22: [DEBUG] ListClientsHandler called
+2025/06/26 16:21:30 client_service.go:87: [DEBUG] ClientService.GetAllClients called
+2025/06/26 16:21:30 user_repository.go:57: [DEBUG] UserRepository.FindByID called with id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:21:30 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:21:30 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 16:21:30 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=b1e2c3d4-5678-1234-9abc-1234567890ab
+2025/06/26 16:21:30 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=c2f3e4d5-6789-2345-0bcd-2345678901bc
+2025/06/26 16:21:30 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:21:30 user_repository.go:66: [DEBUG] UserRepository.FindByID found user: id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:21:30 client_handler.go:29: [DEBUG] ListClientsHandler success, 1 clients
+2025/06/26 16:21:30 logging.go:11: [INFO] [API] OPTIONS /api/logs/archive
+2025/06/26 16:21:30 logging.go:11: [INFO] [API] GET /api/logs/archive
+2025/06/26 16:21:30 jwt.go:75: [DEBUG] JWTAuthMiddlewareFunc: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:21:30 jwt.go:48: [DEBUG] JWTAuthMiddleware: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:21:30 log_handler.go:17: [DEBUG] GetArchiveLogHandler called
+2025/06/26 16:21:30 log_handler.go:24: [DEBUG] GetArchiveLogHandler success, 0 logs
+2025/06/26 16:21:32 logging.go:11: [INFO] [API] GET /api/clients
+2025/06/26 16:21:32 logging.go:11: [INFO] [API] GET /api/users
+2025/06/26 16:21:32 jwt.go:75: [DEBUG] JWTAuthMiddlewareFunc: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:21:32 client_handler.go:22: [DEBUG] ListClientsHandler called
+2025/06/26 16:21:32 jwt.go:75: [DEBUG] JWTAuthMiddlewareFunc: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:21:32 client_service.go:87: [DEBUG] ClientService.GetAllClients called
+2025/06/26 16:21:32 jwt.go:48: [DEBUG] JWTAuthMiddleware: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:21:32 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:21:32 user_repository.go:57: [DEBUG] UserRepository.FindByID called with id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:21:32 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:21:32 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 16:21:32 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 16:21:32 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=b1e2c3d4-5678-1234-9abc-1234567890ab
+2025/06/26 16:21:32 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=c2f3e4d5-6789-2345-0bcd-2345678901bc
+2025/06/26 16:21:32 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:21:32 user_repository.go:66: [DEBUG] UserRepository.FindByID found user: id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:21:32 client_handler.go:29: [DEBUG] ListClientsHandler success, 1 clients
+2025/06/26 16:21:32 logging.go:11: [INFO] [API] GET /api/clients
+2025/06/26 16:21:32 jwt.go:75: [DEBUG] JWTAuthMiddlewareFunc: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:21:32 client_handler.go:22: [DEBUG] ListClientsHandler called
+2025/06/26 16:21:32 client_service.go:87: [DEBUG] ClientService.GetAllClients called
+2025/06/26 16:21:32 user_repository.go:57: [DEBUG] UserRepository.FindByID called with id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:21:32 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:21:32 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 16:21:32 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=b1e2c3d4-5678-1234-9abc-1234567890ab
+2025/06/26 16:21:32 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=c2f3e4d5-6789-2345-0bcd-2345678901bc
+2025/06/26 16:21:32 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:21:32 user_repository.go:66: [DEBUG] UserRepository.FindByID found user: id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:21:32 client_handler.go:29: [DEBUG] ListClientsHandler success, 1 clients
+2025/06/26 16:21:32 logging.go:11: [INFO] [API] GET /api/logs/archive
+2025/06/26 16:21:32 jwt.go:75: [DEBUG] JWTAuthMiddlewareFunc: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:21:32 jwt.go:48: [DEBUG] JWTAuthMiddleware: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:21:32 log_handler.go:17: [DEBUG] GetArchiveLogHandler called
+2025/06/26 16:21:32 log_handler.go:24: [DEBUG] GetArchiveLogHandler success, 0 logs
+2025/06/26 16:21:33 logging.go:11: [INFO] [API] GET /api/clients
+2025/06/26 16:21:33 logging.go:11: [INFO] [API] GET /api/users
+2025/06/26 16:21:33 jwt.go:75: [DEBUG] JWTAuthMiddlewareFunc: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:21:33 client_handler.go:22: [DEBUG] ListClientsHandler called
+2025/06/26 16:21:33 client_service.go:87: [DEBUG] ClientService.GetAllClients called
+2025/06/26 16:21:33 jwt.go:75: [DEBUG] JWTAuthMiddlewareFunc: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:21:33 user_repository.go:57: [DEBUG] UserRepository.FindByID called with id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:21:33 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:21:33 jwt.go:48: [DEBUG] JWTAuthMiddleware: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:21:33 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 16:21:33 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=b1e2c3d4-5678-1234-9abc-1234567890ab
+2025/06/26 16:21:33 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=c2f3e4d5-6789-2345-0bcd-2345678901bc
+2025/06/26 16:21:33 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:21:33 user_repository.go:66: [DEBUG] UserRepository.FindByID found user: id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:21:33 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:21:33 client_handler.go:29: [DEBUG] ListClientsHandler success, 1 clients
+2025/06/26 16:21:33 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 16:21:33 logging.go:11: [INFO] [API] GET /api/clients
+2025/06/26 16:21:33 jwt.go:75: [DEBUG] JWTAuthMiddlewareFunc: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:21:33 client_handler.go:22: [DEBUG] ListClientsHandler called
+2025/06/26 16:21:33 client_service.go:87: [DEBUG] ClientService.GetAllClients called
+2025/06/26 16:21:33 user_repository.go:57: [DEBUG] UserRepository.FindByID called with id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:21:33 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:21:33 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 16:21:33 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=b1e2c3d4-5678-1234-9abc-1234567890ab
+2025/06/26 16:21:33 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=c2f3e4d5-6789-2345-0bcd-2345678901bc
+2025/06/26 16:21:33 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:21:33 user_repository.go:66: [DEBUG] UserRepository.FindByID found user: id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:21:33 client_handler.go:29: [DEBUG] ListClientsHandler success, 1 clients
+2025/06/26 16:21:33 logging.go:11: [INFO] [API] GET /api/logs/archive
+2025/06/26 16:21:33 jwt.go:75: [DEBUG] JWTAuthMiddlewareFunc: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:21:33 jwt.go:48: [DEBUG] JWTAuthMiddleware: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:21:33 log_handler.go:17: [DEBUG] GetArchiveLogHandler called
+2025/06/26 16:21:33 log_handler.go:24: [DEBUG] GetArchiveLogHandler success, 0 logs
+2025/06/26 16:21:38 logging.go:11: [INFO] [API] OPTIONS /api/users
+2025/06/26 16:21:38 logging.go:11: [INFO] [API] GET /api/users
+2025/06/26 16:21:38 jwt.go:75: [DEBUG] JWTAuthMiddlewareFunc: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:21:38 jwt.go:48: [DEBUG] JWTAuthMiddleware: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:21:38 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:21:38 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 16:21:51 logging.go:11: [INFO] [API] OPTIONS /api/users/update-info
+2025/06/26 16:21:51 logging.go:11: [INFO] [API] POST /api/users/update-info
+2025/06/26 16:21:51 jwt.go:75: [DEBUG] JWTAuthMiddlewareFunc: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:21:51 user_handler.go:220: [DEBUG] UpdateUserInfoHandler called
+2025/06/26 16:21:51 user_handler.go:237: [DEBUG] UpdateUserInfoHandler: missing full_name
+2025/06/26 16:21:51 logging.go:11: [INFO] [API] OPTIONS /api/users
+2025/06/26 16:21:51 logging.go:11: [INFO] [API] GET /api/users
+2025/06/26 16:21:51 jwt.go:75: [DEBUG] JWTAuthMiddlewareFunc: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:21:51 jwt.go:48: [DEBUG] JWTAuthMiddleware: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:21:51 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:21:51 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 16:21:59 logging.go:11: [INFO] [API] OPTIONS /api/users/update-info
+2025/06/26 16:21:59 logging.go:11: [INFO] [API] POST /api/users/update-info
+2025/06/26 16:21:59 jwt.go:75: [DEBUG] JWTAuthMiddlewareFunc: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:21:59 user_handler.go:220: [DEBUG] UpdateUserInfoHandler called
+2025/06/26 16:21:59 user_handler.go:237: [DEBUG] UpdateUserInfoHandler: missing full_name
+2025/06/26 16:21:59 logging.go:11: [INFO] [API] OPTIONS /api/users
+2025/06/26 16:21:59 logging.go:11: [INFO] [API] GET /api/users
+2025/06/26 16:21:59 jwt.go:75: [DEBUG] JWTAuthMiddlewareFunc: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:21:59 jwt.go:48: [DEBUG] JWTAuthMiddleware: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:21:59 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:21:59 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 16:23:23 tcpserver.go:27: [INFO] TCP server (AES) listening on :9000
+2025/06/26 16:23:23 api.go:59: [INFO] API server (Gin) starting on port 8082...
+2025/06/26 16:23:27 logging.go:11: [INFO] [API] OPTIONS /api/users
+2025/06/26 16:23:27 logging.go:11: [INFO] [API] GET /api/users
+2025/06/26 16:23:39 logging.go:11: [INFO] [API] OPTIONS /api/login
+2025/06/26 16:23:39 logging.go:11: [INFO] [API] POST /api/login
+2025/06/26 16:23:39 user_handler.go:30: [DEBUG] LoginHandler called
+2025/06/26 16:23:39 user_repository.go:75: [DEBUG] UserRepository.FindByUsername called with username=admin
+2025/06/26 16:23:39 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:23:39 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 16:23:39 user_repository.go:82: [DEBUG] UserRepository.FindByUsername checking user: username=admin
+2025/06/26 16:23:39 user_repository.go:84: [DEBUG] UserRepository.FindByUsername found user: username=admin
+2025/06/26 16:23:39 logging.go:11: [INFO] [API] OPTIONS /api/clients
+2025/06/26 16:23:39 logging.go:11: [INFO] [API] OPTIONS /api/users
+2025/06/26 16:23:39 logging.go:11: [INFO] [API] OPTIONS /api/clients
+2025/06/26 16:23:39 logging.go:11: [INFO] [API] GET /api/clients
+2025/06/26 16:23:39 logging.go:11: [INFO] [API] GET /api/users
+2025/06/26 16:23:39 jwt.go:75: [DEBUG] JWTAuthMiddlewareFunc: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:23:39 jwt.go:75: [DEBUG] JWTAuthMiddlewareFunc: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:23:39 client_handler.go:22: [DEBUG] ListClientsHandler called
+2025/06/26 16:23:39 client_service.go:87: [DEBUG] ClientService.GetAllClients called
+2025/06/26 16:23:39 jwt.go:48: [DEBUG] JWTAuthMiddleware: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:23:39 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:23:39 user_repository.go:57: [DEBUG] UserRepository.FindByID called with id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:23:39 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 16:23:39 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:23:39 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 16:23:39 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=b1e2c3d4-5678-1234-9abc-1234567890ab
+2025/06/26 16:23:39 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=c2f3e4d5-6789-2345-0bcd-2345678901bc
+2025/06/26 16:23:39 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:23:39 user_repository.go:66: [DEBUG] UserRepository.FindByID found user: id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:23:39 client_handler.go:29: [DEBUG] ListClientsHandler success, 1 clients
+2025/06/26 16:23:39 logging.go:11: [INFO] [API] GET /api/clients
+2025/06/26 16:23:39 jwt.go:75: [DEBUG] JWTAuthMiddlewareFunc: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:23:39 client_handler.go:22: [DEBUG] ListClientsHandler called
+2025/06/26 16:23:39 client_service.go:87: [DEBUG] ClientService.GetAllClients called
+2025/06/26 16:23:39 user_repository.go:57: [DEBUG] UserRepository.FindByID called with id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:23:39 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:23:39 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 16:23:39 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=b1e2c3d4-5678-1234-9abc-1234567890ab
+2025/06/26 16:23:39 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=c2f3e4d5-6789-2345-0bcd-2345678901bc
+2025/06/26 16:23:39 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:23:39 user_repository.go:66: [DEBUG] UserRepository.FindByID found user: id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:23:39 client_handler.go:29: [DEBUG] ListClientsHandler success, 1 clients
+2025/06/26 16:23:39 logging.go:11: [INFO] [API] OPTIONS /api/logs/archive
+2025/06/26 16:23:39 logging.go:11: [INFO] [API] GET /api/logs/archive
+2025/06/26 16:23:39 jwt.go:75: [DEBUG] JWTAuthMiddlewareFunc: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:23:39 jwt.go:48: [DEBUG] JWTAuthMiddleware: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:23:39 log_handler.go:17: [DEBUG] GetArchiveLogHandler called
+2025/06/26 16:23:39 log_handler.go:24: [DEBUG] GetArchiveLogHandler success, 0 logs
+2025/06/26 16:23:42 logging.go:11: [INFO] [API] GET /api/users
+2025/06/26 16:23:42 jwt.go:75: [DEBUG] JWTAuthMiddlewareFunc: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:23:42 jwt.go:48: [DEBUG] JWTAuthMiddleware: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:23:42 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:23:42 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 16:23:46 logging.go:11: [INFO] [API] OPTIONS /api/users/update-info
+2025/06/26 16:23:46 logging.go:11: [INFO] [API] POST /api/users/update-info
+2025/06/26 16:23:46 jwt.go:75: [DEBUG] JWTAuthMiddlewareFunc: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:23:46 user_handler.go:220: [DEBUG] UpdateUserInfoHandler called
+2025/06/26 16:23:46 user_repository.go:75: [DEBUG] UserRepository.FindByUsername called with username=an
+2025/06/26 16:23:46 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:23:46 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 16:23:46 user_repository.go:82: [DEBUG] UserRepository.FindByUsername checking user: username=admin
+2025/06/26 16:23:46 user_repository.go:82: [DEBUG] UserRepository.FindByUsername checking user: username=an
+2025/06/26 16:23:46 user_repository.go:84: [DEBUG] UserRepository.FindByUsername found user: username=an
+2025/06/26 16:23:46 user_handler.go:252: [DEBUG] UpdateUserInfoHandler: nothing to update for user an
+2025/06/26 16:23:49 logging.go:11: [INFO] [API] POST /api/users/update-info
+2025/06/26 16:23:49 jwt.go:75: [DEBUG] JWTAuthMiddlewareFunc: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:23:49 user_handler.go:220: [DEBUG] UpdateUserInfoHandler called
+2025/06/26 16:23:49 user_repository.go:75: [DEBUG] UserRepository.FindByUsername called with username=an
+2025/06/26 16:23:49 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:23:49 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 16:23:49 user_repository.go:82: [DEBUG] UserRepository.FindByUsername checking user: username=admin
+2025/06/26 16:23:49 user_repository.go:82: [DEBUG] UserRepository.FindByUsername checking user: username=an
+2025/06/26 16:23:49 user_repository.go:84: [DEBUG] UserRepository.FindByUsername found user: username=an
+2025/06/26 16:23:49 user_handler.go:252: [DEBUG] UpdateUserInfoHandler: nothing to update for user an
+2025/06/26 16:23:50 logging.go:11: [INFO] [API] POST /api/users/update-info
+2025/06/26 16:23:50 jwt.go:75: [DEBUG] JWTAuthMiddlewareFunc: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:23:50 user_handler.go:220: [DEBUG] UpdateUserInfoHandler called
+2025/06/26 16:23:50 user_repository.go:75: [DEBUG] UserRepository.FindByUsername called with username=an
+2025/06/26 16:23:50 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:23:50 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 16:23:50 user_repository.go:82: [DEBUG] UserRepository.FindByUsername checking user: username=admin
+2025/06/26 16:23:50 user_repository.go:82: [DEBUG] UserRepository.FindByUsername checking user: username=an
+2025/06/26 16:23:50 user_repository.go:84: [DEBUG] UserRepository.FindByUsername found user: username=an
+2025/06/26 16:23:50 user_handler.go:252: [DEBUG] UpdateUserInfoHandler: nothing to update for user an
+2025/06/26 16:27:30 logging.go:11: [INFO] [API] OPTIONS /api/clients
+2025/06/26 16:27:30 logging.go:11: [INFO] [API] OPTIONS /api/users
+2025/06/26 16:27:30 logging.go:11: [INFO] [API] OPTIONS /api/clients
+2025/06/26 16:27:30 logging.go:11: [INFO] [API] GET /api/clients
+2025/06/26 16:27:30 jwt.go:75: [DEBUG] JWTAuthMiddlewareFunc: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:27:30 client_handler.go:22: [DEBUG] ListClientsHandler called
+2025/06/26 16:27:30 logging.go:11: [INFO] [API] GET /api/users
+2025/06/26 16:27:30 client_service.go:87: [DEBUG] ClientService.GetAllClients called
+2025/06/26 16:27:30 jwt.go:75: [DEBUG] JWTAuthMiddlewareFunc: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:27:30 jwt.go:48: [DEBUG] JWTAuthMiddleware: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:27:30 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:27:30 user_repository.go:57: [DEBUG] UserRepository.FindByID called with id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:27:30 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:27:30 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 16:27:30 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 16:27:30 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=b1e2c3d4-5678-1234-9abc-1234567890ab
+2025/06/26 16:27:30 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=c2f3e4d5-6789-2345-0bcd-2345678901bc
+2025/06/26 16:27:30 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:27:30 user_repository.go:66: [DEBUG] UserRepository.FindByID found user: id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:27:30 client_handler.go:29: [DEBUG] ListClientsHandler success, 1 clients
+2025/06/26 16:27:30 logging.go:11: [INFO] [API] GET /api/clients
+2025/06/26 16:27:30 jwt.go:75: [DEBUG] JWTAuthMiddlewareFunc: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:27:30 client_handler.go:22: [DEBUG] ListClientsHandler called
+2025/06/26 16:27:30 client_service.go:87: [DEBUG] ClientService.GetAllClients called
+2025/06/26 16:27:30 user_repository.go:57: [DEBUG] UserRepository.FindByID called with id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:27:30 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:27:30 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 16:27:30 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=b1e2c3d4-5678-1234-9abc-1234567890ab
+2025/06/26 16:27:30 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=c2f3e4d5-6789-2345-0bcd-2345678901bc
+2025/06/26 16:27:30 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:27:30 user_repository.go:66: [DEBUG] UserRepository.FindByID found user: id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:27:30 client_handler.go:29: [DEBUG] ListClientsHandler success, 1 clients
+2025/06/26 16:27:30 logging.go:11: [INFO] [API] OPTIONS /api/logs/archive
+2025/06/26 16:27:30 logging.go:11: [INFO] [API] GET /api/logs/archive
+2025/06/26 16:27:30 jwt.go:75: [DEBUG] JWTAuthMiddlewareFunc: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:27:30 jwt.go:48: [DEBUG] JWTAuthMiddleware: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:27:30 log_handler.go:17: [DEBUG] GetArchiveLogHandler called
+2025/06/26 16:27:30 log_handler.go:24: [DEBUG] GetArchiveLogHandler success, 0 logs
+2025/06/26 16:27:46 logging.go:11: [INFO] [API] OPTIONS /api/users
+2025/06/26 16:27:46 logging.go:11: [INFO] [API] GET /api/users
+2025/06/26 16:27:46 jwt.go:75: [DEBUG] JWTAuthMiddlewareFunc: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:27:46 jwt.go:48: [DEBUG] JWTAuthMiddleware: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:27:46 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:27:46 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 16:28:09 logging.go:11: [INFO] [API] OPTIONS /api/clients
+2025/06/26 16:28:09 logging.go:11: [INFO] [API] OPTIONS /api/users
+2025/06/26 16:28:09 logging.go:11: [INFO] [API] OPTIONS /api/clients
+2025/06/26 16:28:09 logging.go:11: [INFO] [API] GET /api/clients
+2025/06/26 16:28:09 logging.go:11: [INFO] [API] GET /api/users
+2025/06/26 16:28:09 jwt.go:75: [DEBUG] JWTAuthMiddlewareFunc: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:28:09 client_handler.go:22: [DEBUG] ListClientsHandler called
+2025/06/26 16:28:09 client_service.go:87: [DEBUG] ClientService.GetAllClients called
+2025/06/26 16:28:09 jwt.go:75: [DEBUG] JWTAuthMiddlewareFunc: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:28:09 jwt.go:48: [DEBUG] JWTAuthMiddleware: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:28:09 user_repository.go:57: [DEBUG] UserRepository.FindByID called with id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:28:09 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:28:09 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:28:09 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 16:28:09 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 16:28:09 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=b1e2c3d4-5678-1234-9abc-1234567890ab
+2025/06/26 16:28:09 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=c2f3e4d5-6789-2345-0bcd-2345678901bc
+2025/06/26 16:28:09 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:28:09 user_repository.go:66: [DEBUG] UserRepository.FindByID found user: id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:28:09 client_handler.go:29: [DEBUG] ListClientsHandler success, 1 clients
+2025/06/26 16:28:09 logging.go:11: [INFO] [API] GET /api/clients
+2025/06/26 16:28:09 jwt.go:75: [DEBUG] JWTAuthMiddlewareFunc: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:28:09 client_handler.go:22: [DEBUG] ListClientsHandler called
+2025/06/26 16:28:09 client_service.go:87: [DEBUG] ClientService.GetAllClients called
+2025/06/26 16:28:09 user_repository.go:57: [DEBUG] UserRepository.FindByID called with id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:28:09 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:28:09 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 16:28:09 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=b1e2c3d4-5678-1234-9abc-1234567890ab
+2025/06/26 16:28:09 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=c2f3e4d5-6789-2345-0bcd-2345678901bc
+2025/06/26 16:28:09 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:28:09 user_repository.go:66: [DEBUG] UserRepository.FindByID found user: id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:28:09 client_handler.go:29: [DEBUG] ListClientsHandler success, 1 clients
+2025/06/26 16:28:09 logging.go:11: [INFO] [API] OPTIONS /api/logs/archive
+2025/06/26 16:28:09 logging.go:11: [INFO] [API] GET /api/logs/archive
+2025/06/26 16:28:09 jwt.go:75: [DEBUG] JWTAuthMiddlewareFunc: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:28:09 jwt.go:48: [DEBUG] JWTAuthMiddleware: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:28:09 log_handler.go:17: [DEBUG] GetArchiveLogHandler called
+2025/06/26 16:28:09 log_handler.go:24: [DEBUG] GetArchiveLogHandler success, 0 logs
+2025/06/26 16:28:19 logging.go:11: [INFO] [API] OPTIONS /api/clients
+2025/06/26 16:28:19 logging.go:11: [INFO] [API] OPTIONS /api/logs/archive
+2025/06/26 16:28:19 logging.go:11: [INFO] [API] GET /api/clients
+2025/06/26 16:28:19 jwt.go:75: [DEBUG] JWTAuthMiddlewareFunc: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:28:19 client_handler.go:22: [DEBUG] ListClientsHandler called
+2025/06/26 16:28:19 client_service.go:87: [DEBUG] ClientService.GetAllClients called
+2025/06/26 16:28:19 logging.go:11: [INFO] [API] GET /api/logs/archive
+2025/06/26 16:28:19 user_repository.go:57: [DEBUG] UserRepository.FindByID called with id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:28:19 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:28:19 jwt.go:75: [DEBUG] JWTAuthMiddlewareFunc: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:28:19 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 16:28:19 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=b1e2c3d4-5678-1234-9abc-1234567890ab
+2025/06/26 16:28:19 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=c2f3e4d5-6789-2345-0bcd-2345678901bc
+2025/06/26 16:28:19 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:28:19 jwt.go:48: [DEBUG] JWTAuthMiddleware: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:28:19 user_repository.go:66: [DEBUG] UserRepository.FindByID found user: id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:28:19 client_handler.go:29: [DEBUG] ListClientsHandler success, 1 clients
+2025/06/26 16:28:19 log_handler.go:17: [DEBUG] GetArchiveLogHandler called
+2025/06/26 16:28:19 log_handler.go:24: [DEBUG] GetArchiveLogHandler success, 0 logs
+2025/06/26 16:28:33 logging.go:11: [INFO] [API] OPTIONS /api/users
+2025/06/26 16:28:33 logging.go:11: [INFO] [API] GET /api/users
+2025/06/26 16:28:33 jwt.go:75: [DEBUG] JWTAuthMiddlewareFunc: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:28:33 jwt.go:48: [DEBUG] JWTAuthMiddleware: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:28:33 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:28:33 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 16:32:57 logging.go:11: [INFO] [API] OPTIONS /api/clients/assign-user
+2025/06/26 16:32:57 logging.go:11: [INFO] [API] OPTIONS /api/clients/assign-user
+2025/06/26 16:32:57 logging.go:11: [INFO] [API] POST /api/clients/assign-user
+2025/06/26 16:32:57 jwt.go:75: [DEBUG] JWTAuthMiddlewareFunc: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:32:57 jwt.go:48: [DEBUG] JWTAuthMiddleware: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:32:57 logging.go:11: [INFO] [API] POST /api/clients/assign-user
+2025/06/26 16:32:57 jwt.go:75: [DEBUG] JWTAuthMiddlewareFunc: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:32:57 jwt.go:48: [DEBUG] JWTAuthMiddleware: user_id = b1e2c3d4-5678-1234-9abc-1234567890ab, username = admin, role = admin
+2025/06/26 16:33:47 api.go:59: [INFO] API server (Gin) starting on port 8082...
+2025/06/26 16:33:47 tcpserver.go:27: [INFO] TCP server (AES) listening on :9000
+2025/06/26 16:34:10 api.go:59: [INFO] API server (Gin) starting on port 8082...
+2025/06/26 16:34:10 tcpserver.go:27: [INFO] TCP server (AES) listening on :9000
+2025/06/26 16:34:10 logging.go:11: [INFO] [API] OPTIONS /api/clients
+2025/06/26 16:34:10 logging.go:11: [INFO] [API] GET /api/clients
+2025/06/26 16:34:15 logging.go:11: [INFO] [API] OPTIONS /api/login
+2025/06/26 16:34:15 logging.go:11: [INFO] [API] POST /api/login
+2025/06/26 16:34:15 user_handler.go:30: [DEBUG] LoginHandler called
+2025/06/26 16:34:15 user_repository.go:75: [DEBUG] UserRepository.FindByUsername called with username=admin
+2025/06/26 16:34:15 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:34:15 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 16:34:15 user_repository.go:82: [DEBUG] UserRepository.FindByUsername checking user: username=admin
+2025/06/26 16:34:15 user_repository.go:84: [DEBUG] UserRepository.FindByUsername found user: username=admin
+2025/06/26 16:34:15 logging.go:11: [INFO] [API] OPTIONS /api/clients
+2025/06/26 16:34:15 logging.go:11: [INFO] [API] OPTIONS /api/users
+2025/06/26 16:34:15 logging.go:11: [INFO] [API] OPTIONS /api/clients
+2025/06/26 16:34:15 logging.go:11: [INFO] [API] GET /api/clients
+2025/06/26 16:34:15 client_handler.go:22: [DEBUG] ListClientsHandler called
+2025/06/26 16:34:15 client_service.go:87: [DEBUG] ClientService.GetAllClients called
+2025/06/26 16:34:15 logging.go:11: [INFO] [API] GET /api/users
+2025/06/26 16:34:15 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:34:15 user_repository.go:57: [DEBUG] UserRepository.FindByID called with id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:34:15 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:34:15 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 16:34:15 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=b1e2c3d4-5678-1234-9abc-1234567890ab
+2025/06/26 16:34:15 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 16:34:15 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=c2f3e4d5-6789-2345-0bcd-2345678901bc
+2025/06/26 16:34:15 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:34:15 user_repository.go:66: [DEBUG] UserRepository.FindByID found user: id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:34:15 client_handler.go:29: [DEBUG] ListClientsHandler success, 1 clients
+2025/06/26 16:34:15 logging.go:11: [INFO] [API] GET /api/clients
+2025/06/26 16:34:15 client_handler.go:22: [DEBUG] ListClientsHandler called
+2025/06/26 16:34:15 client_service.go:87: [DEBUG] ClientService.GetAllClients called
+2025/06/26 16:34:15 user_repository.go:57: [DEBUG] UserRepository.FindByID called with id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:34:15 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:34:15 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 16:34:15 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=b1e2c3d4-5678-1234-9abc-1234567890ab
+2025/06/26 16:34:15 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=c2f3e4d5-6789-2345-0bcd-2345678901bc
+2025/06/26 16:34:15 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:34:15 user_repository.go:66: [DEBUG] UserRepository.FindByID found user: id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:34:15 client_handler.go:29: [DEBUG] ListClientsHandler success, 1 clients
+2025/06/26 16:34:15 logging.go:11: [INFO] [API] OPTIONS /api/logs/archive
+2025/06/26 16:34:15 logging.go:11: [INFO] [API] GET /api/logs/archive
+2025/06/26 16:34:15 log_handler.go:17: [DEBUG] GetArchiveLogHandler called
+2025/06/26 16:34:15 log_handler.go:24: [DEBUG] GetArchiveLogHandler success, 0 logs
+2025/06/26 16:34:22 logging.go:11: [INFO] [API] OPTIONS /api/clients/assign-user
+2025/06/26 16:34:22 logging.go:11: [INFO] [API] OPTIONS /api/clients/assign-user
+2025/06/26 16:34:22 logging.go:11: [INFO] [API] POST /api/clients/assign-user
+2025/06/26 16:34:22 logging.go:11: [INFO] [API] POST /api/clients/assign-user
+2025/06/26 16:36:31 logging.go:11: [INFO] [API] OPTIONS /api/clients/assign-user
+2025/06/26 16:36:31 logging.go:11: [INFO] [API] OPTIONS /api/clients/assign-user
+2025/06/26 16:36:31 logging.go:11: [INFO] [API] POST /api/clients/assign-user
+2025/06/26 16:36:31 logging.go:11: [INFO] [API] POST /api/clients/assign-user
+2025/06/26 16:37:37 logging.go:11: [INFO] [API] OPTIONS /api/clients
+2025/06/26 16:37:37 logging.go:11: [INFO] [API] GET /api/clients
+2025/06/26 16:37:37 client_handler.go:22: [DEBUG] ListClientsHandler called
+2025/06/26 16:37:37 client_service.go:87: [DEBUG] ClientService.GetAllClients called
+2025/06/26 16:37:37 user_repository.go:57: [DEBUG] UserRepository.FindByID called with id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:37:37 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:37:37 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 16:37:37 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=b1e2c3d4-5678-1234-9abc-1234567890ab
+2025/06/26 16:37:37 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=c2f3e4d5-6789-2345-0bcd-2345678901bc
+2025/06/26 16:37:37 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:37:37 user_repository.go:66: [DEBUG] UserRepository.FindByID found user: id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:37:37 client_handler.go:29: [DEBUG] ListClientsHandler success, 1 clients
+2025/06/26 16:37:41 logging.go:11: [INFO] [API] OPTIONS /api/clients/assign-user
+2025/06/26 16:37:41 logging.go:11: [INFO] [API] POST /api/clients/assign-user
+2025/06/26 16:38:41 logging.go:11: [INFO] [API] POST /api/login
+2025/06/26 16:38:41 user_handler.go:30: [DEBUG] LoginHandler called
+2025/06/26 16:38:41 user_repository.go:75: [DEBUG] UserRepository.FindByUsername called with username=admin
+2025/06/26 16:38:41 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:38:41 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 16:38:41 user_repository.go:82: [DEBUG] UserRepository.FindByUsername checking user: username=admin
+2025/06/26 16:38:41 user_repository.go:84: [DEBUG] UserRepository.FindByUsername found user: username=admin
+2025/06/26 16:38:41 logging.go:11: [INFO] [API] GET /api/users
+2025/06/26 16:38:41 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:38:41 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 16:38:41 logging.go:11: [INFO] [API] GET /api/clients
+2025/06/26 16:38:41 client_handler.go:22: [DEBUG] ListClientsHandler called
+2025/06/26 16:38:41 client_service.go:87: [DEBUG] ClientService.GetAllClients called
+2025/06/26 16:38:41 user_repository.go:57: [DEBUG] UserRepository.FindByID called with id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:38:41 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:38:41 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 16:38:41 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=b1e2c3d4-5678-1234-9abc-1234567890ab
+2025/06/26 16:38:41 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=c2f3e4d5-6789-2345-0bcd-2345678901bc
+2025/06/26 16:38:41 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:38:41 user_repository.go:66: [DEBUG] UserRepository.FindByID found user: id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:38:41 client_handler.go:29: [DEBUG] ListClientsHandler success, 1 clients
+2025/06/26 16:38:41 logging.go:11: [INFO] [API] POST /api/clients/assign-user
+2025/06/26 16:38:41 client_service.go:40: [DEBUG] ClientService.AssignUserToClient called with agentID=001, username=an
+2025/06/26 16:38:41 user_repository.go:75: [DEBUG] UserRepository.FindByUsername called with username=an
+2025/06/26 16:38:41 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:38:41 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 16:38:41 user_repository.go:82: [DEBUG] UserRepository.FindByUsername checking user: username=admin
+2025/06/26 16:38:41 user_repository.go:82: [DEBUG] UserRepository.FindByUsername checking user: username=an
+2025/06/26 16:38:41 user_repository.go:84: [DEBUG] UserRepository.FindByUsername found user: username=an
+2025/06/26 16:38:41 logging.go:11: [INFO] [API] GET /api/logs/archive
+2025/06/26 16:38:41 log_handler.go:17: [DEBUG] GetArchiveLogHandler called
+2025/06/26 16:38:41 log_handler.go:24: [DEBUG] GetArchiveLogHandler success, 0 logs
+2025/06/26 16:38:41 logging.go:11: [INFO] [API] POST /api/login
+2025/06/26 16:38:41 user_handler.go:30: [DEBUG] LoginHandler called
+2025/06/26 16:38:41 user_repository.go:75: [DEBUG] UserRepository.FindByUsername called with username=testuser1
+2025/06/26 16:38:41 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:38:41 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 16:38:41 user_repository.go:82: [DEBUG] UserRepository.FindByUsername checking user: username=admin
+2025/06/26 16:38:41 user_repository.go:82: [DEBUG] UserRepository.FindByUsername checking user: username=an
+2025/06/26 16:38:41 user_repository.go:82: [DEBUG] UserRepository.FindByUsername checking user: username=testuser1
+2025/06/26 16:38:41 user_repository.go:84: [DEBUG] UserRepository.FindByUsername found user: username=testuser1
+2025/06/26 16:38:41 logging.go:11: [INFO] [API] POST /api/clients/assign-user
+2025/06/26 16:38:41 client_service.go:40: [DEBUG] ClientService.AssignUserToClient called with agentID=001, username=testuser1
+2025/06/26 16:38:41 user_repository.go:75: [DEBUG] UserRepository.FindByUsername called with username=testuser1
+2025/06/26 16:38:41 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:38:41 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 16:38:41 user_repository.go:82: [DEBUG] UserRepository.FindByUsername checking user: username=admin
+2025/06/26 16:38:41 user_repository.go:82: [DEBUG] UserRepository.FindByUsername checking user: username=an
+2025/06/26 16:38:41 user_repository.go:82: [DEBUG] UserRepository.FindByUsername checking user: username=testuser1
+2025/06/26 16:38:41 user_repository.go:84: [DEBUG] UserRepository.FindByUsername found user: username=testuser1
+2025/06/26 16:38:41 logging.go:11: [INFO] [API] GET /api/logs/my-device
+2025/06/26 16:38:41 log_handler.go:29: [DEBUG] GetMyDeviceLogHandler called
+2025/06/26 16:38:41 client_service.go:123: [DEBUG] ClientService.GetAgentIDsByUserID called with userID=testuser1
+2025/06/26 16:38:41 client_repository.go:68: [DEBUG] FindByUserID: loaded 1 clients, looking for userID=testuser1
+2025/06/26 16:38:41 client_repository.go:71: [DEBUG] Checking client: agentID=001, userID=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:38:41 client_repository.go:77: [DEBUG] FindByUserID: found 0 clients for userID=testuser1
+2025/06/26 16:38:41 log_handler.go:38: [DEBUG] GetMyDeviceLogHandler: user testuser1 has no agentIDs
+2025/06/26 16:38:41 logging.go:11: [INFO] [API] GET /api/clients/001/otp
+2025/06/26 16:39:42 logging.go:11: [INFO] [API] OPTIONS /api/clients
+2025/06/26 16:39:42 logging.go:11: [INFO] [API] OPTIONS /api/users
+2025/06/26 16:39:42 logging.go:11: [INFO] [API] OPTIONS /api/clients
+2025/06/26 16:39:42 logging.go:11: [INFO] [API] GET /api/users
+2025/06/26 16:39:42 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:39:42 logging.go:11: [INFO] [API] GET /api/clients
+2025/06/26 16:39:42 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 16:39:42 client_handler.go:22: [DEBUG] ListClientsHandler called
+2025/06/26 16:39:42 client_service.go:87: [DEBUG] ClientService.GetAllClients called
+2025/06/26 16:39:42 user_repository.go:57: [DEBUG] UserRepository.FindByID called with id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:39:42 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:39:42 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 16:39:42 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=b1e2c3d4-5678-1234-9abc-1234567890ab
+2025/06/26 16:39:42 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=c2f3e4d5-6789-2345-0bcd-2345678901bc
+2025/06/26 16:39:42 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:39:42 user_repository.go:66: [DEBUG] UserRepository.FindByID found user: id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:39:42 client_handler.go:29: [DEBUG] ListClientsHandler success, 1 clients
+2025/06/26 16:39:42 logging.go:11: [INFO] [API] GET /api/clients
+2025/06/26 16:39:42 client_handler.go:22: [DEBUG] ListClientsHandler called
+2025/06/26 16:39:42 client_service.go:87: [DEBUG] ClientService.GetAllClients called
+2025/06/26 16:39:42 user_repository.go:57: [DEBUG] UserRepository.FindByID called with id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:39:42 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:39:42 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 16:39:42 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=b1e2c3d4-5678-1234-9abc-1234567890ab
+2025/06/26 16:39:42 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=c2f3e4d5-6789-2345-0bcd-2345678901bc
+2025/06/26 16:39:42 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:39:42 user_repository.go:66: [DEBUG] UserRepository.FindByID found user: id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:39:42 client_handler.go:29: [DEBUG] ListClientsHandler success, 1 clients
+2025/06/26 16:39:42 logging.go:11: [INFO] [API] OPTIONS /api/logs/archive
+2025/06/26 16:39:42 logging.go:11: [INFO] [API] GET /api/logs/archive
+2025/06/26 16:39:42 log_handler.go:17: [DEBUG] GetArchiveLogHandler called
+2025/06/26 16:39:42 log_handler.go:24: [DEBUG] GetArchiveLogHandler success, 0 logs
+2025/06/26 16:39:50 logging.go:11: [INFO] [API] OPTIONS /api/clients
+2025/06/26 16:39:50 logging.go:11: [INFO] [API] OPTIONS /api/logs/archive
+2025/06/26 16:39:50 logging.go:11: [INFO] [API] GET /api/clients
+2025/06/26 16:39:50 client_handler.go:22: [DEBUG] ListClientsHandler called
+2025/06/26 16:39:50 client_service.go:87: [DEBUG] ClientService.GetAllClients called
+2025/06/26 16:39:50 logging.go:11: [INFO] [API] GET /api/logs/archive
+2025/06/26 16:39:50 log_handler.go:17: [DEBUG] GetArchiveLogHandler called
+2025/06/26 16:39:50 user_repository.go:57: [DEBUG] UserRepository.FindByID called with id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:39:50 log_handler.go:24: [DEBUG] GetArchiveLogHandler success, 0 logs
+2025/06/26 16:39:50 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:39:50 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 16:39:50 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=b1e2c3d4-5678-1234-9abc-1234567890ab
+2025/06/26 16:39:50 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=c2f3e4d5-6789-2345-0bcd-2345678901bc
+2025/06/26 16:39:50 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:39:50 user_repository.go:66: [DEBUG] UserRepository.FindByID found user: id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:39:50 client_handler.go:29: [DEBUG] ListClientsHandler success, 1 clients
+2025/06/26 16:39:52 logging.go:11: [INFO] [API] GET /api/clients
+2025/06/26 16:39:52 logging.go:11: [INFO] [API] OPTIONS /api/users
+2025/06/26 16:39:52 client_handler.go:22: [DEBUG] ListClientsHandler called
+2025/06/26 16:39:52 client_service.go:87: [DEBUG] ClientService.GetAllClients called
+2025/06/26 16:39:52 user_repository.go:57: [DEBUG] UserRepository.FindByID called with id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:39:52 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:39:52 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 16:39:52 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=b1e2c3d4-5678-1234-9abc-1234567890ab
+2025/06/26 16:39:52 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=c2f3e4d5-6789-2345-0bcd-2345678901bc
+2025/06/26 16:39:52 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:39:52 user_repository.go:66: [DEBUG] UserRepository.FindByID found user: id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:39:52 logging.go:11: [INFO] [API] GET /api/users
+2025/06/26 16:39:52 client_handler.go:29: [DEBUG] ListClientsHandler success, 1 clients
+2025/06/26 16:39:52 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:39:52 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 16:39:52 logging.go:11: [INFO] [API] GET /api/clients
+2025/06/26 16:39:52 client_handler.go:22: [DEBUG] ListClientsHandler called
+2025/06/26 16:39:52 client_service.go:87: [DEBUG] ClientService.GetAllClients called
+2025/06/26 16:39:52 user_repository.go:57: [DEBUG] UserRepository.FindByID called with id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:39:52 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:39:52 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 16:39:52 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=b1e2c3d4-5678-1234-9abc-1234567890ab
+2025/06/26 16:39:52 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=c2f3e4d5-6789-2345-0bcd-2345678901bc
+2025/06/26 16:39:52 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:39:52 user_repository.go:66: [DEBUG] UserRepository.FindByID found user: id=1eb99e9b-4f90-4701-b55c-4d52157898ab
+2025/06/26 16:39:52 client_handler.go:29: [DEBUG] ListClientsHandler success, 1 clients
+2025/06/26 16:39:52 logging.go:11: [INFO] [API] GET /api/logs/archive
+2025/06/26 16:39:52 log_handler.go:17: [DEBUG] GetArchiveLogHandler called
+2025/06/26 16:39:52 log_handler.go:24: [DEBUG] GetArchiveLogHandler success, 0 logs
+2025/06/26 16:39:57 logging.go:11: [INFO] [API] OPTIONS /api/clients/assign-user
+2025/06/26 16:39:57 logging.go:11: [INFO] [API] OPTIONS /api/clients/assign-user
+2025/06/26 16:39:57 logging.go:11: [INFO] [API] POST /api/clients/assign-user
+2025/06/26 16:39:57 client_service.go:40: [DEBUG] ClientService.AssignUserToClient called with agentID=001, username=an
+2025/06/26 16:39:57 logging.go:11: [INFO] [API] POST /api/clients/assign-user
+2025/06/26 16:39:57 user_repository.go:75: [DEBUG] UserRepository.FindByUsername called with username=an
+2025/06/26 16:39:57 client_service.go:40: [DEBUG] ClientService.AssignUserToClient called with agentID=001, username=an
+2025/06/26 16:39:57 user_repository.go:75: [DEBUG] UserRepository.FindByUsername called with username=an
+2025/06/26 16:39:57 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:39:57 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:39:57 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 16:39:57 user_repository.go:82: [DEBUG] UserRepository.FindByUsername checking user: username=admin
+2025/06/26 16:39:57 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 16:39:57 user_repository.go:82: [DEBUG] UserRepository.FindByUsername checking user: username=an
+2025/06/26 16:39:57 user_repository.go:82: [DEBUG] UserRepository.FindByUsername checking user: username=admin
+2025/06/26 16:39:57 user_repository.go:84: [DEBUG] UserRepository.FindByUsername found user: username=an
+2025/06/26 16:39:57 user_repository.go:82: [DEBUG] UserRepository.FindByUsername checking user: username=an
+2025/06/26 16:39:57 user_repository.go:84: [DEBUG] UserRepository.FindByUsername found user: username=an
+2025/06/26 16:39:57 logging.go:11: [INFO] [API] OPTIONS /api/clients
+2025/06/26 16:39:57 logging.go:11: [INFO] [API] OPTIONS /api/clients
+2025/06/26 16:39:57 logging.go:11: [INFO] [API] GET /api/clients
+2025/06/26 16:39:57 client_handler.go:22: [DEBUG] ListClientsHandler called
+2025/06/26 16:39:57 client_service.go:87: [DEBUG] ClientService.GetAllClients called
+2025/06/26 16:39:57 user_repository.go:57: [DEBUG] UserRepository.FindByID called with id=c2f3e4d5-6789-2345-0bcd-2345678901bc
+2025/06/26 16:39:57 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:39:57 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 16:39:57 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=b1e2c3d4-5678-1234-9abc-1234567890ab
+2025/06/26 16:39:57 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=c2f3e4d5-6789-2345-0bcd-2345678901bc
+2025/06/26 16:39:57 user_repository.go:66: [DEBUG] UserRepository.FindByID found user: id=c2f3e4d5-6789-2345-0bcd-2345678901bc
+2025/06/26 16:39:57 client_handler.go:29: [DEBUG] ListClientsHandler success, 1 clients
+2025/06/26 16:39:57 logging.go:11: [INFO] [API] GET /api/clients
+2025/06/26 16:39:57 client_handler.go:22: [DEBUG] ListClientsHandler called
+2025/06/26 16:39:57 client_service.go:87: [DEBUG] ClientService.GetAllClients called
+2025/06/26 16:39:57 user_repository.go:57: [DEBUG] UserRepository.FindByID called with id=c2f3e4d5-6789-2345-0bcd-2345678901bc
+2025/06/26 16:39:57 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:39:57 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 16:39:57 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=b1e2c3d4-5678-1234-9abc-1234567890ab
+2025/06/26 16:39:57 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=c2f3e4d5-6789-2345-0bcd-2345678901bc
+2025/06/26 16:39:57 user_repository.go:66: [DEBUG] UserRepository.FindByID found user: id=c2f3e4d5-6789-2345-0bcd-2345678901bc
+2025/06/26 16:39:57 client_handler.go:29: [DEBUG] ListClientsHandler success, 1 clients
+2025/06/26 16:39:58 logging.go:11: [INFO] [API] GET /api/clients
+2025/06/26 16:39:58 client_handler.go:22: [DEBUG] ListClientsHandler called
+2025/06/26 16:39:58 client_service.go:87: [DEBUG] ClientService.GetAllClients called
+2025/06/26 16:39:58 user_repository.go:57: [DEBUG] UserRepository.FindByID called with id=c2f3e4d5-6789-2345-0bcd-2345678901bc
+2025/06/26 16:39:58 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:39:58 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 16:39:58 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=b1e2c3d4-5678-1234-9abc-1234567890ab
+2025/06/26 16:39:58 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=c2f3e4d5-6789-2345-0bcd-2345678901bc
+2025/06/26 16:39:58 user_repository.go:66: [DEBUG] UserRepository.FindByID found user: id=c2f3e4d5-6789-2345-0bcd-2345678901bc
+2025/06/26 16:39:58 client_handler.go:29: [DEBUG] ListClientsHandler success, 1 clients
+2025/06/26 16:39:59 logging.go:11: [INFO] [API] GET /api/clients
+2025/06/26 16:39:59 client_handler.go:22: [DEBUG] ListClientsHandler called
+2025/06/26 16:39:59 client_service.go:87: [DEBUG] ClientService.GetAllClients called
+2025/06/26 16:39:59 user_repository.go:57: [DEBUG] UserRepository.FindByID called with id=c2f3e4d5-6789-2345-0bcd-2345678901bc
+2025/06/26 16:39:59 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 16:39:59 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 16:39:59 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=b1e2c3d4-5678-1234-9abc-1234567890ab
+2025/06/26 16:39:59 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=c2f3e4d5-6789-2345-0bcd-2345678901bc
+2025/06/26 16:39:59 user_repository.go:66: [DEBUG] UserRepository.FindByID found user: id=c2f3e4d5-6789-2345-0bcd-2345678901bc
+2025/06/26 16:39:59 client_handler.go:29: [DEBUG] ListClientsHandler success, 1 clients
+2025/06/26 17:00:55 logging.go:11: [INFO] [API] OPTIONS /api/clients
+2025/06/26 17:00:55 logging.go:11: [INFO] [API] GET /api/clients
+2025/06/26 17:03:48 logging.go:11: [INFO] [API] OPTIONS /api/login
+2025/06/26 17:03:48 logging.go:11: [INFO] [API] POST /api/login
+2025/06/26 17:03:48 user_handler.go:30: [DEBUG] LoginHandler called
+2025/06/26 17:03:48 user_repository.go:75: [DEBUG] UserRepository.FindByUsername called with username=admin
+2025/06/26 17:03:48 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 17:03:48 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 17:03:48 user_repository.go:82: [DEBUG] UserRepository.FindByUsername checking user: username=admin
+2025/06/26 17:03:48 user_repository.go:84: [DEBUG] UserRepository.FindByUsername found user: username=admin
+2025/06/26 17:03:48 logging.go:11: [INFO] [API] OPTIONS /api/clients
+2025/06/26 17:03:48 logging.go:11: [INFO] [API] OPTIONS /api/users
+2025/06/26 17:03:48 logging.go:11: [INFO] [API] OPTIONS /api/clients
+2025/06/26 17:03:48 logging.go:11: [INFO] [API] GET /api/clients
+2025/06/26 17:03:48 client_handler.go:22: [DEBUG] ListClientsHandler called
+2025/06/26 17:03:48 client_service.go:87: [DEBUG] ClientService.GetAllClients called
+2025/06/26 17:03:48 logging.go:11: [INFO] [API] GET /api/users
+2025/06/26 17:03:48 user_repository.go:57: [DEBUG] UserRepository.FindByID called with id=c2f3e4d5-6789-2345-0bcd-2345678901bc
+2025/06/26 17:03:48 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 17:03:48 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 17:03:48 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 17:03:48 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=b1e2c3d4-5678-1234-9abc-1234567890ab
+2025/06/26 17:03:48 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=c2f3e4d5-6789-2345-0bcd-2345678901bc
+2025/06/26 17:03:48 user_repository.go:66: [DEBUG] UserRepository.FindByID found user: id=c2f3e4d5-6789-2345-0bcd-2345678901bc
+2025/06/26 17:03:48 client_handler.go:29: [DEBUG] ListClientsHandler success, 1 clients
+2025/06/26 17:03:48 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 17:03:48 logging.go:11: [INFO] [API] GET /api/clients
+2025/06/26 17:03:48 client_handler.go:22: [DEBUG] ListClientsHandler called
+2025/06/26 17:03:48 client_service.go:87: [DEBUG] ClientService.GetAllClients called
+2025/06/26 17:03:48 user_repository.go:57: [DEBUG] UserRepository.FindByID called with id=c2f3e4d5-6789-2345-0bcd-2345678901bc
+2025/06/26 17:03:48 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 17:03:48 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 17:03:48 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=b1e2c3d4-5678-1234-9abc-1234567890ab
+2025/06/26 17:03:48 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=c2f3e4d5-6789-2345-0bcd-2345678901bc
+2025/06/26 17:03:48 user_repository.go:66: [DEBUG] UserRepository.FindByID found user: id=c2f3e4d5-6789-2345-0bcd-2345678901bc
+2025/06/26 17:03:48 client_handler.go:29: [DEBUG] ListClientsHandler success, 1 clients
+2025/06/26 17:03:48 logging.go:11: [INFO] [API] OPTIONS /api/logs/archive
+2025/06/26 17:03:48 logging.go:11: [INFO] [API] GET /api/logs/archive
+2025/06/26 17:03:48 log_handler.go:17: [DEBUG] GetArchiveLogHandler called
+2025/06/26 17:03:48 log_handler.go:24: [DEBUG] GetArchiveLogHandler success, 0 logs
+2025/06/26 17:03:51 logging.go:11: [INFO] [API] GET /api/clients
+2025/06/26 17:03:51 logging.go:11: [INFO] [API] GET /api/logs/archive
+2025/06/26 17:03:51 client_handler.go:22: [DEBUG] ListClientsHandler called
+2025/06/26 17:03:51 client_service.go:87: [DEBUG] ClientService.GetAllClients called
+2025/06/26 17:03:51 log_handler.go:17: [DEBUG] GetArchiveLogHandler called
+2025/06/26 17:03:51 user_repository.go:57: [DEBUG] UserRepository.FindByID called with id=c2f3e4d5-6789-2345-0bcd-2345678901bc
+2025/06/26 17:03:51 log_handler.go:24: [DEBUG] GetArchiveLogHandler success, 0 logs
+2025/06/26 17:03:51 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 17:03:51 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 17:03:51 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=b1e2c3d4-5678-1234-9abc-1234567890ab
+2025/06/26 17:03:51 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=c2f3e4d5-6789-2345-0bcd-2345678901bc
+2025/06/26 17:03:51 user_repository.go:66: [DEBUG] UserRepository.FindByID found user: id=c2f3e4d5-6789-2345-0bcd-2345678901bc
+2025/06/26 17:03:51 client_handler.go:29: [DEBUG] ListClientsHandler success, 1 clients
+2025/06/26 17:03:58 logging.go:11: [INFO] [API] OPTIONS /api/users
+2025/06/26 17:03:58 logging.go:11: [INFO] [API] GET /api/users
+2025/06/26 17:03:58 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 17:03:58 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 17:04:37 logging.go:11: [INFO] [API] OPTIONS /api/clients
+2025/06/26 17:04:37 logging.go:11: [INFO] [API] OPTIONS /api/users
+2025/06/26 17:04:37 logging.go:11: [INFO] [API] OPTIONS /api/clients
+2025/06/26 17:04:37 logging.go:11: [INFO] [API] GET /api/clients
+2025/06/26 17:04:37 logging.go:11: [INFO] [API] GET /api/users
+2025/06/26 17:04:37 client_handler.go:22: [DEBUG] ListClientsHandler called
+2025/06/26 17:04:37 client_service.go:87: [DEBUG] ClientService.GetAllClients called
+2025/06/26 17:04:37 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 17:04:37 user_repository.go:57: [DEBUG] UserRepository.FindByID called with id=c2f3e4d5-6789-2345-0bcd-2345678901bc
+2025/06/26 17:04:37 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 17:04:37 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 17:04:37 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 17:04:37 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=b1e2c3d4-5678-1234-9abc-1234567890ab
+2025/06/26 17:04:37 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=c2f3e4d5-6789-2345-0bcd-2345678901bc
+2025/06/26 17:04:37 user_repository.go:66: [DEBUG] UserRepository.FindByID found user: id=c2f3e4d5-6789-2345-0bcd-2345678901bc
+2025/06/26 17:04:37 client_handler.go:29: [DEBUG] ListClientsHandler success, 1 clients
+2025/06/26 17:04:37 logging.go:11: [INFO] [API] GET /api/clients
+2025/06/26 17:04:37 client_handler.go:22: [DEBUG] ListClientsHandler called
+2025/06/26 17:04:37 client_service.go:87: [DEBUG] ClientService.GetAllClients called
+2025/06/26 17:04:37 user_repository.go:57: [DEBUG] UserRepository.FindByID called with id=c2f3e4d5-6789-2345-0bcd-2345678901bc
+2025/06/26 17:04:37 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 17:04:37 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 17:04:37 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=b1e2c3d4-5678-1234-9abc-1234567890ab
+2025/06/26 17:04:37 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=c2f3e4d5-6789-2345-0bcd-2345678901bc
+2025/06/26 17:04:37 user_repository.go:66: [DEBUG] UserRepository.FindByID found user: id=c2f3e4d5-6789-2345-0bcd-2345678901bc
+2025/06/26 17:04:37 client_handler.go:29: [DEBUG] ListClientsHandler success, 1 clients
+2025/06/26 17:04:37 logging.go:11: [INFO] [API] OPTIONS /api/logs/archive
+2025/06/26 17:04:37 logging.go:11: [INFO] [API] GET /api/logs/archive
+2025/06/26 17:04:37 log_handler.go:17: [DEBUG] GetArchiveLogHandler called
+2025/06/26 17:04:37 log_handler.go:24: [DEBUG] GetArchiveLogHandler success, 0 logs
+2025/06/26 17:04:56 logging.go:11: [INFO] [API] OPTIONS /api/clients
+2025/06/26 17:04:56 logging.go:11: [INFO] [API] OPTIONS /api/users
+2025/06/26 17:04:56 logging.go:11: [INFO] [API] OPTIONS /api/clients
+2025/06/26 17:04:56 logging.go:11: [INFO] [API] GET /api/clients
+2025/06/26 17:04:56 client_handler.go:22: [DEBUG] ListClientsHandler called
+2025/06/26 17:04:56 client_service.go:87: [DEBUG] ClientService.GetAllClients called
+2025/06/26 17:04:56 logging.go:11: [INFO] [API] GET /api/users
+2025/06/26 17:04:56 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 17:04:56 user_repository.go:57: [DEBUG] UserRepository.FindByID called with id=c2f3e4d5-6789-2345-0bcd-2345678901bc
+2025/06/26 17:04:56 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 17:04:56 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 17:04:56 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 17:04:56 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=b1e2c3d4-5678-1234-9abc-1234567890ab
+2025/06/26 17:04:56 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=c2f3e4d5-6789-2345-0bcd-2345678901bc
+2025/06/26 17:04:56 user_repository.go:66: [DEBUG] UserRepository.FindByID found user: id=c2f3e4d5-6789-2345-0bcd-2345678901bc
+2025/06/26 17:04:56 client_handler.go:29: [DEBUG] ListClientsHandler success, 1 clients
+2025/06/26 17:04:56 logging.go:11: [INFO] [API] GET /api/clients
+2025/06/26 17:04:56 client_handler.go:22: [DEBUG] ListClientsHandler called
+2025/06/26 17:04:56 client_service.go:87: [DEBUG] ClientService.GetAllClients called
+2025/06/26 17:04:56 user_repository.go:57: [DEBUG] UserRepository.FindByID called with id=c2f3e4d5-6789-2345-0bcd-2345678901bc
+2025/06/26 17:04:56 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 17:04:56 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 17:04:56 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=b1e2c3d4-5678-1234-9abc-1234567890ab
+2025/06/26 17:04:56 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=c2f3e4d5-6789-2345-0bcd-2345678901bc
+2025/06/26 17:04:56 user_repository.go:66: [DEBUG] UserRepository.FindByID found user: id=c2f3e4d5-6789-2345-0bcd-2345678901bc
+2025/06/26 17:04:56 client_handler.go:29: [DEBUG] ListClientsHandler success, 1 clients
+2025/06/26 17:04:56 logging.go:11: [INFO] [API] OPTIONS /api/logs/archive
+2025/06/26 17:04:56 logging.go:11: [INFO] [API] GET /api/logs/archive
+2025/06/26 17:04:56 log_handler.go:17: [DEBUG] GetArchiveLogHandler called
+2025/06/26 17:04:56 log_handler.go:24: [DEBUG] GetArchiveLogHandler success, 0 logs
+2025/06/26 17:05:22 logging.go:11: [INFO] [API] OPTIONS /api/clients
+2025/06/26 17:05:22 logging.go:11: [INFO] [API] OPTIONS /api/users
+2025/06/26 17:05:22 logging.go:11: [INFO] [API] OPTIONS /api/clients
+2025/06/26 17:05:22 logging.go:11: [INFO] [API] GET /api/clients
+2025/06/26 17:05:22 client_handler.go:22: [DEBUG] ListClientsHandler called
+2025/06/26 17:05:22 client_service.go:87: [DEBUG] ClientService.GetAllClients called
+2025/06/26 17:05:22 logging.go:11: [INFO] [API] GET /api/users
+2025/06/26 17:05:22 user_repository.go:57: [DEBUG] UserRepository.FindByID called with id=c2f3e4d5-6789-2345-0bcd-2345678901bc
+2025/06/26 17:05:22 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 17:05:22 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 17:05:22 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 17:05:22 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=b1e2c3d4-5678-1234-9abc-1234567890ab
+2025/06/26 17:05:22 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=c2f3e4d5-6789-2345-0bcd-2345678901bc
+2025/06/26 17:05:22 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 17:05:22 user_repository.go:66: [DEBUG] UserRepository.FindByID found user: id=c2f3e4d5-6789-2345-0bcd-2345678901bc
+2025/06/26 17:05:22 client_handler.go:29: [DEBUG] ListClientsHandler success, 1 clients
+2025/06/26 17:05:22 logging.go:11: [INFO] [API] GET /api/clients
+2025/06/26 17:05:22 client_handler.go:22: [DEBUG] ListClientsHandler called
+2025/06/26 17:05:22 client_service.go:87: [DEBUG] ClientService.GetAllClients called
+2025/06/26 17:05:22 user_repository.go:57: [DEBUG] UserRepository.FindByID called with id=c2f3e4d5-6789-2345-0bcd-2345678901bc
+2025/06/26 17:05:22 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 17:05:22 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users
+2025/06/26 17:05:22 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=b1e2c3d4-5678-1234-9abc-1234567890ab
+2025/06/26 17:05:22 user_repository.go:64: [DEBUG] UserRepository.FindByID checking user: id=c2f3e4d5-6789-2345-0bcd-2345678901bc
+2025/06/26 17:05:22 user_repository.go:66: [DEBUG] UserRepository.FindByID found user: id=c2f3e4d5-6789-2345-0bcd-2345678901bc
+2025/06/26 17:05:22 client_handler.go:29: [DEBUG] ListClientsHandler success, 1 clients
+2025/06/26 17:05:22 logging.go:11: [INFO] [API] OPTIONS /api/logs/archive
+2025/06/26 17:05:22 logging.go:11: [INFO] [API] GET /api/logs/archive
+2025/06/26 17:05:22 log_handler.go:17: [DEBUG] GetArchiveLogHandler called
+2025/06/26 17:05:22 log_handler.go:24: [DEBUG] GetArchiveLogHandler success, 0 logs
+2025/06/26 17:05:47 logging.go:11: [INFO] [API] OPTIONS /api/users
+2025/06/26 17:05:47 logging.go:11: [INFO] [API] GET /api/users
+2025/06/26 17:05:47 user_repository.go:27: [DEBUG] UserRepository.GetAll called
+2025/06/26 17:05:47 user_repository.go:42: [DEBUG] UserRepository.GetAll loaded 3 users

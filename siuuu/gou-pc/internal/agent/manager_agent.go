@@ -27,6 +27,10 @@ func LoadClients(managerFile string) ([]ManagedClient, error) {
 	defer mu.Unlock()
 	f, err := os.ReadFile(managerFile)
 	if err != nil {
+		if os.IsNotExist(err) {
+			fmt.Printf("[WARN] Client DB file '%s' not found, returning empty list\n", managerFile)
+			return []ManagedClient{}, nil
+		}
 		return nil, err
 	}
 	var clients []ManagedClient

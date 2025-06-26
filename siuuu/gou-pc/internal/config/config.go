@@ -25,12 +25,14 @@ func DefaultClientConfig() *ClientConfig {
 
 // ServerConfig holds all configurable paths and options for the server
 type ServerConfig struct {
-	LogFile      string // Đường dẫn file log server
-	ArchiveFile  string // File lưu log thu thập từ agent
-	ClientDBFile string // File lưu thông tin client/agent
-	UserDBFile   string // File lưu thông tin user
-	ListenAddr   string // Địa chỉ lắng nghe TCP
-	APIPort      string // Cổng chạy API server
+	LogFile      string        // Đường dẫn file log server
+	ArchiveFile  string        // File lưu log thu thập từ agent
+	ClientDBFile string        // File lưu thông tin client/agent
+	UserDBFile   string        // File lưu thông tin user
+	ListenAddr   string        // Địa chỉ lắng nghe TCP
+	APIPort      string        // Cổng chạy API server
+	JWTSecret    string        // Secret key cho JWT
+	JWTExpire    time.Duration // Thời gian sống của JWT
 }
 
 func DefaultServerConfig() *ServerConfig {
@@ -38,8 +40,10 @@ func DefaultServerConfig() *ServerConfig {
 		LogFile:      "etc/server.log",
 		ArchiveFile:  "etc/archive.log",
 		ClientDBFile: "etc/manager_client.json",
-		UserDBFile:   "users.json",
+		UserDBFile:   "etc/users.json",
 		ListenAddr:   ":9000",
 		APIPort:      "8082",
+		JWTSecret:    "an-pt-2001",
+		JWTExpire:    10 * time.Minute,
 	}
 }

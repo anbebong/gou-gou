@@ -891,7 +891,6 @@ function updateUsersTable(users) {
       <td>
         <button class="btn btn-sm btn-fixed" onclick="editUser('${user.username}')">Sửa</button>
         <button class="btn btn-sm btn-change-password" onclick="changeUserPassword('${user.username}')">Đổi pass</button>
-        <button class="btn btn-sm btn-danger" onclick="changeUserPassword('${user.username}')">Xoá</button>
       </td>
     `
     tbody.appendChild(row)

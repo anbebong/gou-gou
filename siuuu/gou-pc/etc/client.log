@@ -79,3 +79,21 @@
 2025/06/25 17:59:58 agent.go:107: [INFO] Received: {type:register, agent_id:001, data:map[agent_id:001 client_id:0b707843-948f-46e0-a646-8214077e3e56]}
 2025/06/25 17:59:58 agent.go:170: [INFO] RegisterAgent: Received response type=register data=map[agent_id:001 client_id:0b707843-948f-46e0-a646-8214077e3e56]
 2025/06/25 17:59:58 agent.go:178: [INFO] RegisterAgent: Registration success client_id=0b707843-948f-46e0-a646-8214077e3e56 agent_id=001
+2025/06/26 10:13:08 agent.go:70: [INFO] Send: {type:request_otp, agent_id:001, payload:<nil>}
+2025/06/26 10:13:08 agent.go:107: [INFO] Received: {type:request_otp, agent_id:001, data:map[agent_id:001 otp:633696]}
+2025/06/26 10:13:08 main.go:77: [INFO] Received OTP response: {Type:request_otp Data:map[agent_id:001 otp:633696]}
+2025/06/26 10:13:08 main.go:80: [INFO] Parsed OTP: 633696
+2025/06/26 10:13:08 main.go:81: [INFO] Received OTP: {agent_id:001, otp:633696}
+2025/06/26 10:13:12 agent.go:70: [INFO] Send: {type:request_otp, agent_id:001, payload:<nil>}
+2025/06/26 10:13:12 agent.go:107: [INFO] Received: {type:request_otp, agent_id:001, data:map[agent_id:001 otp:633696]}
+2025/06/26 10:13:12 main.go:77: [INFO] Received OTP response: {Type:request_otp Data:map[agent_id:001 otp:633696]}
+2025/06/26 10:13:12 main.go:80: [INFO] Parsed OTP: 633696
+2025/06/26 10:13:12 main.go:81: [INFO] Received OTP: {agent_id:001, otp:633696}
+2025/06/26 10:15:20 agent.go:70: [INFO] Send: {type:request_otp, agent_id:001, payload:<nil>}
+2025/06/26 10:15:20 agent.go:79: [ERROR] Send: Write length failed: write tcp 127.0.0.1:51224->127.0.0.1:9000: wsasend: An existing connection was forcibly closed by the remote host.
+2025/06/26 10:15:20 main.go:69: [ERROR] Send OTP error: write tcp 127.0.0.1:51224->127.0.0.1:9000: wsasend: An existing connection was forcibly closed by the remote host.
+2025/06/26 10:28:13 agent.go:70: [INFO] Send: {type:request_otp, agent_id:001, payload:<nil>}
+2025/06/26 10:28:13 agent.go:107: [INFO] Received: {type:request_otp, agent_id:001, data:map[agent_id:001 otp:994412]}
+2025/06/26 10:28:13 main.go:77: [INFO] Received OTP response: {Type:request_otp Data:map[agent_id:001 otp:994412]}
+2025/06/26 10:28:13 main.go:80: [INFO] Parsed OTP: 994412
+2025/06/26 10:28:13 main.go:81: [INFO] Received OTP: {agent_id:001, otp:994412}

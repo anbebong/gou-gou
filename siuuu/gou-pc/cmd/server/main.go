@@ -27,7 +27,7 @@ func main() {
 
 	// Khởi tạo service
 	userService := service.NewUserService(userRepo)
-	clientService := service.NewClientService(clientRepo)
+	clientService := service.NewClientService(clientRepo, userRepo)
 	logService := service.NewLogService(cfg.ArchiveFile)
 	// TODO: logService nếu cần
 
@@ -42,7 +42,7 @@ func main() {
 	}()
 	go func() {
 		defer wg.Done()
-		api.Start(cfg.APIPort, userService, clientService, logService)
+		api.Start(cfg.APIPort, userService, clientService, logService, clientRepo, cfg.JWTSecret, cfg.JWTExpire)
 	}()
 	wg.Wait()
 }
